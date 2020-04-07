@@ -15,7 +15,7 @@ struct Interface1::parameter {
 Interface1::Interface1() {
 
 	parameter *battery_voltage = new parameter;
-	battery_voltage->headline = "Battery voltage";
+	battery_voltage->headline = "U battery";
 	battery_voltage->value = 7.4 ;
 	battery_voltage->unit = "V" ;
 	battery_voltage->changealbe_value = 0 ;
@@ -41,7 +41,7 @@ Interface1::Interface1() {
 	work_time->nastepny = distance;
 
 	parameter *energy_consumed = new parameter;
-	energy_consumed->headline = "Energy consumed";
+	energy_consumed->headline = "En consumed";
 	energy_consumed->value = 3 ;
 	energy_consumed->unit = "kWh" ;
 	energy_consumed->changealbe_value = 0 ;
