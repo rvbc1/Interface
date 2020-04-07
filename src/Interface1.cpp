@@ -2,15 +2,14 @@
 #define BUTTON_1 1
 #define BUTTON_2 2
 #define BUTTON_3 3
-#define MAX_POSITION 4
-
 
 struct Interface1::parameter {
 	parameter *nastepny ;
 	parameter *poprzedni ;
 	string headline;
-	int value ;
+	uint16_t value ;
 	string unit;
+	bool changealbe_value ;
 };
 
 Interface1::Interface1() {
@@ -19,13 +18,15 @@ Interface1::Interface1() {
 	battery_voltage->headline = "Battery voltage";
 	battery_voltage->value = 7.4 ;
 	battery_voltage->unit = "V" ;
-	first = battery_voltage ;
+	battery_voltage->changealbe_value = 0 ;
 
+	first = battery_voltage ;
 
 	parameter *work_time = new parameter;
 	work_time->headline = "Work time";
 	work_time->value = 2 ;
 	work_time->unit = "h" ;
+	work_time->changealbe_value = 1 ;
 
 	work_time->poprzedni = battery_voltage;
 	battery_voltage->nastepny = work_time ;
@@ -34,6 +35,7 @@ Interface1::Interface1() {
 	distance->headline = "Distance";
 	distance->value = 300 ;
 	distance->unit = "m" ;
+	distance->changealbe_value = 1;
 
 	distance->poprzedni = work_time;
 	work_time->nastepny = distance;
@@ -42,6 +44,7 @@ Interface1::Interface1() {
 	energy_consumed->headline = "Energy consumed";
 	energy_consumed->value = 3 ;
 	energy_consumed->unit = "kWh" ;
+	energy_consumed->changealbe_value = 0 ;
 
 	energy_consumed->poprzedni = distance ;
 	distance->nastepny = energy_consumed ;
@@ -50,6 +53,7 @@ Interface1::Interface1() {
 	temperature->headline = "Temperture";
 	temperature->value = 20 ;
 	temperature->unit = "C" ;
+	temperature->changealbe_value = 0;
 
 	temperature->poprzedni = energy_consumed ;
 	energy_consumed->nastepny = temperature ;
@@ -57,14 +61,14 @@ Interface1::Interface1() {
 	battery_voltage->poprzedni = temperature ;
 
 	//poczatkowy stan - napiecie baterii (srodkowe)
-	left_parameter = temperature;
-	middle_parameter = battery_voltage;
-	right_parameter = work_time;
+	left_parameter = first->poprzedni;
+	middle_parameter = first;
+	right_parameter = first->nastepny;
 
 	send_to_display(middle_parameter) ;
 }
 
-void Interface1::which_button(int button_w){
+void Interface1::which_button(uint16_t button_w){
 	if( button_w == BUTTON_1){ //lewo
 		send_to_display(left_parameter) ;
 		right_parameter = middle_parameter ;
@@ -77,11 +81,31 @@ void Interface1::which_button(int button_w){
 		middle_parameter = right_parameter ;
 		right_parameter = right_parameter->nastepny ;
 	}
+	else if( button_w == BUTTON_3){
+		if(middle_parameter->changealbe_value){
+			change_value(middle_parameter);
+		send_to_display(middle_parameter) ;
+		}
+		else{
+			send_error_no_changeable() ;
+		}
+	}
 }
 
 void Interface1::send_to_display(parameter *temp) { //przesylanie danych do wyswietlenia tylko
-	cout << endl;
+	cout << endl << endl ;
 	cout << temp->headline << ":" << endl;
-	cout << temp->value <<" [" << temp->unit << "]" << endl;
+	cout << temp->value <<" [" << temp->unit << "]" << endl << endl ;
+}
+
+void Interface1::change_value(parameter *temp){
+	uint16_t new_value ;
+	cin >> new_value ;
+	temp->value = new_value ;
+}
+
+void Interface1::send_error_no_changeable() {
+	cout << endl << "No change" << endl;
+	cout << "possible" << endl << endl;
 }
 

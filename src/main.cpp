@@ -29,24 +29,19 @@
 
 #include <iostream>
 #include <cstdio>
+#include <stdint.h>
 #include "Interface1.h"
 using namespace std ;
+
 int main(){
 
-	int podany_przycisk ;
+	uint16_t podany_przycisk ;
 	Interface1 Ssd_1306 ;
 
 	while (true){
-		cout <<"podaj przysisk: 1-lew0, 2-prawo, 3-zmiana" << endl;
+		cout <<"podaj przysisk: 1-lewo, 2-prawo, 3-zmiana" << endl;
 		cin >> podany_przycisk ;
 		Ssd_1306.which_button(podany_przycisk) ;
-
 	}
-
-
-
-	//in_1.which_button( ) ;
-
-
 	return 0;
 }
