@@ -5,17 +5,18 @@ using namespace std;
 //#include <main.h>
 
 class Interface1{
+
 public:
+	struct parameter  ;
 	Interface1();
 	void which_button(int) ; //(uint16_t);
+	void send_to_display(parameter* );
 	int position ; //uint16_t zmienna;
 
-private:
-	void voltage();
-	void value2();
-	void value3();
-	void value4();
+	parameter *first ;
 
-	void show_parameter();
+	parameter *right_parameter ;
+	parameter *middle_parameter ;
+	parameter *left_parameter ;
 
 };

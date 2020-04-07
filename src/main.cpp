@@ -33,7 +33,17 @@
 using namespace std ;
 int main(){
 
-	Interface1 in_1 ;
+	int podany_przycisk ;
+	Interface1 Ssd_1306 ;
+
+	while (true){
+		cout <<"podaj przysisk: 1-lew0, 2-prawo, 3-zmiana" << endl;
+		cin >> podany_przycisk ;
+		Ssd_1306.which_button(podany_przycisk) ;
+
+	}
+
+
 
 	//in_1.which_button( ) ;
 

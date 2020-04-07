@@ -4,39 +4,84 @@
 #define BUTTON_3 3
 #define MAX_POSITION 4
 
-Interface1::Interface1(){
-	position = 1 ;
-}
 
-void Interface1::voltage() {
+struct Interface1::parameter {
+	parameter *nastepny ;
+	parameter *poprzedni ;
+	string headline;
+	int value ;
+	string unit;
+};
 
-}
-void Interface1::value2() {
+Interface1::Interface1() {
 
-}
-void Interface1::value3() {
+	parameter *battery_voltage = new parameter;
+	battery_voltage->headline = "Battery voltage";
+	battery_voltage->value = 7.4 ;
+	battery_voltage->unit = "V" ;
+	first = battery_voltage ;
 
-}
-void Interface1::value4() {
 
+	parameter *work_time = new parameter;
+	work_time->headline = "Work time";
+	work_time->value = 2 ;
+	work_time->unit = "h" ;
+
+	work_time->poprzedni = battery_voltage;
+	battery_voltage->nastepny = work_time ;
+
+	parameter *distance = new parameter;
+	distance->headline = "Distance";
+	distance->value = 300 ;
+	distance->unit = "m" ;
+
+	distance->poprzedni = work_time;
+	work_time->nastepny = distance;
+
+	parameter *energy_consumed = new parameter;
+	energy_consumed->headline = "Energy consumed";
+	energy_consumed->value = 3 ;
+	energy_consumed->unit = "kWh" ;
+
+	energy_consumed->poprzedni = distance ;
+	distance->nastepny = energy_consumed ;
+
+	parameter *temperature = new parameter;
+	temperature->headline = "Temperture";
+	temperature->value = 20 ;
+	temperature->unit = "C" ;
+
+	temperature->poprzedni = energy_consumed ;
+	energy_consumed->nastepny = temperature ;
+	temperature->nastepny = battery_voltage ;
+	battery_voltage->poprzedni = temperature ;
+
+	//poczatkowy stan - napiecie baterii (srodkowe)
+	left_parameter = temperature;
+	middle_parameter = battery_voltage;
+	right_parameter = work_time;
+
+	send_to_display(middle_parameter) ;
 }
 
 void Interface1::which_button(int button_w){
-	if( button_w == BUTTON_1){
-		if(position == 1 ) position = MAX_POSITION ;
-		else position-- ;
+	if( button_w == BUTTON_1){ //lewo
+		send_to_display(left_parameter) ;
+		right_parameter = middle_parameter ;
+		middle_parameter = left_parameter ;
+		left_parameter = left_parameter->poprzedni ;
 	}
-	else if( button_w == BUTTON_2){
-			position = (position+1)%MAX_POSITION ;
-		}
-	show_parameter() ;
+	else if( button_w == BUTTON_2){ //prawo
+		send_to_display(right_parameter) ;
+		left_parameter = middle_parameter ;
+		middle_parameter = right_parameter ;
+		right_parameter = right_parameter->nastepny ;
+	}
 }
 
-void Interface1::show_parameter(){
-	if(position == 1 ) voltage() ;
-	else if( position == 2 ) value2();
-	else if( position == 3 ) value3();
-	else if( position == 4 ) value4();
+void Interface1::send_to_display(parameter *temp) { //przesylanie danych do wyswietlenia tylko
+	cout << endl;
+	cout << temp->headline << ":" << endl;
+	cout << temp->value <<" [" << temp->unit << "]" << endl;
 }
-
 
