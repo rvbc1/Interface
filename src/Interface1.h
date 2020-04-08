@@ -3,22 +3,23 @@
 #include <iostream>
 #include <cstdio>
 #include <stdint.h>
+#include "Parameter.h"
 using namespace std;
-//#include <main.h>
 
 class Interface1{
-
 private :
-	struct parameter  ;
-	parameter *middle_parameter ;
+	Parameter *battery_voltage ;
+	Parameter *work_time ;
+	Parameter *distance ;
+	Parameter *energy_consumed ;
+	Parameter *temperature ;
 
-	void send_to_display(parameter*);
-	void change_value(parameter*) ;
-	void send_error_no_changeable() ;
+	Parameter *middle ;
 
-
+	double get_value() ;
 
 public:
-	void which_button(uint16_t) ;
-	Interface1();
+	Interface1() ;
+	void get_button(int) ;
+
 };
