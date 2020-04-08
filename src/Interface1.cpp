@@ -20,8 +20,6 @@ Interface1::Interface1() {
 	battery_voltage->unit = "V" ;
 	battery_voltage->changealbe_value = 0 ;
 
-	first = battery_voltage ;
-
 	parameter *work_time = new parameter;
 	work_time->headline = "Work time";
 	work_time->value = 2 ;
@@ -61,25 +59,19 @@ Interface1::Interface1() {
 	battery_voltage->poprzedni = temperature ;
 
 	//poczatkowy stan - napiecie baterii (srodkowe)
-	left_parameter = first->poprzedni;
-	middle_parameter = first;
-	right_parameter = first->nastepny;
+	middle_parameter = battery_voltage; // ustawienie pierwszego parametru listy
 
 	send_to_display(middle_parameter) ;
 }
 
 void Interface1::which_button(uint16_t button_w){
 	if( button_w == BUTTON_1){ //lewo
-		send_to_display(left_parameter) ;
-		right_parameter = middle_parameter ;
-		middle_parameter = left_parameter ;
-		left_parameter = left_parameter->poprzedni ;
+		middle_parameter = middle_parameter->poprzedni;
+		send_to_display(middle_parameter) ;
 	}
 	else if( button_w == BUTTON_2){ //prawo
-		send_to_display(right_parameter) ;
-		left_parameter = middle_parameter ;
-		middle_parameter = right_parameter ;
-		right_parameter = right_parameter->nastepny ;
+		middle_parameter = middle_parameter->nastepny ;
+		send_to_display(middle_parameter) ;
 	}
 	else if( button_w == BUTTON_3){
 		if(middle_parameter->changealbe_value){
