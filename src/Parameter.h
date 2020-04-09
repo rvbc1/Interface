@@ -8,19 +8,19 @@ using namespace std;
 class Parameter {
 private:
 	string headline;
-	double value ;
+	int value ;
 	string unit;
 
 
 public:
-	Parameter(string, double, string, bool) ;
+	Parameter(string, int, string, bool ) ;
 
 	Parameter *right ;
 	Parameter *left ;
 
 	bool if_changeable_value ;
 
-	void change_value(double) ;
+	void change_value(int) ;
 	void send_to_display() ;
 	void send_error_no_changeable() ;
 };

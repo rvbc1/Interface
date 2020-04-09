@@ -1,4 +1,4 @@
-
+#include <conio.h>
 #include "Interface1.h"
 
 class Interface1_manager{
@@ -7,6 +7,6 @@ public:
 
 private:
 	Interface1 *Ssd_1306 ;
-	uint16_t podany_przycisk ;
+	unsigned char podany_przycisk ;
 
 };

@@ -1,8 +1,8 @@
 #include "Interface1.h"
-#define BUTTON_1 1
-#define BUTTON_2 2
-#define BUTTON_3 3
-
+#define BUTTON_1 75 // left
+#define BUTTON_2 77 //right
+#define BUTTON_3 80 // down
+#define SPECIAL_BUTTON 224
 
 Interface1::Interface1(){
 	battery_voltage = new Parameter("U battery" , 7.4 , "V", 0);
@@ -28,17 +28,28 @@ Interface1::Interface1(){
 	middle->send_to_display() ;
 
 }
-double Interface1::get_value(){
-	double value ;
-	cin >> value ;
-	return value ;
+
+void Interface1::get_value(){
+
+    int wczytany_znak = getch() ;
+
+    if( kbhit())
+    {
+        while(wczytany_znak != BUTTON_3)
+        {
+            wczytany_znak = getch();
+            middle->change_value(wczytany_znak) ;
+
+        }
+    }
 }
 
 void Interface1::get_button(int button){
+
 	if(button == BUTTON_3)
 	{
 		if(middle->if_changeable_value)
-			middle->change_value(get_value()) ;
+            get_value() ;
 		else
 			middle->send_error_no_changeable() ;
 	}
