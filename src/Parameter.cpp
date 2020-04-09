@@ -12,7 +12,7 @@ void Parameter::change_value(double new_value){
 	send_to_display() ;
 }
 
-void Parameter::send_to_display()  // (Parameter* middle)
+void Parameter::send_to_display()
 {
 	system("cls");
 

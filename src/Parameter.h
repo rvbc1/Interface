@@ -21,6 +21,6 @@ public:
 	bool if_changeable_value ;
 
 	void change_value(double) ;
-	void send_to_display() ; //(Parameter*) ;
+	void send_to_display() ;
 	void send_error_no_changeable() ;
 };

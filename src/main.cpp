@@ -30,20 +30,9 @@
 #include <iostream>
 #include <cstdio>
 #include <stdint.h>
-#include "Interface1.h"
+#include "Interface1_manager.h"
 using namespace std ;
 
 int main(){
-
-	uint16_t podany_przycisk ; // to do: parameter manager
-	Interface1 Ssd_1306 ;
-
-	while (true){
-		cout <<"podaj przysisk: 1-lewo, 2-prawo, 3-zmiana" << endl;
-		cin >> podany_przycisk ;
-		Ssd_1306.get_button(podany_przycisk) ;
-	}
-
-
-	return 0;
+	Interface1_manager interface ;
 }
