@@ -3,33 +3,30 @@
 #define BUTTON_2 77 //right
 #define BUTTON_3 80 // down
 #define SPECIAL_BUTTON 224
+#define NUMBER_OF_ELEMENTS 5
 
 Interface1::Interface1(){
+
 	battery_voltage = new Parameter("U battery" , 7.4 , "V", 0);
 	work_time = new Parameter("Work time" , 2 , "h", 1) ;
 	distance = new Parameter("Distance" , 100 , "m", 1 ) ;
 	energy_consumed = new Parameter("En consumed" , 3 , "kWh", 0) ;
 	temperature = new Parameter("Temperature" , 20 , "C" , 0);
 
-	battery_voltage->right = work_time ;
-	work_time->right = distance ;
-	distance->right = energy_consumed ;
-	energy_consumed->right = temperature ;
-	temperature->right = battery_voltage ;
+	list_of_elements->add_Parameter(battery_voltage) ;
+	list_of_elements->add_Parameter(work_time) ;
+	list_of_elements->add_Parameter(distance) ;
+	list_of_elements->add_Parameter(energy_consumed) ;
+	list_of_elements->add_Parameter(temperature) ;
 
-	battery_voltage->left = temperature ;
-	temperature->left = energy_consumed ;
-	energy_consumed->left = distance ;
-	distance->left = work_time ;
-	work_time->left = battery_voltage ;
 
-	middle = battery_voltage ;
+    actual_index = 1;
 
-	middle->send_to_display() ;
+  //  ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
 
 }
 
-void Interface1::get_value(){
+void Interface1::get_Value(){
 
     int wczytany_znak = getch() ;
 
@@ -38,28 +35,35 @@ void Interface1::get_value(){
         while(wczytany_znak != BUTTON_3)
         {
             wczytany_znak = getch();
-            middle->change_value(wczytany_znak) ;
-
+            ( list_of_elements->get_Parameter(actual_index) )->change_Value(wczytany_znak) ;
         }
     }
+
 }
 
-void Interface1::get_button(int button){
-
+void Interface1::get_Button(int button){
+/*
 	if(button == BUTTON_3)
 	{
-		if(middle->if_changeable_value)
-            get_value() ;
+		if(( list_of_elements->get_Parameter(actual_index) )->if_changeable_value)
+            get_Value() ;
 		else
-			middle->send_error_no_changeable() ;
+			( list_of_elements->get_Parameter(actual_index) )->send_Error_No_Changeable() ;
 	}
 	else{
-		if(button == BUTTON_1)
-			middle = middle->left ;
+		if(button == BUTTON_1){
+            actual_index-- ;
+            if(actual_index <=0) actual_index=NUMBER_OF_ELEMENTS ;
+		}
 		else if(button == BUTTON_2)
-			middle = middle->right ;
-		middle->send_to_display();
-	}
+        {actual_index=(actual_index++)%(NUMBER_OF_ELEMENTS + 1 ) ;
 
+        }
+
+
+    ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
+
+	}
+	*/
 }
 

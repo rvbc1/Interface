@@ -8,7 +8,7 @@ Parameter::Parameter(string h, int v, string u , bool ch ){
 	if_changeable_value = ch;
 }
 
-void Parameter::change_value(int l_or_r ){
+void Parameter::change_Value(int l_or_r ){
 
    if( l_or_r == BUTTON_1)
    {
@@ -17,17 +17,17 @@ void Parameter::change_value(int l_or_r ){
    }
    else if( l_or_r == BUTTON_2)
         value++ ;
-	send_to_display() ;
+	send_To_Display() ;
 }
 
-void Parameter::send_to_display()
+void Parameter::send_To_Display()
 {
 	system("cls");
 
 	cout << headline << endl;
 	cout << value << " " << unit ;
 }
-void Parameter::send_error_no_changeable(){
+void Parameter::send_Error_No_Changeable(){
 
     system("cls");
 

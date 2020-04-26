@@ -15,12 +15,11 @@ private:
 public:
 	Parameter(string, int, string, bool ) ;
 
-	Parameter *right ;
-	Parameter *left ;
+
 
 	bool if_changeable_value ;
 
-	void change_value(int) ;
-	void send_to_display() ;
-	void send_error_no_changeable() ;
+	void change_Value(int) ;
+	void send_To_Display() ;
+	void send_Error_No_Changeable() ;
 };

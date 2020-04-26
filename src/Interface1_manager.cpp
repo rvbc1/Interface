@@ -7,6 +7,6 @@ Interface1_manager::Interface1_manager(){
         podany_przycisk = getch();
     if(kbhit())
         if( podany_przycisk == SPECIAL_BUTTON)
-             Ssd_1306->get_button(getch()) ;
+             Ssd_1306->get_Button(getch()) ;
     }
 }

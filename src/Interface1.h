@@ -1,7 +1,8 @@
 //#ifndef CLASSES_Interface1_H
 //#define CLASSES_Interface1_H
 #include <conio.h>
-#include "Parameter.h"
+//#include "Parameter.h"
+#include "List.h"
 
 
 class Interface1{
@@ -12,12 +13,13 @@ private :
 	Parameter *energy_consumed ;
 	Parameter *temperature ;
 
-	Parameter *middle ;
+	void get_Value() ;
 
-	void get_value() ;
+	List *list_of_elements ;
 
+	int actual_index ;
 public:
 	Interface1() ;
-	void get_button(int) ;
+	void get_Button(int) ;
 
 };
