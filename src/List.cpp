@@ -1,7 +1,7 @@
 #include "List.h"
 
 
-#define DEBUG
+//#define DEBUG
 
 #ifdef DEBUG
 string intToStr(int n){
