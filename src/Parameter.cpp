@@ -34,3 +34,7 @@ void Parameter::send_Error_No_Changeable(){
 	cout <<"No change" << endl ;
 	cout <<"possible" ;
 }
+
+string Parameter::getHeadLine(){
+	return this->headline;
+}

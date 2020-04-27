@@ -7,6 +7,8 @@
 
 Interface1::Interface1(){
 
+	list_of_elements = new List();
+
 	battery_voltage = new Parameter("U battery" , 7.4 , "V", 0);
 	work_time = new Parameter("Work time" , 2 , "h", 1) ;
 	distance = new Parameter("Distance" , 100 , "m", 1 ) ;
