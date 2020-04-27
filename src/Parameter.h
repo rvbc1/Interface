@@ -22,4 +22,6 @@ public:
 	void change_Value(int) ;
 	void send_To_Display() ;
 	void send_Error_No_Changeable() ;
+
+	string getHeadLine();
 };

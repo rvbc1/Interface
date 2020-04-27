@@ -6,6 +6,10 @@ List_element::List_element(Parameter *parametr) {
      cout <<parametr << "wsk na parameter w list_element" << endl;
 }
 
+void List_element::print(){
+	cout<<parameter_element->getHeadLine() << endl;
+}
+
 
 /*
 void List_element::set_Next_Pointer(List_element *next_pointer ){
