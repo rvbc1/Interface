@@ -1,7 +1,7 @@
 #include "List.h"
 
 
-//#define DEBUG
+#define DEBUG
 
 #ifdef DEBUG
 string intToStr(int n){
@@ -89,5 +89,15 @@ Parameter* List::get_Parameter(int index){
     }
     return current_element->get_Current_Parameter() ;
 	 */
+}
+
+void List::print(){
+	cout << "Rozmiar listy: " << size << endl;
+	List_element *printing_element = first_pointer;
+	for(int i = 0; i <size; i++){
+		cout << "element: " << i << endl;
+		printing_element->print();
+		printing_element = printing_element->next;
+	}
 }
 

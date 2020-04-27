@@ -22,6 +22,9 @@ Interface1::Interface1(){
 	list_of_elements->add_Parameter(temperature) ;
 
 
+	list_of_elements->print();
+
+
     actual_index = 1;
 
   //  ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;

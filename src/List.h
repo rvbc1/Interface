@@ -16,5 +16,6 @@ public :
     List() ;
     Parameter* get_Parameter(int index);
     void add_Parameter(Parameter *parameter) ;
+    void print();
 };
 
