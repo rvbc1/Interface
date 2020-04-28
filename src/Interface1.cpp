@@ -7,6 +7,8 @@
 
 Interface1::Interface1(){
 
+	list_of_elements = new List();
+
 	battery_voltage = new Parameter("U battery" , 7.4 , "V", 0);
 	work_time = new Parameter("Work time" , 2 , "h", 1) ;
 	distance = new Parameter("Distance" , 100 , "m", 1 ) ;
@@ -20,9 +22,12 @@ Interface1::Interface1(){
 	list_of_elements->add_Parameter(temperature) ;
 
 
-    actual_index = 1;
+//	list_of_elements->print();
 
-  //  ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
+
+    actual_index = 0;
+
+  ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
 
 }
 
@@ -42,7 +47,7 @@ void Interface1::get_Value(){
 }
 
 void Interface1::get_Button(int button){
-/*
+
 	if(button == BUTTON_3)
 	{
 		if(( list_of_elements->get_Parameter(actual_index) )->if_changeable_value)
@@ -53,17 +58,14 @@ void Interface1::get_Button(int button){
 	else{
 		if(button == BUTTON_1){
             actual_index-- ;
-            if(actual_index <=0) actual_index=NUMBER_OF_ELEMENTS ;
+            if(actual_index <0)
+                actual_index=list_of_elements->getSize()-1 ;
 		}
-		else if(button == BUTTON_2)
-        {actual_index=(actual_index++)%(NUMBER_OF_ELEMENTS + 1 ) ;
-
+		else if(button == BUTTON_2){
+            actual_index++;
+            actual_index =(actual_index) % list_of_elements->getSize() ;
         }
-
-
-    ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
-
+       ( list_of_elements->get_Parameter(actual_index) )->send_To_Display() ;
 	}
-	*/
 }
 
