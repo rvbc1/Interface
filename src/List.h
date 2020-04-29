@@ -1,6 +1,5 @@
 #include "List_element.h"
 
-
 class List{
 private:
 
@@ -12,11 +11,15 @@ private:
     void addNextElement(List_element *element);
 
     uint16_t size = 0;
+
 public :
     List() ;
-    Parameter* get_Parameter(int index);
+    Parameter* get_Parameter();
     void add_Parameter(Parameter *parameter) ;
-    void print();
+    void moveRight() ;
+    void moveLeft() ;
     uint16_t getSize() ;
+
+   // void print();
 };
 

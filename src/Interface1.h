@@ -15,10 +15,9 @@ private :
 	void get_Value() ;
 
 	List *list_of_elements ;
-
-	int actual_index ;
 public:
 	Interface1() ;
-	void get_Button(int) ;
-
+	int get_Button(int) ;
+	void display() ;
+	void display_Error();
 };

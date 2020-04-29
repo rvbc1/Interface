@@ -31,9 +31,11 @@ void List::addFirstElement(List_element *element){
 }
 
 void List::addNextElement(List_element *element){
-	last_element->next = element;
+    last_element->set_Next_Pointer(element) ;
+    first_element->set_Prev_Pointer(element) ;
+    element->set_Prev_Pointer(last_element) ;
 	last_element = element;
-	last_element->next = first_element ;
+	last_element->set_Next_Pointer(first_element) ;
 	size++;
 }
 
@@ -53,11 +55,6 @@ void List::add_Parameter(Parameter *parameter){
 	cout << "Dodano, aktualny rozmiar listy: " << size << endl << endl;
 #endif
 	//     first_pointer =  ;
-
-
-
-
-
 	//    if(first_element == 0)
 	//    {
 	//        cout << "Pierwszy " << endl;
@@ -77,19 +74,10 @@ void List::add_Parameter(Parameter *parameter){
 	//        current_element = last_element ;
 	//    }
 
-
 }
 
-
-Parameter* List::get_Parameter(int index){
-
-    current_element = first_element ;
-    for( int i=0 ; i<index ; i++ )
-    {
-        current_element = current_element->get_Next_Pointer() ;
-    }
+Parameter* List::get_Parameter(){
     return current_element->get_Current_Parameter() ;
-
 }
 /*
 void List::print(){
@@ -105,4 +93,12 @@ void List::print(){
 
 uint16_t List::getSize(){
     return size ;
+}
+
+void List::moveRight(){
+    current_element = current_element->get_Next_Pointer() ;
+}
+
+void List::moveLeft(){
+    current_element = current_element->get_Prev_Pointer();
 }
