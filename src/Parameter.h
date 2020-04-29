@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <cstdlib>
 
+#include "InterfaceButton.h"
+
 using namespace std;
 
 class Parameter {

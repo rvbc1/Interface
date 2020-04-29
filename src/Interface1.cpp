@@ -1,8 +1,5 @@
 #include "Interface1.h"
-#define BUTTON_1 75 // left
-#define BUTTON_2 77 //right
-#define BUTTON_3 80 // down
-#define SPECIAL_BUTTON 224
+
 #define DO_NOTHING -1
 #define ERROR 0
 #define PRINT_PARAMETER 1

@@ -1,7 +1,7 @@
 #include "Parameter.h"
-#define BUTTON_1 75 // left
-#define BUTTON_2 77 // right
-#define BUTTON_3 80 // down
+//#define BUTTON_1 75 // left
+//#define BUTTON_2 77 // right
+//#define BUTTON_3 80 // down
 #define DO_NOTHING -1
 #define ERROR 0
 Parameter::Parameter(string h, int v, string u , bool ch ){

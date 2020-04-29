@@ -1,8 +1,8 @@
 #include "Interface1_manager.h"
 #define SPECIAL_BUTTON 224
-#define BUTTON_1 75 // left
-#define BUTTON_2 77 //right
-#define BUTTON_3 80 // down
+//#define BUTTON_1 75 // left
+//#define BUTTON_2 77 //right
+//#define BUTTON_3 80 // down
 #define PRINT_PARAMETER 1
 #define ERROR 0
 Interface1_manager::Interface1_manager(){
@@ -22,10 +22,11 @@ int Interface1_manager::readKey(){
             case SPECIAL_BUTTON:
                 return SPECIAL_BUTTON ;
             case BUTTON_1:
-                return BUTTON_1 ;
+                return Interface_Button::LEFT_BUTTON;
             case BUTTON_2:
-                return BUTTON_2 ;
+                return Interface_Button::LEFT;
             case BUTTON_3:
+
                 return BUTTON_3 ;
             break;
         }
