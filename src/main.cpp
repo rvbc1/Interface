@@ -35,6 +35,5 @@
 using namespace std ;
 
 int main(){
-
     Interface1_manager interface ;
 }

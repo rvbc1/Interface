@@ -3,6 +3,8 @@
 #include <conio.h>
 #include "List.h"
 
+#include "InterfaceButton.h"
+
 
 class Interface1{
 private :
