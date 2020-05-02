@@ -4,21 +4,21 @@ List_element::List_element(Parameter *parametr) {
      parameter_element  = parametr ;
 }
 
-void List_element::set_Next_Pointer(List_element *next_pointer ){
+void List_element::setNextPointer(List_element *next_pointer ){
     next = next_pointer ;
 }
-void List_element::set_Prev_Pointer(List_element *prev_pointer ){
+void List_element::setPrevPointer(List_element *prev_pointer ){
     prev = prev_pointer ;
 }
 
-List_element* List_element::get_Next_Pointer() {
+List_element* List_element::getNextPointer() {
     return next ;
 }
-List_element* List_element::get_Prev_Pointer() {
+List_element* List_element::getPrevPointer() {
     return prev ;
 }
 
-Parameter* List_element::get_Current_Parameter(){
+Parameter* List_element::getCurrentParameter(){
     return parameter_element ;
 }
 

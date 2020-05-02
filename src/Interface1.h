@@ -1,9 +1,10 @@
-//#ifndef CLASSES_Interface1_H
-//#define CLASSES_Interface1_H
+#ifndef CLASSES_Interface1_H
+#define CLASSES_Interface1_H
+
 #include <conio.h>
 #include "List.h"
 
-#include "InterfaceButton.h"
+//#include "Interface_Element.h"
 
 
 class Interface1{
@@ -19,7 +20,9 @@ private :
 	List *list_of_elements ;
 public:
 	Interface1() ;
-	int get_Button(int) ;
+	Interface_Element::Action getAction(Interface_Element::Button) ;
 	void display() ;
-	void display_Error();
+	void displayError();
 };
+
+#endif

@@ -14,8 +14,8 @@ private:
 
 public :
     List() ;
-    Parameter* get_Parameter();
-    void add_Parameter(Parameter *parameter) ;
+    Parameter* getParameter();
+    void addParameter(Parameter *parameter) ;
     void moveRight() ;
     void moveLeft() ;
     uint16_t getSize() ;

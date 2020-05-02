@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <cstdlib>
 
-#include "InterfaceButton.h"
+#include "Interface_Element.h"
 
 using namespace std;
 
@@ -16,8 +16,8 @@ private:
 public:
 	Parameter(string, int, string, bool ) ;
 	bool if_changeable_value ;
-	void send_To_Display() ;
-	int getButton(int) ;
-	void send_Error_No_Changeable() ;
+	void sendToDisplay() ;
+	Interface_Element::Action getButton(Interface_Element::Button) ;
+	void sendErrorNoChangeable() ;
 	//string getHeadLine();
 };

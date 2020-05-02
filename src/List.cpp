@@ -31,15 +31,15 @@ void List::addFirstElement(List_element *element){
 }
 
 void List::addNextElement(List_element *element){
-    last_element->set_Next_Pointer(element) ;
-    first_element->set_Prev_Pointer(element) ;
-    element->set_Prev_Pointer(last_element) ;
+    last_element->setNextPointer(element) ;
+    first_element->setPrevPointer(element) ;
+    element->setPrevPointer(last_element) ;
 	last_element = element;
-	last_element->set_Next_Pointer(first_element) ;
+	last_element->setNextPointer(first_element) ;
 	size++;
 }
 
-void List::add_Parameter(Parameter *parameter){
+void List::addParameter(Parameter *parameter){
 #ifdef DEBUG
 	cout << "Dodawnie " + intToStr(size) + " elementu:" << endl;
 	cout << parameter->getHeadLine() << endl;
@@ -76,8 +76,8 @@ void List::add_Parameter(Parameter *parameter){
 
 }
 
-Parameter* List::get_Parameter(){
-    return current_element->get_Current_Parameter() ;
+Parameter* List::getParameter(){
+    return current_element->getCurrentParameter() ;
 }
 /*
 void List::print(){
@@ -96,9 +96,9 @@ uint16_t List::getSize(){
 }
 
 void List::moveRight(){
-    current_element = current_element->get_Next_Pointer() ;
+    current_element = current_element->getNextPointer() ;
 }
 
 void List::moveLeft(){
-    current_element = current_element->get_Prev_Pointer();
+    current_element = current_element->getPrevPointer();
 }
