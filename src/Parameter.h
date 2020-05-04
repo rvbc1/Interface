@@ -1,3 +1,8 @@
+#include "Interface_Element.h"
+
+#ifndef PARAMETER_H_
+#define PARAMETER_H_
+
 #include <iostream>
 #include <cstdio>
 #include <stdint.h>
@@ -10,17 +15,15 @@ private:
 	string headline;
 	int value ;
 	string unit;
-
-
+    bool edit_mode ;
 public:
 	Parameter(string, int, string, bool ) ;
-
-	Parameter *right ;
-	Parameter *left ;
-
 	bool if_changeable_value ;
-
-	void change_value(int) ;
-	void send_to_display() ;
-	void send_error_no_changeable() ;
+	void sendToDisplay() ;
+	Interface_Element::Action getButton(Interface_Element::Button) ;
+	void sendErrorNoChangeable() ;
+	//string getHeadLine();
 };
+
+
+#endif /* PARAMETER_H_ */

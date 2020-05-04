@@ -1,65 +1,43 @@
 #include "Interface1.h"
-#define BUTTON_1 75 // left
-#define BUTTON_2 77 //right
-#define BUTTON_3 80 // down
-#define SPECIAL_BUTTON 224
-
+//#include "Interface_Element.h"
 Interface1::Interface1(){
-	battery_voltage = new Parameter("U battery" , 7.4 , "V", 0);
-	work_time = new Parameter("Work time" , 2 , "h", 1) ;
-	distance = new Parameter("Distance" , 100 , "m", 1 ) ;
-	energy_consumed = new Parameter("En consumed" , 3 , "kWh", 0) ;
-	temperature = new Parameter("Temperature" , 20 , "C" , 0);
 
-	battery_voltage->right = work_time ;
-	work_time->right = distance ;
-	distance->right = energy_consumed ;
-	energy_consumed->right = temperature ;
-	temperature->right = battery_voltage ;
+	list_of_elements = new List();
 
-	battery_voltage->left = temperature ;
-	temperature->left = energy_consumed ;
-	energy_consumed->left = distance ;
-	distance->left = work_time ;
-	work_time->left = battery_voltage ;
+	list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
+	list_of_elements->addParameter(new Parameter("Work time" , 2 , "h", 1)) ;
+	list_of_elements->addParameter(new Parameter("Distance" , 100 , "m", 1)) ;
+	list_of_elements->addParameter(new Parameter("En consumed" , 3 , "kWh", 0)) ;
+	list_of_elements->addParameter(new Parameter("Temperature" , 20 , "C" , 0)) ;
 
-	middle = battery_voltage ;
-
-	middle->send_to_display() ;
-
+    display();
 }
 
-void Interface1::get_value(){
+Interface_Element::Action Interface1::getAction(Interface_Element::Button button){
 
-    int wczytany_znak = getch() ;
+	Interface_Element::Action action = list_of_elements->getParameter()->getButton(button);
 
-    if( kbhit())
-    {
-        while(wczytany_znak != BUTTON_3)
-        {
-            wczytany_znak = getch();
-            middle->change_value(wczytany_znak) ;
+	switch(action){
+        case Interface_Element::ERROR_NO_CHANGEABLE:
+            return Interface_Element::ERROR_NO_CHANGEABLE;
 
-        }
-    }
-}
+        case Interface_Element::MOVE_LEFT :
+            list_of_elements->moveLeft() ;
+            return Interface_Element::PRINT;
 
-void Interface1::get_button(int button){
+        case Interface_Element::MOVE_RIGHT:
+            list_of_elements->moveRight();
+            return Interface_Element::PRINT;
 
-	if(button == BUTTON_3)
-	{
-		if(middle->if_changeable_value)
-            get_value() ;
-		else
-			middle->send_error_no_changeable() ;
+        case Interface_Element::DO_NOTHING:
+            return Interface_Element::PRINT;
 	}
-	else{
-		if(button == BUTTON_1)
-			middle = middle->left ;
-		else if(button == BUTTON_2)
-			middle = middle->right ;
-		middle->send_to_display();
-	}
-
 }
 
+void Interface1::display(){
+    list_of_elements->getParameter()->sendToDisplay();
+}
+
+void Interface1::displayError(){
+    list_of_elements->getParameter()->sendErrorNoChangeable() ;
+}
