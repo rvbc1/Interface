@@ -3,7 +3,6 @@
 #define BUTTON_2 77 // right
 #define BUTTON_3 80 // down
 #define SPECIAL_BUTTON 224
-//#include "Interface_Element.h"
 
 Interface1_manager::Interface1_manager(){
 

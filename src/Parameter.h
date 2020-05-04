@@ -1,9 +1,12 @@
+#include "Interface_Element.h"
+
+#ifndef PARAMETER_H_
+#define PARAMETER_H_
+
 #include <iostream>
 #include <cstdio>
 #include <stdint.h>
 #include <cstdlib>
-
-#include "Interface_Element.h"
 
 using namespace std;
 
@@ -21,3 +24,6 @@ public:
 	void sendErrorNoChangeable() ;
 	//string getHeadLine();
 };
+
+
+#endif /* PARAMETER_H_ */

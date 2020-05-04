@@ -1,5 +1,7 @@
 #include "Parameter.h"
 
+#ifndef LISTELEMENT_H_
+#define LISTELEMENT_H_
 
 class List_element{
 
@@ -19,4 +21,4 @@ class List_element{
 
       //void print();
 };
-
+#endif /* LISTELEMENT_H_ */

@@ -1,11 +1,9 @@
-#ifndef CLASSES_Interface1_H
-#define CLASSES_Interface1_H
-
-#include <conio.h>
 #include "List.h"
 
-//#include "Interface_Element.h"
+#ifndef INTERFACE1_H_
+#define INTERFACE1_H_
 
+#include <conio.h>
 
 class Interface1{
 private :
@@ -25,4 +23,4 @@ public:
 	void displayError();
 };
 
-#endif
+#endif /* INTERFACE1_H_ */

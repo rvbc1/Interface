@@ -1,4 +1,6 @@
 #include "List_element.h"
+#ifndef LIST_h_
+#define LIST_H_
 
 class List{
 private:
@@ -22,4 +24,4 @@ public :
 
    // void print();
 };
-
+#endif /* LIST_h_ */
