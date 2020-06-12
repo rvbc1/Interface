@@ -44,7 +44,7 @@ void List::addParameter(Parameter *parameter){
 	cout << parameter->getHeadLine() << endl;
 #endif
 
-	if(size == 0){
+	if(size == false){
 		addFirstElement(new List_element(parameter));
 	} else {
 		addNextElement(new List_element(parameter));
@@ -78,26 +78,47 @@ void List::addParameter(Parameter *parameter){
 Parameter* List::getParameter(){
     return current_element->getCurrentParameter() ;
 }
-/*
+
 void List::print(){
 	cout << "Rozmiar listy: " << size << endl;
 	List_element *printing_element = first_element;
 	for(int i = 0; i <size; i++){
 		cout << "element: " << i << endl;
-		printing_element->print();
-		printing_element = printing_element->next;
+		cout << printing_element->getCurrentParameter()->getHeadLine() << endl;
+		printing_element = printing_element->getNextPointer();
 	}
 }
-*/
+
 
 uint16_t List::getSize(){
     return size ;
 }
 
 void List::moveRight(){
-    current_element = current_element->getNextPointer() ;
+    if( current_element->getMainParameter()->if_in_sub_list()){
+        if(current_element->getCurrentParameter()!=current_element->getMainParameter()->getLastElementOfSubList())
+            current_element->getMainParameter()->getSubList()->moveRight() ;
+        else{
+            current_element->getMainParameter()->setOutOfSubList() ;
+            current_element = current_element->getNextPointer() ;
+        }
+    }
+    else
+        current_element = current_element->getNextPointer() ;
 }
 
 void List::moveLeft(){
-    current_element = current_element->getPrevPointer();
+    if( current_element->getMainParameter()->if_in_sub_list()){
+        current_element->getMainParameter()->getSubList()->moveLeft() ;
+    }
+    else
+        current_element = current_element->getPrevPointer();
+}
+
+void List::resetSubList(){
+    current_element = first_element ;
+}
+
+Parameter* List::getLastParameter(){
+    return last_element->getCurrentParameter() ;
 }

@@ -7,22 +7,35 @@
 #include <cstdio>
 #include <stdint.h>
 #include <cstdlib>
-
 using namespace std;
+
+class List;
 
 class Parameter {
 private:
 	string headline;
 	int value ;
 	string unit;
-    bool edit_mode ;
+    uint8_t edit_mode ;
+    List *list;
+    uint8_t in_sub_list = false ;
+    uint8_t has_sub_list = false;
+
 public:
-	Parameter(string, int, string, bool ) ;
+	Parameter(string, int, string, uint8_t ) ;
 	bool if_changeable_value ;
 	void sendToDisplay() ;
 	Interface_Element::Action getButton(Interface_Element::Button) ;
 	void sendErrorNoChangeable() ;
-	//string getHeadLine();
+    Parameter* getParametr();
+	void createList();
+	void addToSubList(Parameter *p);
+	string getHeadLine();
+	List* getSubList() ;
+	uint8_t if_has_sub_list() ;
+	uint8_t if_in_sub_list() ;
+	Parameter* getLastElementOfSubList() ;
+	void setOutOfSubList() ;
 };
 
 

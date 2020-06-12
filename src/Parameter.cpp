@@ -1,11 +1,37 @@
 #include "Parameter.h"
+#include "List.h"
+//#define DEBUG
 
-Parameter::Parameter(string h, int v, string u , bool ch ){
+Parameter::Parameter(string h, int v, string u , uint8_t ch ){ //inSubList
 	headline = h;
 	value = v ;
 	unit = u ;
 	if_changeable_value = ch;
-	edit_mode = 0 ;
+	edit_mode = false ;
+}
+
+void Parameter::createList(){
+	if(has_sub_list == false){
+		list = new List();
+		has_sub_list = true;
+	}
+}
+List* Parameter::getSubList(){
+    if( has_sub_list)
+        return list ;
+}
+void Parameter::addToSubList(Parameter *p){
+	if(has_sub_list){
+		list->addParameter(p);
+	}
+}
+
+uint8_t Parameter::if_has_sub_list(){
+    return has_sub_list ;
+}
+
+uint8_t Parameter::if_in_sub_list(){
+    return in_sub_list ;
 }
 
 void Parameter::sendToDisplay()
@@ -14,6 +40,19 @@ void Parameter::sendToDisplay()
 
 	cout << headline << endl;
 	cout << value << " " << unit ;
+	cout << endl;
+#ifdef DEBUG
+	cout << endl << endl;
+	if(has_sub_list){
+		cout << "This parameter has sub list" << endl;
+		list->print();
+	} else {
+		cout << "This parameter has no sub list" << endl;
+	}
+
+#endif
+
+
 }
 void Parameter::sendErrorNoChangeable(){
 
@@ -22,15 +61,25 @@ void Parameter::sendErrorNoChangeable(){
 	cout <<"possible" ;
 }
 
+Parameter* Parameter::getParametr(){
+   if(has_sub_list && in_sub_list)
+      return list->getParameter();
+   else
+       return this ;
+}
+
 Interface_Element::Action Parameter::getButton(Interface_Element::Button button){
 
     if( button == Interface_Element::ENTER){
         if(edit_mode){
-                edit_mode=0;
+                edit_mode = false ;
         }
         else{
             if(if_changeable_value)
-                edit_mode=1 ;
+                edit_mode = true ;
+            else if(has_sub_list){
+                 in_sub_list = true ;
+            }
             else
                 return Interface_Element::ERROR_NO_CHANGEABLE;
         }
@@ -54,8 +103,17 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
     }
 }
 
-/*
+
 string Parameter::getHeadLine(){
 	return this->headline;
 }
-*/
+
+Parameter* Parameter::getLastElementOfSubList(){
+    return list->getLastParameter() ;
+}
+
+void Parameter::setOutOfSubList(){
+    in_sub_list = false ;
+    list->resetSubList() ;
+}
+
