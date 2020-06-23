@@ -1,7 +1,7 @@
 #include "Parameter.h"
 #include "List.h"
-//#define DEBUG
-
+#define DEBUG
+//#include "Back.h"
 Parameter::Parameter(string h, int v, string u , uint8_t ch ){ //inSubList
 	headline = h;
 	value = v ;
@@ -14,7 +14,7 @@ void Parameter::createList(){
 	if(has_sub_list == false){
 		list = new List();
 		has_sub_list = true;
-	}
+    }
 }
 List* Parameter::getSubList(){
     if( has_sub_list)
@@ -26,11 +26,11 @@ void Parameter::addToSubList(Parameter *p){
 	}
 }
 
-uint8_t Parameter::if_has_sub_list(){
+uint8_t Parameter::ifHasSubList(){
     return has_sub_list ;
 }
 
-uint8_t Parameter::if_in_sub_list(){
+uint8_t Parameter::ifInSubList(){
     return in_sub_list ;
 }
 
@@ -80,6 +80,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
             else if(has_sub_list){
                  in_sub_list = true ;
             }
+
             else
                 return Interface_Element::ERROR_NO_CHANGEABLE;
         }
@@ -94,6 +95,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
             value--;
             return Interface_Element::DO_NOTHING ;
 		}
+
     }
     else if( button == Interface_Element::LEFT_BUTTON){
         return Interface_Element::MOVE_LEFT ;
@@ -108,12 +110,21 @@ string Parameter::getHeadLine(){
 	return this->headline;
 }
 
-Parameter* Parameter::getLastElementOfSubList(){
-    return list->getLastParameter() ;
-}
-
 void Parameter::setOutOfSubList(){
     in_sub_list = false ;
     list->resetSubList() ;
+}
+
+void Parameter::newMove(Interface_Element::Action action){
+
+   if(action == Interface_Element::MOVE_RIGHT){
+       if( list->ifLastListElement()){
+            this->setOutOfSubList() ;
+        }
+        else
+            list->moveRight() ;
+   }
+    else if( action == Interface_Element::MOVE_LEFT)
+        list->moveLeft() ;
 }
 

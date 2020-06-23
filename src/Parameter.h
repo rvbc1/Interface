@@ -32,10 +32,11 @@ public:
 	void addToSubList(Parameter *p);
 	string getHeadLine();
 	List* getSubList() ;
-	uint8_t if_has_sub_list() ;
-	uint8_t if_in_sub_list() ;
+	uint8_t ifHasSubList() ;
+	uint8_t ifInSubList() ;
 	Parameter* getLastElementOfSubList() ;
 	void setOutOfSubList() ;
+	void newMove(Interface_Element::Action action) ;
 };
 
 

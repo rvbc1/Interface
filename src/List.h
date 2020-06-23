@@ -16,14 +16,14 @@ private:
     uint16_t size = false;
 
 public :
-    List() ;
+    List();
     Parameter* getParameter();
-    Parameter* getLastParameter() ;
     void addParameter(Parameter *parameter) ;
     void moveRight() ;
     void moveLeft() ;
     uint16_t getSize() ;
     void resetSubList() ;
     void print();
+    uint8_t ifLastListElement() ;
 };
 #endif /* LIST_H_ */

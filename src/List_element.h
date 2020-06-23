@@ -20,6 +20,6 @@ class List_element{
       void setNextPointer(List_element *next_pointer ) ;
       void setPrevPointer(List_element *prev_pointer ) ;
 
-      //void print();
+      void print();
 };
 #endif /* LISTELEMENT_H_ */

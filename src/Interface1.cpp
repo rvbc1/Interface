@@ -1,5 +1,4 @@
 #include "Interface1.h"
-//#include "Interface_Element.h"
 Interface1::Interface1(){
 
 	list_of_elements = new List();
@@ -12,10 +11,19 @@ Interface1::Interface1(){
 	Parameter *pid = new Parameter("pid", 20, "pid", 0);
 	pid->createList();
 	pid->addToSubList(new Parameter("P" , 20 , "kp" , 1));
-	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
+	//pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
+
+	Parameter *I = new Parameter("I", 20, "i1234", 0); //test
+	I->createList();
+	I->addToSubList(new Parameter("i1" , 100 , "i1" , 1)) ;
+	I->addToSubList(new Parameter("i2" , 100 , "i2" , 1)) ;
+	I->addToSubList(new Parameter("i3" , 100 , "i3" , 1)) ;
+	I->addToSubList(new Parameter("i4" , 100 , "i4" , 1)) ;
+    pid->addToSubList(I) ;
+
 	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));
 	list_of_elements->addParameter(pid);
-
+	//pid->BackToMainList->setLastSubListParameter()
 
     display();
 }

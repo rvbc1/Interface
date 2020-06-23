@@ -20,7 +20,7 @@ string intToStr(int n){
 }
 #endif
 
-List::List(){
+List::List( ){
 
 }
 
@@ -36,6 +36,8 @@ void List::addNextElement(List_element *element){
 	last_element = element;
 	last_element->setNextPointer(first_element) ;
 	size++;
+	//if( itIsSubList )
+       // BackToMainList->setLastSubListParameter(last_element) ;
 }
 
 void List::addParameter(Parameter *parameter){
@@ -95,21 +97,17 @@ uint16_t List::getSize(){
 }
 
 void List::moveRight(){
-    if( current_element->getMainParameter()->if_in_sub_list()){
-        if(current_element->getCurrentParameter()!=current_element->getMainParameter()->getLastElementOfSubList())
-            current_element->getMainParameter()->getSubList()->moveRight() ;
-        else{
-            current_element->getMainParameter()->setOutOfSubList() ;
-            current_element = current_element->getNextPointer() ;
-        }
-    }
+
+    if(current_element->getMainParameter()->ifInSubList())
+        current_element->getMainParameter()->newMove(Interface_Element::MOVE_RIGHT);
     else
         current_element = current_element->getNextPointer() ;
+
 }
 
 void List::moveLeft(){
-    if( current_element->getMainParameter()->if_in_sub_list()){
-        current_element->getMainParameter()->getSubList()->moveLeft() ;
+    if( current_element->getMainParameter()->ifInSubList()){
+        current_element->getMainParameter()->newMove(Interface_Element::MOVE_LEFT) ;
     }
     else
         current_element = current_element->getPrevPointer();
@@ -119,6 +117,10 @@ void List::resetSubList(){
     current_element = first_element ;
 }
 
-Parameter* List::getLastParameter(){
-    return last_element->getCurrentParameter() ;
+
+uint8_t List::ifLastListElement(){
+    if( current_element == last_element)
+        return true ;
+    else
+        return false ;
 }
