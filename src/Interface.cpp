@@ -1,5 +1,5 @@
-#include "Interface1.h"
-Interface1::Interface1(){
+#include "Interface.h"
+Interface::Interface(){
 
 	list_of_elements = new List();
 
@@ -19,7 +19,7 @@ Interface1::Interface1(){
     display();
 }
 
-Interface_Element::Action Interface1::getAction(Interface_Element::Button button){
+Interface_Element::Action Interface::getAction(Interface_Element::Button button){
 
 	Interface_Element::Action action = list_of_elements->getParameter()->getButton(button);
 
@@ -40,14 +40,14 @@ Interface_Element::Action Interface1::getAction(Interface_Element::Button button
 	}
 }
 
-void Interface1::display(){
+void Interface::display(){
     list_of_elements->getParameter()->sendToDisplay();
 }
 
-void Interface1::displayError(){
+void Interface::displayError(){
     list_of_elements->getParameter()->sendErrorNoChangeable() ;
 }
 
-void Interface1::refresh(){
+void Interface::refresh(){
     list_of_elements->getParameter()->refreshEditMode() ;
 }

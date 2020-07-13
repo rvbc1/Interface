@@ -38,7 +38,6 @@ public:
 	Parameter* getLastElementOfSubList() ;
 	void setOutOfSubList() ;
 	void newMove(Interface_Element::Action action) ;
-	void glimmerValue(int gValue) ;
 	void refreshEditMode() ;
 };
 

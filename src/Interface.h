@@ -1,11 +1,11 @@
 #include "List.h"
 
-#ifndef INTERFACE1_H_
-#define INTERFACE1_H_
+#ifndef INTERFACE_H_
+#define INTERFACE_H_
 
 #include <conio.h>
 
-class Interface1{
+class Interface{
 private :
 	Parameter *battery_voltage ;
 	Parameter *work_time ;
@@ -17,11 +17,11 @@ private :
 
 	List *list_of_elements ;
 public:
-	Interface1() ;
+	Interface() ;
 	Interface_Element::Action getAction(Interface_Element::Button) ;
 	void display() ;
 	void displayError();
 	void refresh() ;
 };
 
-#endif /* INTERFACE1_H_ */
+#endif /* INTERFACE_H_ */
