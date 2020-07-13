@@ -1,7 +1,7 @@
 #include "Parameter.h"
 #include "List.h"
-#define DEBUG
-//#include "Back.h"
+//#define DEBUG
+#include <windows.h>
 Parameter::Parameter(string h, int v, string u , uint8_t ch ){ //inSubList
 	headline = h;
 	value = v ;
@@ -37,10 +37,17 @@ uint8_t Parameter::ifInSubList(){
 void Parameter::sendToDisplay()
 {
 	system("cls");
+    cout << headline << endl;
+	if( visible_value){
+        if( has_sub_list == false )
+            cout << value << " " << unit ;
+	}
+	else{
+        for( int i = value ; i > 0 ; i /= 10)
+            cout <<" ";
+        cout << " " << unit ;
+	}
 
-	cout << headline << endl;
-	cout << value << " " << unit ;
-	cout << endl;
 #ifdef DEBUG
 	cout << endl << endl;
 	if(has_sub_list){
@@ -54,9 +61,26 @@ void Parameter::sendToDisplay()
 
 
 }
+void Parameter::refreshEditMode(){
+
+    if(edit_mode){
+        if( visible_value){
+            visible_value = false ;
+            sendToDisplay() ;
+        }
+        else{
+            visible_value = true ;
+            sendToDisplay() ;
+        }
+
+    }
+
+}
+
 void Parameter::sendErrorNoChangeable(){
 
     system("cls");
+
 	cout <<"No change" << endl ;
 	cout <<"possible" ;
 }
@@ -73,6 +97,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
     if( button == Interface_Element::ENTER){
         if(edit_mode){
                 edit_mode = false ;
+                visible_value = true ;
         }
         else{
             if(if_changeable_value)

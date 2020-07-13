@@ -8,19 +8,10 @@ Interface1::Interface1(){
 	list_of_elements->addParameter(new Parameter("Distance" , 100 , "m", 1)) ;
 	list_of_elements->addParameter(new Parameter("En consumed" , 3 , "kWh", 0)) ;
 	list_of_elements->addParameter(new Parameter("Temperature" , 20 , "C" , 0)) ;
-	Parameter *pid = new Parameter("pid", 20, "pid", 0);
+	Parameter *pid = new Parameter("pid", 3, "P I D", 0);
 	pid->createList();
 	pid->addToSubList(new Parameter("P" , 20 , "kp" , 1));
-	//pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
-
-	Parameter *I = new Parameter("I", 20, "i1234", 0); //test
-	I->createList();
-	I->addToSubList(new Parameter("i1" , 100 , "i1" , 1)) ;
-	I->addToSubList(new Parameter("i2" , 100 , "i2" , 1)) ;
-	I->addToSubList(new Parameter("i3" , 100 , "i3" , 1)) ;
-	I->addToSubList(new Parameter("i4" , 100 , "i4" , 1)) ;
-    pid->addToSubList(I) ;
-
+	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
 	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));
 	list_of_elements->addParameter(pid);
 	//pid->BackToMainList->setLastSubListParameter()
@@ -55,4 +46,8 @@ void Interface1::display(){
 
 void Interface1::displayError(){
     list_of_elements->getParameter()->sendErrorNoChangeable() ;
+}
+
+void Interface1::refresh(){
+    list_of_elements->getParameter()->refreshEditMode() ;
 }

@@ -3,6 +3,8 @@
 #ifndef INTERFACE1MANAGER_H_
 #define INTERFACE1MANAGER_H_
 #include <conio.h>
+#include <ctime>
+#include <chrono>
 
 class Interface1_manager{
 public:

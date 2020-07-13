@@ -21,6 +21,7 @@ public:
 	Interface_Element::Action getAction(Interface_Element::Button) ;
 	void display() ;
 	void displayError();
+	void refresh() ;
 };
 
 #endif /* INTERFACE1_H_ */

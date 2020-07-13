@@ -3,13 +3,28 @@
 #define BUTTON_2 77 // right
 #define BUTTON_3 80 // down
 #define SPECIAL_BUTTON 224
+#define INTERVAL 0.5
 
 Interface1_manager::Interface1_manager(){
 
     Ssd_1306 = new Interface1 ;
+
+    auto start = chrono::system_clock::now() ;
+    chrono::duration<double> elapsed_seconds  ;
+    double time ;
+
     while(true){
-        if( getch() == SPECIAL_BUTTON){
-            print(Ssd_1306->getAction( readKey() ) );
+
+        if(kbhit()){
+         if( getch() == SPECIAL_BUTTON){
+                print(Ssd_1306->getAction( readKey() ) );
+            }
+        }
+        auto end = chrono::system_clock::now() ;
+        elapsed_seconds = end - start ;
+        if( time < elapsed_seconds.count() + INTERVAL ){ // double fmod( double x, double y );
+            time += INTERVAL ;
+            Ssd_1306->refresh() ;
         }
     }
 }

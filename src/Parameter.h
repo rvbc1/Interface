@@ -20,6 +20,7 @@ private:
     List *list;
     uint8_t in_sub_list = false ;
     uint8_t has_sub_list = false;
+    uint8_t visible_value = true ;
 
 public:
 	Parameter(string, int, string, uint8_t ) ;
@@ -37,6 +38,8 @@ public:
 	Parameter* getLastElementOfSubList() ;
 	void setOutOfSubList() ;
 	void newMove(Interface_Element::Action action) ;
+	void glimmerValue(int gValue) ;
+	void refreshEditMode() ;
 };
 
 
