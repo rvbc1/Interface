@@ -14,7 +14,6 @@ Interface::Interface(){
 	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
 	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));
 	list_of_elements->addParameter(pid);
-	//pid->BackToMainList->setLastSubListParameter()
 
     display();
 }

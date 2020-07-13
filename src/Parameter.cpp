@@ -64,17 +64,9 @@ void Parameter::sendToDisplay()
 void Parameter::refreshEditMode(){
 
     if(edit_mode){
-        if( visible_value){
-            visible_value = false ;
-            sendToDisplay() ;
-        }
-        else{
-            visible_value = true ;
-            sendToDisplay() ;
-        }
-
+        visible_value = !visible_value ;
+        sendToDisplay() ;
     }
-
 }
 
 void Parameter::sendErrorNoChangeable(){
