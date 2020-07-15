@@ -6,24 +6,23 @@ Parameter::Parameter(string h, int v, string u , uint8_t ch ){ //inSubList
 	headline = h;
 	value = v ;
 	unit = u ;
-	if_changeable_value = ch;
+	changeable_value = ch;
 	edit_mode = false ;
 }
 
-void Parameter::createList(){
-	if(has_sub_list == false){
-		list = new List();
-		has_sub_list = true;
-    }
-}
 List* Parameter::getSubList(){
     if( has_sub_list)
         return list ;
 }
+void Parameter::createList(){
+    list = new List();
+    has_sub_list = true;
+}
 void Parameter::addToSubList(Parameter *p){
-	if(has_sub_list){
+	if( !has_sub_list)
+        createList() ;
+	if( has_sub_list )
 		list->addParameter(p);
-	}
 }
 
 uint8_t Parameter::ifHasSubList(){
@@ -92,7 +91,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
                 visible_value = true ;
         }
         else{
-            if(if_changeable_value){
+            if(changeable_value){
                 edit_mode = true ;
                 visible_value = false ;
             }

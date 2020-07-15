@@ -9,7 +9,6 @@ Interface::Interface(){
 	list_of_elements->addParameter(new Parameter("En consumed" , 3 , "kWh", 0)) ;
 	list_of_elements->addParameter(new Parameter("Temperature" , 20 , "C" , 0)) ;
 	Parameter *pid = new Parameter("pid", 3, "P I D", 0);
-	pid->createList();
 	pid->addToSubList(new Parameter("P" , 20 , "kp" , 1));
 	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
 	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));

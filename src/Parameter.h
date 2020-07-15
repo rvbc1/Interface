@@ -21,15 +21,16 @@ private:
     uint8_t in_sub_list = false ;
     uint8_t has_sub_list = false;
     uint8_t visible_value = true ;
+    uint8_t visible_info_changeable_value = true ;
+    uint8_t changeable_value ;
+    void createList();
 
 public:
 	Parameter(string, int, string, uint8_t ) ;
-	bool if_changeable_value ;
 	void sendToDisplay() ;
 	Interface_Element::Action getButton(Interface_Element::Button) ;
 	void sendErrorNoChangeable() ;
     Parameter* getParametr();
-	void createList();
 	void addToSubList(Parameter *p);
 	string getHeadLine();
 	List* getSubList() ;
