@@ -92,8 +92,10 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
                 visible_value = true ;
         }
         else{
-            if(if_changeable_value)
+            if(if_changeable_value){
                 edit_mode = true ;
+                visible_value = false ;
+            }
             else if(has_sub_list){
                  in_sub_list = true ;
             }
@@ -104,6 +106,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
         return Interface_Element::DO_NOTHING ;
     }
     else if(edit_mode) {
+        visible_value = true ;
 		if(button == Interface_Element::RIGHT_BUTTON){
 			value++;
 			return Interface_Element::DO_NOTHING ;
