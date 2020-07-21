@@ -8,10 +8,12 @@ Interface::Interface(){
 	list_of_elements->addParameter(new Parameter("Distance" , 100 , "m", 1)) ;
 	list_of_elements->addParameter(new Parameter("En consumed" , 3 , "kWh", 0)) ;
 	list_of_elements->addParameter(new Parameter("Temperature" , 20 , "C" , 0)) ;
+
 	Parameter *pid = new Parameter("pid", 3, "P I D", 0);
 	pid->addToSubList(new Parameter("P" , 20 , "kp" , 1));
 	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
 	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));
+	pid->addBackParameterToList() ;
 	list_of_elements->addParameter(pid);
 
     display();
@@ -34,6 +36,10 @@ Interface_Element::Action Interface::getAction(Interface_Element::Button button)
             return Interface_Element::PRINT;
 
         case Interface_Element::DO_NOTHING:
+            return Interface_Element::PRINT;
+
+        case Interface_Element::SET_OUT_OF_SUB_LIST:
+            list_of_elements->setOutOfSubList() ;
             return Interface_Element::PRINT;
 	}
 }

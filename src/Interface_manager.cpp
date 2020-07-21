@@ -3,7 +3,7 @@
 #define BUTTON_2 77 // right
 #define BUTTON_3 80 // down
 #define SPECIAL_BUTTON 224
-#define INTERVAL 0.35
+#define INTERVAL 0.5
 
 Interface_manager::Interface_manager(){
 

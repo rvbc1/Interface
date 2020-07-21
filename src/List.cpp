@@ -30,14 +30,20 @@ void List::addFirstElement(List_element *element){
 }
 
 void List::addNextElement(List_element *element){
+
     last_element->setNextPointer(element) ;
     first_element->setPrevPointer(element) ;
     element->setPrevPointer(last_element) ;
 	last_element = element;
 	last_element->setNextPointer(first_element) ;
 	size++;
-	//if( itIsSubList )
-       // BackToMainList->setLastSubListParameter(last_element) ;
+}
+
+void List::addBackParameter(){
+
+    Parameter *Back = new Parameter("BACK") ;
+    addParameter(Back) ;
+    Back->setAsBackParameter() ;
 }
 
 void List::addParameter(Parameter *parameter){
@@ -112,15 +118,16 @@ void List::moveLeft(){
     else
         current_element = current_element->getPrevPointer();
 }
+void List::setOutOfSubList(){
+
+    current_element->getMainParameter()->closeLastOpenSubList() ;
+
+}
 
 void List::resetSubList(){
     current_element = first_element ;
 }
 
-
-uint8_t List::ifLastListElement(){
-    if( current_element == last_element)
-        return true ;
-    else
-        return false ;
+uint8_t List::hasOpenSubList(){
+    return current_element->getMainParameter()->ifInSubList() ;
 }

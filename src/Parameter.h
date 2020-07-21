@@ -24,9 +24,10 @@ private:
     uint8_t visible_info_changeable_value = true ;
     uint8_t changeable_value ;
     void createList();
+    uint8_t back_from_sub_list = false ;
 
 public:
-	Parameter(string, int, string, uint8_t ) ;
+	Parameter(string, int = 0 , string = "" , uint8_t = false ) ;
 	void sendToDisplay() ;
 	Interface_Element::Action getButton(Interface_Element::Button) ;
 	void sendErrorNoChangeable() ;
@@ -40,6 +41,10 @@ public:
 	void setOutOfSubList() ;
 	void newMove(Interface_Element::Action action) ;
 	void refreshEditMode() ;
+	void setAsBackParameter() ;
+	uint8_t isBackParameter() ;
+	void addBackParameterToList() ;
+	void closeLastOpenSubList() ;
 };
 
 

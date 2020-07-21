@@ -2,7 +2,7 @@
 #include "List.h"
 //#define DEBUG
 #include <windows.h>
-Parameter::Parameter(string h, int v, string u , uint8_t ch ){ //inSubList
+Parameter::Parameter(string h, int v, string u , uint8_t ch ){
 	headline = h;
 	value = v ;
 	unit = u ;
@@ -17,12 +17,19 @@ List* Parameter::getSubList(){
 void Parameter::createList(){
     list = new List();
     has_sub_list = true;
+  //  list->addBackParameter() ;
 }
+
+void Parameter::addBackParameterToList(){
+    list->addBackParameter() ;
+}
+
 void Parameter::addToSubList(Parameter *p){
 	if( !has_sub_list)
         createList() ;
-	if( has_sub_list )
-		list->addParameter(p);
+	if( has_sub_list ){
+        list->addParameter(p) ;
+	}
 }
 
 uint8_t Parameter::ifHasSubList(){
@@ -37,15 +44,17 @@ void Parameter::sendToDisplay()
 {
 	system("cls");
     cout << headline << endl;
-	if( visible_value){
-        if( has_sub_list == false )
-            cout << value << " " << unit ;
-	}
-	else{
-        for( int i = value ; i > 0 ; i /= 10)
-            cout <<" ";
-        cout << " " << unit ;
-	}
+    if( !back_from_sub_list){
+        if( visible_value){
+            if( has_sub_list == false )
+                cout << value << " " << unit ;
+            }
+        else{
+            for( int i = value ; i > 0 ; i /= 10)
+                cout <<" ";
+            cout << " " << unit ;
+        }
+    }
 
 #ifdef DEBUG
 	cout << endl << endl;
@@ -71,7 +80,6 @@ void Parameter::refreshEditMode(){
 void Parameter::sendErrorNoChangeable(){
 
     system("cls");
-
 	cout <<"No change" << endl ;
 	cout <<"possible" ;
 }
@@ -98,7 +106,8 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
             else if(has_sub_list){
                  in_sub_list = true ;
             }
-
+            else if(back_from_sub_list)
+                return Interface_Element::SET_OUT_OF_SUB_LIST ;
             else
                 return Interface_Element::ERROR_NO_CHANGEABLE;
         }
@@ -136,14 +145,24 @@ void Parameter::setOutOfSubList(){
 
 void Parameter::newMove(Interface_Element::Action action){
 
-   if(action == Interface_Element::MOVE_RIGHT){
-       if( list->ifLastListElement()){
-            this->setOutOfSubList() ;
-        }
-        else
-            list->moveRight() ;
-   }
+   if(action == Interface_Element::MOVE_RIGHT)
+        list->moveRight() ;
     else if( action == Interface_Element::MOVE_LEFT)
         list->moveLeft() ;
+}
+void Parameter::closeLastOpenSubList(){
+    if( in_sub_list ){
+        if( list->hasOpenSubList())
+            list->setOutOfSubList() ;
+        else
+          setOutOfSubList() ;
+    }
+}
+
+void Parameter::setAsBackParameter(){
+    back_from_sub_list = true ;
+}
+uint8_t Parameter::isBackParameter(){
+    return back_from_sub_list ;
 }
 
