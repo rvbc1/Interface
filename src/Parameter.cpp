@@ -17,7 +17,7 @@ List* Parameter::getSubList(){
 void Parameter::createList(){
     list = new List();
     has_sub_list = true;
-  //  list->addBackParameter() ;
+    list->addBackParameter() ;
 }
 
 void Parameter::addBackParameterToList(){
@@ -27,9 +27,7 @@ void Parameter::addBackParameterToList(){
 void Parameter::addToSubList(Parameter *p){
 	if( !has_sub_list)
         createList() ;
-	if( has_sub_list ){
-        list->addParameter(p) ;
-	}
+    list->addParameter(p) ;
 }
 
 uint8_t Parameter::ifHasSubList(){
@@ -42,7 +40,7 @@ uint8_t Parameter::ifInSubList(){
 
 void Parameter::sendToDisplay()
 {
-	system("cls");
+    system("cls");
     cout << headline << endl;
     if( !back_from_sub_list){
         if( visible_value){
@@ -85,10 +83,10 @@ void Parameter::sendErrorNoChangeable(){
 }
 
 Parameter* Parameter::getParametr(){
-   if(has_sub_list && in_sub_list)
-      return list->getParameter();
-   else
-       return this ;
+    if(has_sub_list && in_sub_list)
+        return list->getParameter();
+    else
+        return this ;
 }
 
 Interface_Element::Action Parameter::getButton(Interface_Element::Button button){

@@ -21,10 +21,11 @@ private:
     uint8_t in_sub_list = false ;
     uint8_t has_sub_list = false;
     uint8_t visible_value = true ;
-    uint8_t visible_info_changeable_value = true ;
+    //uint8_t visible_info_changeable_value = true ;
     uint8_t changeable_value ;
     void createList();
     uint8_t back_from_sub_list = false ;
+    uint8_t visible_no_changeable_error = false ;
 
 public:
 	Parameter(string, int = 0 , string = "" , uint8_t = false ) ;

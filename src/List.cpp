@@ -29,14 +29,30 @@ void List::addFirstElement(List_element *element){
 	size++;
 }
 
-void List::addNextElement(List_element *element){
+void List::addLastElement(List_element *element){
 
     last_element->setNextPointer(element) ;
     first_element->setPrevPointer(element) ;
     element->setPrevPointer(last_element) ;
-	last_element = element;
-	last_element->setNextPointer(first_element) ;
+    last_element = element;
+    last_element->setNextPointer(first_element) ;
 	size++;
+}
+
+void List::addBeforeTheLastOne(List_element *element){
+    if(size == 1 ){
+        first_element = current_element = element ;
+        last_element->setNextPointer(first_element) ;
+        first_element->setPrevPointer(last_element) ;
+    }
+    else{
+        last_element->getPrevPointer()->setNextPointer(element) ;
+        element->setPrevPointer(last_element->getPrevPointer()) ;
+    }
+    last_element->setPrevPointer(element) ;
+    element->setNextPointer(last_element) ;
+    size++ ;
+
 }
 
 void List::addBackParameter(){
@@ -54,8 +70,10 @@ void List::addParameter(Parameter *parameter){
 
 	if(size == false){
 		addFirstElement(new List_element(parameter));
-	} else {
-		addNextElement(new List_element(parameter));
+	}else if( last_element->getMainParameter()->isBackParameter())
+        addBeforeTheLastOne(new List_element(parameter)) ;
+	 else {
+		addLastElement(new List_element(parameter));
 	}
 
 #ifdef DEBUG
@@ -130,4 +148,12 @@ void List::resetSubList(){
 
 uint8_t List::hasOpenSubList(){
     return current_element->getMainParameter()->ifInSubList() ;
+}
+
+void List::sendNoChangeableValueError(){
+//    Paramet
+}
+
+void refreshNoChangeableValueError(){
+
 }
