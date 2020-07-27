@@ -9,7 +9,6 @@
 class Interface_manager{
 public:
 	Interface_manager() ;
-    void print(Interface_Element::Action info) ;
 private:
 	Interface *Ssd_1306 ;
 	Interface_Element::Button readKey() ;

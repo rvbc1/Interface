@@ -28,6 +28,5 @@ public :
     void print();
     void setOutOfSubList() ;
     uint8_t hasOpenSubList() ;
-    void sendNoChangeableValueError() ;
 };
 #endif /* LIST_H_ */

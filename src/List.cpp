@@ -149,11 +149,3 @@ void List::resetSubList(){
 uint8_t List::hasOpenSubList(){
     return current_element->getMainParameter()->ifInSubList() ;
 }
-
-void List::sendNoChangeableValueError(){
-//    Paramet
-}
-
-void refreshNoChangeableValueError(){
-
-}

@@ -18,7 +18,7 @@ private :
 	List *list_of_elements ;
 public:
 	Interface() ;
-	Interface_Element::Action getAction(Interface_Element::Button) ;
+	void sendAction(Interface_Element::Button) ;
 	void display() ;
 	void displayError();
 	void refresh() ;

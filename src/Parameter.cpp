@@ -2,6 +2,9 @@
 #include "List.h"
 //#define DEBUG
 #include <windows.h>
+#define EDIT_MODE_TIME 10
+#define ERROR_TIME 10
+
 Parameter::Parameter(string h, int v, string u , uint8_t ch ){
 	headline = h;
 	value = v ;
@@ -41,18 +44,24 @@ uint8_t Parameter::ifInSubList(){
 void Parameter::sendToDisplay()
 {
     system("cls");
-    cout << headline << endl;
-    if( !back_from_sub_list){
-        if( visible_value){
-            if( has_sub_list == false )
+
+    if( no_changeable_error_counting ){
+        cout <<"No change" << endl ;
+        cout <<"possible" ;
+    }
+    else{
+        cout << headline << endl;
+        if( !back_from_sub_list && !has_sub_list){
+            if( visible_value )
                 cout << value << " " << unit ;
+            else{
+                for( int i = value ; i > 0 ; i /= 10)
+                    cout <<" ";
+                cout << " " << unit ;
             }
-        else{
-            for( int i = value ; i > 0 ; i /= 10)
-                cout <<" ";
-            cout << " " << unit ;
         }
     }
+
 
 #ifdef DEBUG
 	cout << endl << endl;
@@ -68,18 +77,26 @@ void Parameter::sendToDisplay()
 
 }
 void Parameter::refreshEditMode(){
-
     if(edit_mode){
-        visible_value = !visible_value ;
-        sendToDisplay() ;
+        edit_mode_counting++ ;
+        if(edit_mode_counting > EDIT_MODE_TIME){
+            edit_mode_counting = false ;
+            visible_value = !visible_value ;
+        }
+    }
+}
+
+void Parameter::refreshNoChangeableError(){
+    if(start_counting_no_changeable_error)
+        no_changeable_error_counting++ ;
+    if(no_changeable_error_counting > ERROR_TIME ){
+        no_changeable_error_counting = false ;
+        start_counting_no_changeable_error = false ;
     }
 }
 
 void Parameter::sendErrorNoChangeable(){
-
-    system("cls");
-	cout <<"No change" << endl ;
-	cout <<"possible" ;
+    start_counting_no_changeable_error = true ;
 }
 
 Parameter* Parameter::getParametr(){
@@ -100,6 +117,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
             if(changeable_value){
                 edit_mode = true ;
                 visible_value = false ;
+                edit_mode_counting = false ;
             }
             else if(has_sub_list){
                  in_sub_list = true ;
@@ -113,6 +131,7 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
     }
     else if(edit_mode) {
         visible_value = true ;
+        edit_mode_counting = false ;
 		if(button == Interface_Element::RIGHT_BUTTON){
 			value++;
 			return Interface_Element::DO_NOTHING ;
@@ -121,7 +140,6 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
             value--;
             return Interface_Element::DO_NOTHING ;
 		}
-
     }
     else if( button == Interface_Element::LEFT_BUTTON){
         return Interface_Element::MOVE_LEFT ;
@@ -130,7 +148,6 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
         return Interface_Element::MOVE_RIGHT ;
     }
 }
-
 
 string Parameter::getHeadLine(){
 	return this->headline;

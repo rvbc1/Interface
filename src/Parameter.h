@@ -21,11 +21,13 @@ private:
     uint8_t in_sub_list = false ;
     uint8_t has_sub_list = false;
     uint8_t visible_value = true ;
-    //uint8_t visible_info_changeable_value = true ;
     uint8_t changeable_value ;
     void createList();
     uint8_t back_from_sub_list = false ;
     uint8_t visible_no_changeable_error = false ;
+    uint8_t edit_mode_counting = false ;
+    uint8_t no_changeable_error_counting = false ;
+    uint8_t start_counting_no_changeable_error = false ;
 
 public:
 	Parameter(string, int = 0 , string = "" , uint8_t = false ) ;
@@ -42,10 +44,12 @@ public:
 	void setOutOfSubList() ;
 	void newMove(Interface_Element::Action action) ;
 	void refreshEditMode() ;
+	void refreshNoChangeableError() ;
 	void setAsBackParameter() ;
 	uint8_t isBackParameter() ;
 	void addBackParameterToList() ;
 	void closeLastOpenSubList() ;
+
 };
 
 
