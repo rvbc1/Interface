@@ -1,7 +1,8 @@
 #include "List_element.h"
-#ifndef LIST_h_
+#ifndef LIST_H_
 #define LIST_H_
 
+class Back ;
 class List{
 private:
 
@@ -10,18 +11,22 @@ private:
     List_element *first_element ;
 
     void addFirstElement(List_element *element);
-    void addNextElement(List_element *element);
+    void addLastElement(List_element *element);
+    void addBeforeTheLastOne(List_element *element);
 
-    uint16_t size = 0;
+    uint16_t size = false;
 
 public :
-    List() ;
+    List();
     Parameter* getParameter();
     void addParameter(Parameter *parameter) ;
+    void addBackParameter();
     void moveRight() ;
     void moveLeft() ;
     uint16_t getSize() ;
-
-   // void print();
+    void resetSubList() ;
+    void print();
+    void setOutOfSubList() ;
+    uint8_t hasOpenSubList() ;
 };
-#endif /* LIST_h_ */
+#endif /* LIST_H_ */

@@ -15,10 +15,11 @@ class List_element{
       List_element* getNextPointer() ;
       List_element* getPrevPointer() ;
       Parameter* getCurrentParameter() ;
+      Parameter* getMainParameter() ;
 
       void setNextPointer(List_element *next_pointer ) ;
       void setPrevPointer(List_element *prev_pointer ) ;
 
-      //void print();
+      void print();
 };
 #endif /* LISTELEMENT_H_ */

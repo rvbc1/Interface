@@ -1,6 +1,5 @@
-#include "Interface1.h"
-//#include "Interface_Element.h"
-Interface1::Interface1(){
+#include "Interface.h"
+Interface::Interface(){
 
 	list_of_elements = new List();
 
@@ -10,34 +9,46 @@ Interface1::Interface1(){
 	list_of_elements->addParameter(new Parameter("En consumed" , 3 , "kWh", 0)) ;
 	list_of_elements->addParameter(new Parameter("Temperature" , 20 , "C" , 0)) ;
 
-    display();
+	Parameter *pid = new Parameter("pid", 3, "P I D", 0);
+	pid->addToSubList(new Parameter("P" , 20 , "kp" , 1));
+	pid->addToSubList(new Parameter("I" , 20 , "ki" , 1));
+	pid->addToSubList(new Parameter("D" , 20 , "kd" , 1));
+	list_of_elements->addParameter(pid);
 }
 
-Interface_Element::Action Interface1::getAction(Interface_Element::Button button){
+void Interface::sendAction(Interface_Element::Button button){
 
 	Interface_Element::Action action = list_of_elements->getParameter()->getButton(button);
 
 	switch(action){
         case Interface_Element::ERROR_NO_CHANGEABLE:
-            return Interface_Element::ERROR_NO_CHANGEABLE;
+            displayError() ;
+            break ;
 
         case Interface_Element::MOVE_LEFT :
             list_of_elements->moveLeft() ;
-            return Interface_Element::PRINT;
+            break ;
 
         case Interface_Element::MOVE_RIGHT:
             list_of_elements->moveRight();
-            return Interface_Element::PRINT;
+            break ;
 
-        case Interface_Element::DO_NOTHING:
-            return Interface_Element::PRINT;
+        case Interface_Element::SET_OUT_OF_SUB_LIST:
+            list_of_elements->setOutOfSubList() ;
+            break ;
 	}
 }
 
-void Interface1::display(){
+void Interface::display(){
     list_of_elements->getParameter()->sendToDisplay();
 }
 
-void Interface1::displayError(){
+void Interface::displayError(){
     list_of_elements->getParameter()->sendErrorNoChangeable() ;
+}
+
+void Interface::refresh(){
+    list_of_elements->getParameter()->refreshEditMode() ;
+    list_of_elements->getParameter()->refreshNoChangeableError() ;
+    display() ;
 }

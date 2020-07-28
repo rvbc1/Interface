@@ -19,11 +19,15 @@ List_element* List_element::getPrevPointer() {
 }
 
 Parameter* List_element::getCurrentParameter(){
+    return parameter_element->getParametr() ; //return sub list parameter
+}
+
+Parameter* List_element::getMainParameter(){
     return parameter_element ;
 }
 
-/*
+
 void List_element::print(){
 	cout<<parameter_element->getHeadLine() << endl;
 }
-*/
+
