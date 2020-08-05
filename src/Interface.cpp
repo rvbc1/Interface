@@ -38,11 +38,6 @@ void Interface::sendAction(Interface_Element::Button button){
             break ;
 	}
 }
-
-void Interface::display(){
-    list_of_elements->getParameter()->sendToDisplay();
-}
-
 void Interface::displayError(){
     list_of_elements->getParameter()->sendErrorNoChangeable() ;
 }
@@ -50,5 +45,26 @@ void Interface::displayError(){
 void Interface::refresh(){
     list_of_elements->getParameter()->refreshEditMode() ;
     list_of_elements->getParameter()->refreshNoChangeableError() ;
-    display() ;
+}
+
+uint8_t Interface::isNoChangeableErrorCounting(){
+    return list_of_elements->getParameter()->isCountingNoChangeableError() ;
+}
+string Interface::getParameterHeadline(){
+    return list_of_elements->getParameter()->getHeadLine() ;
+}
+uint8_t Interface::isBackFromSubListParameter(){
+    return list_of_elements->getParameter()->isBackParameter() ;
+}
+uint8_t Interface::hasSubList(){
+    return list_of_elements->getParameter()->ifHasSubList() ;
+}
+uint8_t Interface::isVisibleValue(){
+    return list_of_elements->getParameter()->isValueVisible();
+}
+uint16_t Interface::getParameterValue(){
+    return list_of_elements->getParameter()->getValue() ;
+}
+string Interface::getParameterUnit(){
+    return list_of_elements->getParameter()->getUnit() ;
 }

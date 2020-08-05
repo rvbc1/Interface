@@ -12,5 +12,6 @@ public:
 private:
 	Interface *Ssd_1306 ;
 	Interface_Element::Button readKey() ;
+	void display() ;
 };
 #endif /* INTERFACEMANAGER_H_ */

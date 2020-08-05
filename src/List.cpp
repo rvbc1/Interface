@@ -104,7 +104,7 @@ void List::addParameter(Parameter *parameter){
 Parameter* List::getParameter(){
     return current_element->getCurrentParameter() ;
 }
-
+/*
 void List::print(){
 	cout << "Rozmiar listy: " << size << endl;
 	List_element *printing_element = first_element;
@@ -114,8 +114,7 @@ void List::print(){
 		printing_element = printing_element->getNextPointer();
 	}
 }
-
-
+*/
 uint16_t List::getSize(){
     return size ;
 }
