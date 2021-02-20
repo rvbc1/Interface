@@ -6,6 +6,19 @@
 #include <conio.h>
 
 class Interface{
+public:
+	Interface() ;
+	void sendAction(Interface_Element::Button) ;
+	void displayError();
+	void refresh() ;
+	string getParameterHeadline() ;
+	uint8_t hasSubList() ;
+	uint8_t isVisibleValue() ;
+	string getParameterUnit() ;
+	uint16_t getParameterValue() ;
+	uint8_t isNoChangeableErrorCounting() ;
+	uint8_t isSaveParameterValueMode() ;
+	uint8_t isBackFromSubListParameter() ;
 private :
 	Parameter *battery_voltage ;
 	Parameter *work_time ;
@@ -15,18 +28,7 @@ private :
 	void get_Value() ;
 	List *list_of_elements ;
 
-public:
-	Interface() ;
-	void sendAction(Interface_Element::Button) ;
-	void displayError();
-	void refresh() ;
-	uint8_t isNoChangeableErrorCounting() ;
-	string getParameterHeadline() ;
-	uint8_t isBackFromSubListParameter() ;
-	uint8_t hasSubList() ;
-	uint8_t isVisibleValue() ;
-	string getParameterUnit() ;
-	uint16_t getParameterValue() ;
+
 };
 
 #endif /* INTERFACE_H_ */

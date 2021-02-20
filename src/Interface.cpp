@@ -21,6 +21,7 @@ void Interface::sendAction(Interface_Element::Button button){
 	Interface_Element::Action action = list_of_elements->getParameter()->getButton(button);
 
 	switch(action){
+
         case Interface_Element::ERROR_NO_CHANGEABLE:
             displayError() ;
             break ;
@@ -41,7 +42,6 @@ void Interface::sendAction(Interface_Element::Button button){
 void Interface::displayError(){
     list_of_elements->getParameter()->sendErrorNoChangeable() ;
 }
-
 void Interface::refresh(){
     list_of_elements->getParameter()->refreshEditMode() ;
     list_of_elements->getParameter()->refreshNoChangeableError() ;
@@ -49,6 +49,9 @@ void Interface::refresh(){
 
 uint8_t Interface::isNoChangeableErrorCounting(){
     return list_of_elements->getParameter()->isCountingNoChangeableError() ;
+}
+uint8_t Interface::isSaveParameterValueMode(){
+    return list_of_elements->getParameter()->ifSaveValueMode();
 }
 string Interface::getParameterHeadline(){
     return list_of_elements->getParameter()->getHeadLine() ;

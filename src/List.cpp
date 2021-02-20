@@ -67,7 +67,6 @@ void List::addParameter(Parameter *parameter){
 	cout << "Dodawnie " + intToStr(size) + " elementu:" << endl;
 	cout << parameter->getHeadLine() << endl;
 #endif
-
 	if(size == false){
 		addFirstElement(new List_element(parameter));
 	}else if( last_element->getMainParameter()->isBackParameter())

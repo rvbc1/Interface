@@ -51,9 +51,13 @@ void Interface_manager::display(){
         cout <<"No change" << endl ;
         cout <<"possible" ;
     }
+    else if( Ssd_1306->isSaveParameterValueMode()){
+        cout <<"SAVE"<< endl ;
+        cout <<"to flash"<< endl;
+    }
     else{
         cout << Ssd_1306->getParameterHeadline() << endl;
-        if( !(Ssd_1306->isBackFromSubListParameter()) && !(Ssd_1306->hasSubList()) ){
+        if( !(Ssd_1306->hasSubList()) ){
             if( Ssd_1306->isVisibleValue() )
                 cout << Ssd_1306->getParameterValue() << " " << Ssd_1306->getParameterUnit() ;
 

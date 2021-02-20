@@ -12,23 +12,6 @@ using namespace std;
 class List;
 
 class Parameter {
-private:
-	string headline;
-	uint16_t value ;
-	string unit;
-    uint8_t edit_mode ;
-    List *list;
-    uint8_t in_sub_list = false ;
-    uint8_t has_sub_list = false;
-    uint8_t visible_value = true ;
-    uint8_t changeable_value ;
-    void createList();
-    uint8_t back_from_sub_list = false ;
-    uint8_t visible_no_changeable_error = false ;
-    uint8_t edit_mode_counting = false ;
-    uint8_t no_changeable_error_counting = false ;
-    uint8_t start_counting_no_changeable_error = false ;
-
 public:
 	Parameter(string, uint16_t = 0 , string = "" , uint8_t = false ) ;
 	Interface_Element::Action getButton(Interface_Element::Button) ;
@@ -46,12 +29,35 @@ public:
 	void refreshNoChangeableError() ;
 	void setAsBackParameter() ;
 	uint8_t isBackParameter() ;
+	uint8_t isSaveParameter() ;
+	uint8_t ifSaveValueMode() ;
 	void addBackParameterToList() ;
 	void closeLastOpenSubList() ;
     uint16_t getValue() ;
 	uint8_t isCountingNoChangeableError() ;
 	string getUnit() ;
 	uint8_t isValueVisible();
+
+private:
+	string headline;
+	uint16_t value ;
+	//uint16_t valueInEditMode ;
+	string unit;
+    uint8_t edit_mode ;
+    List *list;
+    uint8_t in_sub_list = false ;
+    uint8_t has_sub_list = false;
+    uint8_t visible_value = true ;
+   // uint8_t save_parameter = false ;
+   // uint8_t visible_parameter = true ;
+    uint8_t save_value = false ;
+    uint8_t changeable_value ;
+    void createList();
+    uint8_t back_from_sub_list = false ;
+    uint8_t visible_no_changeable_error = false ;
+    uint8_t edit_mode_counting = false ;
+    uint8_t no_changeable_error_counting = false ;
+    uint8_t start_counting_no_changeable_error = false ;
 };
 
 

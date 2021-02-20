@@ -76,6 +76,11 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
         if(edit_mode){
                 edit_mode = false ;
                 visible_value = true ;
+                save_value = true ;
+        }
+        else if(save_value){
+            save_value = false ;
+            // SAVE flash data
         }
         else{
             if(changeable_value){
@@ -106,9 +111,11 @@ Interface_Element::Action Parameter::getButton(Interface_Element::Button button)
 		}
     }
     else if( button == Interface_Element::LEFT_BUTTON){
+        save_value = false ;
         return Interface_Element::MOVE_LEFT ;
     }
     else if( button == Interface_Element::RIGHT_BUTTON){
+        save_value = false ;
         return Interface_Element::MOVE_RIGHT ;
     }
 }
@@ -139,11 +146,23 @@ void Parameter::closeLastOpenSubList(){
 }
 void Parameter::setAsBackParameter(){
     back_from_sub_list = true ;
-}
-
+    visible_value = false ;
+}/*
+void Parameter::setAsSaveParameter(){
+    save_parameter = true ;
+    visible_value = false ;
+    visible_parameter = false ;
+}*/
 uint8_t Parameter::isBackParameter(){
     return back_from_sub_list ;
 }
+uint8_t Parameter::ifSaveValueMode(){
+    return save_value ;
+}
+/*
+uint8_t Parameter::isValueChangeable(){
+    return changeable_value ;
+}*/
 uint8_t Parameter::isCountingNoChangeableError(){
     return no_changeable_error_counting ;
 }
