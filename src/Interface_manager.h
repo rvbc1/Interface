@@ -2,9 +2,9 @@
 
 #ifndef INTERFACEMANAGER_H_
 #define INTERFACEMANAGER_H_
-#include <conio.h>
 #include <ctime>
 #include <chrono>
+
 
 class Interface_manager{
 public:
