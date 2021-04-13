@@ -1,5 +1,7 @@
-#include "Interface_manager.h"
+#include <iostream>
 
-int main(){
-    Interface_manager interface ;
+#include "InterfaceManager.h"
+
+int main() {
+    InterfaceManager();
 }
