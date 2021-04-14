@@ -11,9 +11,13 @@ Interface::Interface() {
 
     MenuItem* submenu = new MenuItem("Submenu 1");
     submenu->addItemToSubMenu(new MenuItem("SM1"));
-    submenu->addItemToSubMenu(new MenuItem("SM2"));
+    MenuItem* submenu2 = new MenuItem("Submenu 2");
+    submenu->addItemToSubMenu(submenu2);
     submenu->addItemToSubMenu(new MenuItem("SM3"));
     submenu->addItemToSubMenu(new MenuItem("SM4"));
+
+    submenu2->addItemToSubMenu(new MenuItem("RX1"));
+    submenu2->addItemToSubMenu(new MenuItem("RX2"));
     
     mainMenu->addItemToSubMenu(submenu);
     
@@ -41,15 +45,10 @@ Interface::Interface() {
 }
 
 void Interface::setInputEvent(InterfaceInput::Button event) {
-    if(mainMenu->status == MenuItem::DISPLAYING_SUBMENU_ITEM){
-        //printw("%s",mainMenu->getCurrentMenuItem()->name.c_str());
-        mainMenu->getCurrentMenuItem()->setInputEvent(event);
-    } else {
-        mainMenu->setInputEvent(event);
-    }
+    mainMenu->getCurrentMenuItem()->setInputEvent(event);
 }
 
 MenuItem* Interface::getCurrentMenuItem() {
-    return mainMenu->getSubMenuCurrentItem();
+    return mainMenu->getCurrentMenuItem();
 }
 

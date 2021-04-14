@@ -17,11 +17,11 @@ void MenuItem::addItemToSubMenu(MenuItem* menuItem) {
         backItem->setType(BACK_EVENT_ITEM);
         backItem->parentMenuItem = this;
         subMenuItems.push_back(backItem);
-        subMenuItems.push_back(menuItem);
         menuItem->parentMenuItem = this;
+        subMenuItems.push_back(menuItem);
     } else if (type == SUBMENU) {
-        subMenuItems.push_back(menuItem);
         menuItem->parentMenuItem = this;
+        subMenuItems.push_back(menuItem);
     } else {
         //TRYING ADD ELEMENT TO RESERVED MENU ITEM
     }
@@ -30,29 +30,41 @@ void MenuItem::addItemToSubMenu(MenuItem* menuItem) {
 void MenuItem::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            // if (parentMenuItem != nullptr) {
-            //     parentMenuItem->moveLeft();
-            // }
-            moveLeft();
+            if (parentMenuItem != nullptr) {
+                //printw("left");
+                parentMenuItem->moveLeft();
+            } else {
+                printw("no parent");
+            }
+            //moveLeft();
             break;
         case InterfaceInput::RIGHT_BUTTON:
             // if (parentMenuItem != nullptr) {
             //     parentMenuItem->moveRight();
             // }
-            moveRight();
+            // moveRight();
+            if (parentMenuItem != nullptr) {
+                //printw("right");
+                parentMenuItem->moveRight();
+            } else {
+                printw("no parent");
+            }
             break;
         case InterfaceInput::ENTER_BUTTON:
-            if (getSubMenuCurrentItem()->type == BACK_EVENT_ITEM) {
-                // printw("%s", parentMenuItem->name.c_str());
-                status = DISPLAYING_THIS_ITEM;
-            } else {
-                if (status == DISPLAYING_THIS_ITEM) {
-                    if (type == SUBMENU) {
-                        printw("set subemnu");
-                        status = DISPLAYING_SUBMENU_ITEM;
-                    }
-                }
+            printw("%d", type);
+            switch (type) {
+                case SUBMENU:
+                    parentMenuItem->status = DISPLAYING_SUBMENU_ITEM;
+                    break;
+                case BACK_EVENT_ITEM:
+                    printw("backing");
+                    parentMenuItem->parentMenuItem->status = DISPLAYING_THIS_ITEM;
+                    break;
+                case PARAMTER:
+                case UNDEFINED:
+                    break;
             }
+
             break;
         case InterfaceInput::OTHER_BUTTON:
             break;
@@ -86,15 +98,7 @@ MenuItem* MenuItem::getCurrentMenuItem() {
     // }
     // return this;
     if (status == DISPLAYING_SUBMENU_ITEM) {
-        printw("return submenu ");
         return subMenuItems[currentMainMenuItem]->getCurrentMenuItem();
-    }
-    return this;
-}
-
-MenuItem* MenuItem::getSubMenuCurrentItem() {
-    if (status == DISPLAYING_SUBMENU_ITEM) {
-        return subMenuItems[currentMainMenuItem]->getSubMenuCurrentItem();
     }
     return subMenuItems[currentMainMenuItem];
 }

@@ -15,7 +15,6 @@ class MenuItem {
 
     std::string getName();
     MenuItem* getCurrentMenuItem();
-    MenuItem* getSubMenuCurrentItem();
 	    enum Status { DISPLAYING_THIS_ITEM,
                   DISPLAYING_SUBMENU_ITEM };
 	Status status = DISPLAYING_THIS_ITEM;

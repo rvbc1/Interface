@@ -33,13 +33,15 @@ InterfaceManager::InterfaceManager() {
     // auto start = std::chrono::system_clock::now();
     // std::chrono::duration<double> elapsed_seconds;
     // double time;
-
+    display();
+    refresh();
     while (true) {
         if (kbhit()) {  //Check if button was pressed
             if (getch() == SPECIAL_BUTTON) {
                 interface->setInputEvent(readKey());  //Check if button was pressed
-                display();
+                //display();
             }
+            display();
             refresh();
         } else {
             usleep(100000);
@@ -72,15 +74,15 @@ InterfaceInput::Button InterfaceManager::readKey() {
 }
 void InterfaceManager::display() {
 #ifdef __linux__
-    system("clear");
+    //system("clear");
+    clear();
 #else
     system("cls");
 #endif
     printw("%s\n", interface->getCurrentMenuItem()->getName().c_str());
-    // if(interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM){
-    //     printw("%s\n", interface->getCurrentMenuItem()->parentMenuItem->name.c_str());
-    // }
-    
+    if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
+        printw("BACK ITEM\n");
+    }
 
     // if (Ssd_1306->isNoChangeableErrorCounting()) {
     //     cout << "No change" << endl;
