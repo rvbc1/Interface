@@ -8,18 +8,23 @@ Interface::Interface() {
     // mainMenuItems.push_back(MenuItem("Test3"));
     // mainMenuItems.push_back(MenuItem("Test4"));
     // mainMenuItems.push_back(MenuItem("Test5"));
-    MenuItem submenu("Submenu 1");
-    submenu.addItemToSubMenu(new MenuItem("SM1"));
-    submenu.addItemToSubMenu(new MenuItem("SM2"));
-    submenu.addItemToSubMenu(new MenuItem("SM3"));
-    submenu.addItemToSubMenu(new MenuItem("SM4"));
+
+    MenuItem* submenu = new MenuItem("Submenu 1");
+    submenu->addItemToSubMenu(new MenuItem("SM1"));
+    submenu->addItemToSubMenu(new MenuItem("SM2"));
+    submenu->addItemToSubMenu(new MenuItem("SM3"));
+    submenu->addItemToSubMenu(new MenuItem("SM4"));
     
-    mainMenu->addItemToSubMenu(&submenu);
+    mainMenu->addItemToSubMenu(submenu);
     
     mainMenu->addItemToSubMenu(new MenuItem("Test2"));
     mainMenu->addItemToSubMenu(new MenuItem("Test3"));
     mainMenu->addItemToSubMenu(new MenuItem("Test4"));
     mainMenu->addItemToSubMenu(new MenuItem("Test5"));
+
+    printw("%d",mainMenu->subMenuItems.size());
+    printw("%s",mainMenu->subMenuItems[1]->name.c_str());
+    mainMenu->currentMainMenuItem = 2;
     // list_of_elements = new List();
 
     // list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
@@ -36,10 +41,15 @@ Interface::Interface() {
 }
 
 void Interface::setInputEvent(InterfaceInput::Button event) {
-    mainMenu->getCurrentMenuItem()->setInputEvent(event);
+    if(mainMenu->status == MenuItem::DISPLAYING_SUBMENU_ITEM){
+        //printw("%s",mainMenu->getCurrentMenuItem()->name.c_str());
+        mainMenu->getCurrentMenuItem()->setInputEvent(event);
+    } else {
+        mainMenu->setInputEvent(event);
+    }
 }
 
 MenuItem* Interface::getCurrentMenuItem() {
-    return mainMenu->getCurrentMenuItem();
+    return mainMenu->getSubMenuCurrentItem();
 }
 

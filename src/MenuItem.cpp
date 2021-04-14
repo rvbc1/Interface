@@ -30,20 +30,27 @@ void MenuItem::addItemToSubMenu(MenuItem* menuItem) {
 void MenuItem::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            if (parentMenuItem != nullptr) {
-                parentMenuItem->moveLeft();
-            }
+            // if (parentMenuItem != nullptr) {
+            //     parentMenuItem->moveLeft();
+            // }
+            moveLeft();
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            if (parentMenuItem != nullptr) {
-                parentMenuItem->moveRight();
-            }
+            // if (parentMenuItem != nullptr) {
+            //     parentMenuItem->moveRight();
+            // }
+            moveRight();
             break;
         case InterfaceInput::ENTER_BUTTON:
-            if (status == DISPLAYING_THIS_ITEM) {
-                if (type == SUBMENU) {
-                    printw("set subemnu");
-                    status = DISPLAYING_SUBMENU_ITEM;
+            if (getSubMenuCurrentItem()->type == BACK_EVENT_ITEM) {
+                // printw("%s", parentMenuItem->name.c_str());
+                status = DISPLAYING_THIS_ITEM;
+            } else {
+                if (status == DISPLAYING_THIS_ITEM) {
+                    if (type == SUBMENU) {
+                        printw("set subemnu");
+                        status = DISPLAYING_SUBMENU_ITEM;
+                    }
                 }
             }
             break;
@@ -73,11 +80,23 @@ void MenuItem::moveRight() {
 }
 
 MenuItem* MenuItem::getCurrentMenuItem() {
+    // if (status == DISPLAYING_SUBMENU_ITEM) {
+    //     printw("return submenu ");
+    //     return subMenuItems[currentMainMenuItem];
+    // }
+    // return this;
     if (status == DISPLAYING_SUBMENU_ITEM) {
         printw("return submenu ");
-        return subMenuItems[currentMainMenuItem];
+        return subMenuItems[currentMainMenuItem]->getCurrentMenuItem();
     }
     return this;
+}
+
+MenuItem* MenuItem::getSubMenuCurrentItem() {
+    if (status == DISPLAYING_SUBMENU_ITEM) {
+        return subMenuItems[currentMainMenuItem]->getSubMenuCurrentItem();
+    }
+    return subMenuItems[currentMainMenuItem];
 }
 
 void MenuItem::setType(MenuItem::Type type) {

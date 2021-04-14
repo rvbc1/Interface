@@ -43,6 +43,7 @@ InterfaceManager::InterfaceManager() {
             refresh();
         } else {
             usleep(100000);
+            //display();
             refresh();
         }
 
@@ -75,7 +76,11 @@ void InterfaceManager::display() {
 #else
     system("cls");
 #endif
-    printw("%s", interface->getCurrentMenuItem()->getName().c_str());
+    printw("%s\n", interface->getCurrentMenuItem()->getName().c_str());
+    // if(interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM){
+    //     printw("%s\n", interface->getCurrentMenuItem()->parentMenuItem->name.c_str());
+    // }
+    
 
     // if (Ssd_1306->isNoChangeableErrorCounting()) {
     //     cout << "No change" << endl;
