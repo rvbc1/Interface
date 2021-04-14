@@ -30,28 +30,13 @@ void MenuItem::addItemToSubMenu(MenuItem* menuItem) {
 void MenuItem::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            // if (parentMenuItem != nullptr) {
-            //     //printw("left");
-            //     parentMenuItem->moveLeft();
-            // } else {
-            //     printw("no parent");
-            // }
-            moveLeft();
+            moveLeft(); //AS LIST
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            // if (parentMenuItem != nullptr) {
-            //     parentMenuItem->moveRight();
-            // }
-            moveRight();
-            // if (parentMenuItem != nullptr) {
-            //     //printw("right");
-            //     parentMenuItem->moveRight();
-            // } else {
-            //     printw("no parent");
-            // }
+            moveRight(); //AS LIST
             break;
         case InterfaceInput::ENTER_BUTTON:
-            switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM
+            switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM IN LIST
                 case SUBMENU:
                     getSelectedMenuItem()->setAsActiveItem();
                     break;
@@ -92,11 +77,6 @@ void MenuItem::moveRight() {
 }
 
 MenuItem* MenuItem::getCurrentMenuItem() {
-    // if (status == DISPLAYING_SUBMENU_ITEM) {
-    //     printw("return submenu ");
-    //     return subMenuItems[currentMainMenuItem];
-    // }
-    // return this;
     if (status == ACTIVE_IS_SUBLIST_ITEM) {
         return subMenuItems[currentMainMenuItem]->getCurrentMenuItem();
     }
@@ -112,7 +92,6 @@ void MenuItem::setAsActiveItem() {
         parentMenuItem->status = ACTIVE_IS_SUBLIST_ITEM;
     }
     status = THIS_IS_ACTIVE_ITEM;
-    // status = ACTIVE_IS_SUBLIST_ITEM;
 }
 
 MenuItem* MenuItem::getSelectedMenuItem() {
