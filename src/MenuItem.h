@@ -15,9 +15,9 @@ class MenuItem {
 
     std::string getName();
     MenuItem* getCurrentMenuItem();
-	    enum Status { DISPLAYING_THIS_ITEM,
-                  DISPLAYING_SUBMENU_ITEM };
-	Status status = DISPLAYING_THIS_ITEM;
+	    enum Status { THIS_IS_ACTIVE_ITEM,
+                  ACTIVE_IS_SUBLIST_ITEM };
+	Status status = THIS_IS_ACTIVE_ITEM;
   // private:
     enum Type { UNDEFINED,
                 SUBMENU,
@@ -39,6 +39,9 @@ class MenuItem {
     void moveRight();
 
     void setType(Type type);
+
+    void setAsActiveItem();
+    MenuItem *getSelectedMenuItem(); //LIST PROPERTY
 
     uint16_t currentMainMenuItem = 0;
 };

@@ -79,7 +79,8 @@ void InterfaceManager::display() {
 #else
     system("cls");
 #endif
-    printw("%s\n", interface->getCurrentMenuItem()->getName().c_str());
+    MenuItem *currentItem = interface->getCurrentMenuItem();
+    printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
     if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
         printw("BACK ITEM\n");
     }

@@ -30,35 +30,35 @@ void MenuItem::addItemToSubMenu(MenuItem* menuItem) {
 void MenuItem::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            if (parentMenuItem != nullptr) {
-                //printw("left");
-                parentMenuItem->moveLeft();
-            } else {
-                printw("no parent");
-            }
-            //moveLeft();
+            // if (parentMenuItem != nullptr) {
+            //     //printw("left");
+            //     parentMenuItem->moveLeft();
+            // } else {
+            //     printw("no parent");
+            // }
+            moveLeft();
             break;
         case InterfaceInput::RIGHT_BUTTON:
             // if (parentMenuItem != nullptr) {
             //     parentMenuItem->moveRight();
             // }
-            // moveRight();
-            if (parentMenuItem != nullptr) {
-                //printw("right");
-                parentMenuItem->moveRight();
-            } else {
-                printw("no parent");
-            }
+            moveRight();
+            // if (parentMenuItem != nullptr) {
+            //     //printw("right");
+            //     parentMenuItem->moveRight();
+            // } else {
+            //     printw("no parent");
+            // }
             break;
         case InterfaceInput::ENTER_BUTTON:
-            printw("%d", type);
-            switch (type) {
+            switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM
                 case SUBMENU:
-                    parentMenuItem->status = DISPLAYING_SUBMENU_ITEM;
+                    getSelectedMenuItem()->setAsActiveItem();
                     break;
                 case BACK_EVENT_ITEM:
-                    printw("backing");
-                    parentMenuItem->parentMenuItem->status = DISPLAYING_THIS_ITEM;
+                    if (parentMenuItem != nullptr) {
+                        parentMenuItem->setAsActiveItem();
+                    }
                     break;
                 case PARAMTER:
                 case UNDEFINED:
@@ -97,12 +97,24 @@ MenuItem* MenuItem::getCurrentMenuItem() {
     //     return subMenuItems[currentMainMenuItem];
     // }
     // return this;
-    if (status == DISPLAYING_SUBMENU_ITEM) {
+    if (status == ACTIVE_IS_SUBLIST_ITEM) {
         return subMenuItems[currentMainMenuItem]->getCurrentMenuItem();
     }
-    return subMenuItems[currentMainMenuItem];
+    return this;
 }
 
 void MenuItem::setType(MenuItem::Type type) {
     this->type = type;
+}
+
+void MenuItem::setAsActiveItem() {
+    if (parentMenuItem != nullptr) {
+        parentMenuItem->status = ACTIVE_IS_SUBLIST_ITEM;
+    }
+    status = THIS_IS_ACTIVE_ITEM;
+    // status = ACTIVE_IS_SUBLIST_ITEM;
+}
+
+MenuItem* MenuItem::getSelectedMenuItem() {
+    return subMenuItems[currentMainMenuItem];
 }
