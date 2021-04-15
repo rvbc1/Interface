@@ -80,10 +80,11 @@ void InterfaceManager::display() {
     system("cls");
 #endif
     MenuItem *currentItem = interface->getCurrentMenuItem();
-    printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
-    if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
-        printw("BACK ITEM\n");
-    }
+    currentItem->display();
+    // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
+    // if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
+    //     printw("BACK ITEM\n");
+    // }
 
     // if (Ssd_1306->isNoChangeableErrorCounting()) {
     //     cout << "No change" << endl;

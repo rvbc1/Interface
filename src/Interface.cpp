@@ -1,34 +1,38 @@
 #include "Interface.h"
 
+#include "Parameter.h"
+
 #include <ncurses.h>
 Interface::Interface() {
-    mainMenu = new MenuItem("Main Menu");
+    mainMenu = new MenuItemsList("Main Menu");
     // mainMenuItems.push_back(MenuItem("Test1"));
     // mainMenuItems.push_back(MenuItem("Test2"));
     // mainMenuItems.push_back(MenuItem("Test3"));
     // mainMenuItems.push_back(MenuItem("Test4"));
     // mainMenuItems.push_back(MenuItem("Test5"));
 
-    MenuItem* submenu = new MenuItem("Submenu 1");
-    submenu->addItemToSubMenu(new MenuItem("SM1"));
-    MenuItem* submenu2 = new MenuItem("Submenu 2");
-    submenu->addItemToSubMenu(submenu2);
-    submenu->addItemToSubMenu(new MenuItem("SM3"));
-    submenu->addItemToSubMenu(new MenuItem("SM4"));
+    MenuItemsList* submenu = new MenuItemsList("Submenu 1");
+    submenu->addItemToList(new Parameter("SM1"));
+    MenuItemsList* submenu2 = new MenuItemsList("Submenu 2");
+    submenu->addItemToList(submenu2);
+    submenu->addItemToList(new MenuItem("SM3"));
+    submenu->addItemToList(new MenuItem("SM4"));
 
-    submenu2->addItemToSubMenu(new MenuItem("RX1"));
-    submenu2->addItemToSubMenu(new MenuItem("RX2"));
+    submenu2->addItemToList(new MenuItem("RX1"));
+    submenu2->addItemToList(new MenuItem("RX2"));
     
-    mainMenu->addItemToSubMenu(submenu);
+    mainMenu->addItemToList(submenu);
     
-    mainMenu->addItemToSubMenu(new MenuItem("Test2"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test3"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test4"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test5"));
+    mainMenu->addItemToList(new MenuItem("Test2"));
+    mainMenu->addItemToList(new MenuItem("Test3"));
+    mainMenu->addItemToList(new MenuItem("Test4"));
+    mainMenu->addItemToList(new MenuItem("Test5"));
 
-    printw("%d",mainMenu->subMenuItems.size());
-    printw("%s",mainMenu->subMenuItems[1]->name.c_str());
+    // printw("%d",mainMenu->subMenuItems.size());
+    // printw("%s",mainMenu->subMenuItems[1]->name.c_str());
     mainMenu->currentMainMenuItem = 2;
+
+    MenuItemsList("xd");
     // list_of_elements = new List();
 
     // list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
