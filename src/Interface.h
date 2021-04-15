@@ -5,6 +5,7 @@
 
 #include "InterfaceInput.h"
 #include "MenuItem.h"
+#include "MenuItemsList.h"
 
 class Interface {
    public:
@@ -14,7 +15,7 @@ class Interface {
     MenuItem *getCurrentMenuItem();
 
    private:
-    MenuItem *mainMenu = nullptr;
+    MenuItemsList *mainMenu = nullptr;
 };
 
 #endif /* INTERFACE_H_ */

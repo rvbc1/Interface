@@ -1,30 +1,29 @@
 #include "Interface.h"
 
+#include "Parameter.h"
+
 #include <ncurses.h>
 Interface::Interface() {
-    mainMenu = new MenuItem("Main Menu");
-    // mainMenuItems.push_back(MenuItem("Test1"));
-    // mainMenuItems.push_back(MenuItem("Test2"));
-    // mainMenuItems.push_back(MenuItem("Test3"));
-    // mainMenuItems.push_back(MenuItem("Test4"));
-    // mainMenuItems.push_back(MenuItem("Test5"));
+    mainMenu = new MenuItemsList("Main Menu");
 
-    MenuItem* submenu = new MenuItem("Submenu 1");
-    submenu->addItemToSubMenu(new MenuItem("SM1"));
-    submenu->addItemToSubMenu(new MenuItem("SM2"));
-    submenu->addItemToSubMenu(new MenuItem("SM3"));
-    submenu->addItemToSubMenu(new MenuItem("SM4"));
-    
-    mainMenu->addItemToSubMenu(submenu);
-    
-    mainMenu->addItemToSubMenu(new MenuItem("Test2"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test3"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test4"));
-    mainMenu->addItemToSubMenu(new MenuItem("Test5"));
+    MenuItemsList* submenu = new MenuItemsList("Submenu 1");
+    submenu->addItemToList(new Parameter("SM1"));
+    MenuItemsList* submenu2 = new MenuItemsList("Submenu 2");
+    submenu->addItemToList(submenu2);
+    submenu->addItemToList(new MenuItem("SM3"));
+    submenu->addItemToList(new MenuItem("SM4"));
 
-    printw("%d",mainMenu->subMenuItems.size());
-    printw("%s",mainMenu->subMenuItems[1]->name.c_str());
-    mainMenu->currentMainMenuItem = 2;
+    submenu2->addItemToList(new MenuItem("RX1"));
+    submenu2->addItemToList(new MenuItem("RX2"));
+    
+    mainMenu->addItemToList(submenu);
+    
+    mainMenu->addItemToList(new MenuItem("Test2"));
+    mainMenu->addItemToList(new MenuItem("Test3"));
+    mainMenu->addItemToList(new MenuItem("Test4"));
+    mainMenu->addItemToList(new MenuItem("Test5"));
+
+
     // list_of_elements = new List();
 
     // list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
@@ -41,15 +40,10 @@ Interface::Interface() {
 }
 
 void Interface::setInputEvent(InterfaceInput::Button event) {
-    if(mainMenu->status == MenuItem::DISPLAYING_SUBMENU_ITEM){
-        //printw("%s",mainMenu->getCurrentMenuItem()->name.c_str());
-        mainMenu->getCurrentMenuItem()->setInputEvent(event);
-    } else {
-        mainMenu->setInputEvent(event);
-    }
+    mainMenu->getCurrentMenuItem()->setInputEvent(event);
 }
 
 MenuItem* Interface::getCurrentMenuItem() {
-    return mainMenu->getSubMenuCurrentItem();
+    return mainMenu->getCurrentMenuItem();
 }
 
