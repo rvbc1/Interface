@@ -6,7 +6,13 @@
 #include "InterfaceInput.h"
 #include "main.h"
 
+class MenuItemsList; 
+class Parameter; 
+
 class MenuItem {
+  friend class MenuItemsList;
+  friend class Parameter;
+
    public:
     MenuItem(std::string name);
 
@@ -18,7 +24,8 @@ class MenuItem {
                   ACTIVE_IS_SUBLIST_ITEM };
     Status status = THIS_IS_ACTIVE_ITEM;
 
-   //protected:
+    virtual void display();
+   protected:
     enum Type { UNDEFINED,
                 SUBMENU,
                 PARAMTER,
@@ -33,8 +40,6 @@ class MenuItem {
     void setType(Type type);
 
     void setAsActiveItem();
-
-    virtual void display();
 };
 
 #endif

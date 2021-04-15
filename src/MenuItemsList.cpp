@@ -20,13 +20,14 @@ void MenuItemsList::addItemToList(MenuItem* menuItem) {
 void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            moveLeft(); //AS LIST
+            moveLeft();  //AS LIST
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            moveRight(); //AS LIST
+            moveRight();  //AS LIST
             break;
         case InterfaceInput::ENTER_BUTTON:
             switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM IN LIST
+                case PARAMTER:
                 case SUBMENU:
                     getSelectedMenuItem()->setAsActiveItem();
                     break;
@@ -35,8 +36,6 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
                         parentMenuItem->setAsActiveItem();
                     }
                     break;
-                case PARAMTER:
-                    getSelectedMenuItem()->setAsActiveItem();
                 case UNDEFINED:
                     break;
             }
@@ -78,7 +77,7 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
     return subMenuItems[currentMainMenuItem];
 }
 
-void MenuItemsList::display(){
+void MenuItemsList::display() {
     printw("%s\n", subMenuItems[currentMainMenuItem]->getName().c_str());
     if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
         printw("BACK ITEM\n");

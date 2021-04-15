@@ -5,11 +5,6 @@
 #include <ncurses.h>
 Interface::Interface() {
     mainMenu = new MenuItemsList("Main Menu");
-    // mainMenuItems.push_back(MenuItem("Test1"));
-    // mainMenuItems.push_back(MenuItem("Test2"));
-    // mainMenuItems.push_back(MenuItem("Test3"));
-    // mainMenuItems.push_back(MenuItem("Test4"));
-    // mainMenuItems.push_back(MenuItem("Test5"));
 
     MenuItemsList* submenu = new MenuItemsList("Submenu 1");
     submenu->addItemToList(new Parameter("SM1"));
@@ -28,11 +23,7 @@ Interface::Interface() {
     mainMenu->addItemToList(new MenuItem("Test4"));
     mainMenu->addItemToList(new MenuItem("Test5"));
 
-    // printw("%d",mainMenu->subMenuItems.size());
-    // printw("%s",mainMenu->subMenuItems[1]->name.c_str());
-    mainMenu->currentMainMenuItem = 2;
 
-    MenuItemsList("xd");
     // list_of_elements = new List();
 
     // list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
