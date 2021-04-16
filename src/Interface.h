@@ -6,9 +6,7 @@
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 #include "MenuItemsList.h"
-
-#define ARDUINOJSON_ENABLE_STD_STREAM 1
-#include <fstream>
+#include "InterfaceBuilder.h"
 
 #include "ArduinoJson-v6.17.3.h"
 
@@ -24,8 +22,6 @@ class Interface {
    private:
     MenuItemsList *mainMenu = nullptr;
 
-    void prepareInterfaceFromFile();
-    void loadMenuItemsList(MenuItemsList* parent, JsonArray array);
 };
 
 #endif /* INTERFACE_H_ */
