@@ -26,5 +26,6 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
 
 void Parameter::display() {
     printw("%s\n", name.c_str());
-    printw("%d %s\n", value, name.c_str());
+    //printw("%d %s\n", value, name.c_str());
+    printw("-   %d   +%s\n", value, " | editing");
 }

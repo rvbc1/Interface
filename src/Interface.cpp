@@ -1,40 +1,24 @@
 #include "Interface.h"
 
-#include "Parameter.h"
-
 #include <ncurses.h>
+
+#include "Parameter.h"
 Interface::Interface() {
-    mainMenu = new MenuItemsList("Main Menu");
+    prepareInterfaceFromFile();
+    // mainMenu = new MenuItemsList("Main Menu");
 
-    // MenuItemsList* submenu = new MenuItemsList("Submenu 1");
-    // submenu->addItemToList(new Parameter("SM1"));
-    // MenuItemsList* submenu2 = new MenuItemsList("Submenu 2");
-    // submenu->addItemToList(submenu2);
-    // submenu->addItemToList(new MenuItem("SM3"));
-    // submenu->addItemToList(new MenuItem("SM4"));
+    // mainMenu->addItemToList(new Parameter("U battery"));
+    // mainMenu->addItemToList(new Parameter("Work time"));
+    // mainMenu->addItemToList(new Parameter("Distance"));
+    // mainMenu->addItemToList(new Parameter("En consumed"));
+    // mainMenu->addItemToList(new Parameter("Temperature"));
 
-    // submenu2->addItemToList(new MenuItem("RX1"));
-    // submenu2->addItemToList(new MenuItem("RX2"));
-    
-    // mainMenu->addItemToList(submenu);
-    
-    // mainMenu->addItemToList(new MenuItem("Test2"));
-    // mainMenu->addItemToList(new MenuItem("Test3"));
-    // mainMenu->addItemToList(new MenuItem("Test4"));
-    // mainMenu->addItemToList(new MenuItem("Test5"));
+    // MenuItemsList *pid = new MenuItemsList("pid");
+    // pid->addItemToList(new Parameter("P"));
+    // pid->addItemToList(new Parameter("I"));
+    // pid->addItemToList(new Parameter("D"));
 
-    mainMenu->addItemToList(new Parameter("U battery"));
-    mainMenu->addItemToList(new Parameter("Work time"));
-    mainMenu->addItemToList(new Parameter("Distance"));
-    mainMenu->addItemToList(new Parameter("En consumed"));
-    mainMenu->addItemToList(new Parameter("Temperature"));
-
-    MenuItemsList *pid = new MenuItemsList("pid");
-    pid->addItemToList(new Parameter("P"));
-    pid->addItemToList(new Parameter("I"));
-    pid->addItemToList(new Parameter("D"));
-
-    mainMenu->addItemToList(pid);
+    // mainMenu->addItemToList(pid);
 
     // list_of_elements = new List();
 
@@ -51,6 +35,43 @@ Interface::Interface() {
     // list_of_elements->addParameter(pid);
 }
 
+void Interface::prepareInterfaceFromFile() {
+    StaticJsonDocument<2000> doc;
+    std::ifstream myfile(INTERFACE_FILE);
+
+    DeserializationError error = deserializeJson(doc, myfile);
+    if (error) {
+        std::cout << INTERFACE_FILE;
+        std::cout << " Json deserialize failed: ";
+        std::cout << error.c_str() << std::endl;
+    } else {
+        if ((doc.containsKey("mainMenu")) && (doc["mainMenu"].is<JsonObject>())) {
+            JsonObject mainMenuJsonObject = doc["mainMenu"].as<JsonObject>();
+            mainMenu = new MenuItemsList(mainMenuJsonObject["name"].as<std::string>());
+
+            // JsonArray mainMenuJsonArray = mainMenuJsonObject["menuItemsList"].as<JsonArray>();
+            // for (JsonVariant v : mainMenuJsonArray) {
+
+            //     mainMenu->addItemToList(new Parameter(v["name"].as<std::string>()));
+            // }
+
+            loadMenuItemsList(mainMenu, mainMenuJsonObject["menuItemsList"].as<JsonArray>());
+        }
+    }
+}
+
+void Interface::loadMenuItemsList(MenuItemsList* parent, JsonArray array) {
+    for (JsonVariant v : array) {
+        if (v["type"].as<std::string>() == "parameter") {
+            parent->addItemToList(new Parameter(v["name"].as<std::string>()));
+        } else if (v["type"].as<std::string>() == "menuItemsList"){
+            MenuItemsList *menuItemsList = new MenuItemsList(v["name"].as<std::string>());
+            loadMenuItemsList(menuItemsList, v["menuItemsList"].as<JsonArray>());
+            parent->addItemToList(menuItemsList);
+        }
+    }
+}
+
 void Interface::setInputEvent(InterfaceInput::Button event) {
     mainMenu->getCurrentMenuItem()->setInputEvent(event);
 }
@@ -58,4 +79,3 @@ void Interface::setInputEvent(InterfaceInput::Button event) {
 MenuItem* Interface::getCurrentMenuItem() {
     return mainMenu->getCurrentMenuItem();
 }
-

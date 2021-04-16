@@ -1,0 +1,46 @@
+{
+    "mainMenu" : {
+        "name" : "Main Menu",
+        "type" : "menuItemsList",
+        "menuItemsList":[
+            {
+                "name" : "U battery",
+                "type" : "parameter"
+            },
+            {
+                "name" : "Work time",
+                "type" : "parameter"
+            },
+            {
+                "name" : "Distance",
+                "type" : "parameter"
+            },
+            {
+                "name" : "En consumed",
+                "type" : "parameter"
+            },
+            {
+                "name" : "Temperature",
+                "type" : "parameter"
+            },
+            {
+                "name" : "PID",
+                "type" : "menuItemsList",
+                "menuItemsList":[
+                    {
+                        "name" : "P",
+                        "type" : "parameter"
+                    },
+                    {
+                        "name" : "I",
+                        "type" : "parameter"
+                    },
+                    {
+                        "name" : "D",
+                        "type" : "parameter"
+                    }
+                ]
+            }
+        ]
+    }
+}
