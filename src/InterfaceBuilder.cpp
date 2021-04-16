@@ -1,10 +1,10 @@
 #include "InterfaceBuilder.h"
 
-MenuItemsList* InterfaceBuilder::loadInterFaceFromFile(std::string filepath) {
+MenuItemsList* InterfaceBuilder::loadInterFaceFromJsonFile(std::string filepath) {
     StaticJsonDocument<2000> doc;
-    std::ifstream myfile(filepath);
+    std::ifstream interfaceJsonFile(filepath);
 
-    DeserializationError error = deserializeJson(doc, myfile);
+    DeserializationError error = deserializeJson(doc, interfaceJsonFile);
     if (error) {
         std::cout << filepath;
         std::cout << " Json deserialize failed: ";

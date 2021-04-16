@@ -4,7 +4,7 @@
 
 #include "Parameter.h"
 Interface::Interface() {
-    mainMenu = InterfaceBuilder::loadInterFaceFromFile(INTERFACE_FILE);
+    mainMenu = InterfaceBuilder::loadInterFaceFromJsonFile(INTERFACE_FILE);
     if(mainMenu == nullptr){
         mainMenu = InterfaceBuilder::loadDefaultInterFace();
     }
