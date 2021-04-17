@@ -79,8 +79,10 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
 }
 
 void MenuItemsList::display() {
+    #ifdef __linux__
     printw("%s\n  > %s\n", getName().c_str(), subMenuItems[currentMainMenuItem]->getName().c_str());
     // if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
     //     printw("BACK ITEM\n");
     // }
+    #endif
 }

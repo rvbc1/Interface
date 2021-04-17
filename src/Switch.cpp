@@ -27,6 +27,7 @@ void Switch::setValue(uint8_t value) {
 }
 
 void Switch::display() {
+    #ifdef __linux__
     printw("%s\n", name.c_str());
     if (value) {
         printw(" OFF    [ON]   +%s\n", " | editing");

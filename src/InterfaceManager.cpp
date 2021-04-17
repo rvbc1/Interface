@@ -1,6 +1,5 @@
 #include "InterfaceManager.h"
 #ifdef __linux__
-    #include <ncurses.h>
     #include <unistd.h>
 
 void prepareNcurses();
@@ -33,51 +32,39 @@ InterfaceManager::InterfaceManager() {
     // auto start = std::chrono::system_clock::now();
     // std::chrono::duration<double> elapsed_seconds;
     // double time;
-    display();
-    refresh();
-    while (true) {
-        if (kbhit()) {  //Check if button was pressed
-            if (getch() == SPECIAL_BUTTON) {
-                interface->setInputEvent(readKey());  //Check if button was pressed
-                //display();
-            }
-            display();
-            refresh();
-        } else {
-            usleep(100000);
-            //display();
-            refresh();
-        }
-
-        // auto end = std::chrono::system_clock::now();
-        // elapsed_seconds = end - start;
-        // if (time < elapsed_seconds.count() +
-        //                INTERVAL) {  // double fmod( double x, double y );
-        //     time += INTERVAL;
-        //     //Ssd_1306->refresh();
-        //     //display();
-        // }
-    }
+    // display();
+      while (true) {
+    //     if (kbhit()) {  //Check if button was pressed
+              if (getch() == SPECIAL_BUTTON) {
+                  interface->setInputEvent(readKey());  //Check if button was pressed
+              }
+            //  display();
+            
+    //     } else {
+    //         usleep(100000);
+    //         display();
+    //     }
+     }
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
-    switch (getch()) {
-        case BUTTON_1:
-            return InterfaceInput::LEFT_BUTTON;
-        case BUTTON_2:
-            return InterfaceInput::RIGHT_BUTTON;
-        case BUTTON_3:
-            return InterfaceInput::ENTER_BUTTON;
-            break;
-    }
-    return InterfaceInput::OTHER_BUTTON;
+    // switch (getch()) {
+    //     case BUTTON_1:
+    //         return InterfaceInput::LEFT_BUTTON;
+    //     case BUTTON_2:
+    //         return InterfaceInput::RIGHT_BUTTON;
+    //     case BUTTON_3:
+    //         return InterfaceInput::ENTER_BUTTON;
+    //         break;
+    // }
+    // return InterfaceInput::OTHER_BUTTON;
 }
 void InterfaceManager::display() {
 #ifdef __linux__
     //system("clear");
     clear();
 #else
-    system("cls");
+    //system("cls");
 #endif
     MenuItem *currentItem = interface->getCurrentMenuItem();
     currentItem->display();
@@ -108,6 +95,9 @@ void InterfaceManager::display() {
     //     }
     // }
     // cout << endl;
+#ifdef __linux__
+    refresh();
+    #endif
 }
 
 #ifdef __linux__
