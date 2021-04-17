@@ -2,7 +2,8 @@
     "mainMenu": {
         "name": "Main Menu",
         "type": "menuItemsList",
-        "menuItemsList": [{
+        "menuItemsList": [
+            {
                 "name": "U battery",
                 "type": "value",
                 "value": 14,
@@ -40,7 +41,8 @@
             {
                 "name": "Servos",
                 "type": "menuItemsList",
-                "menuItemsList": [{
+                "menuItemsList": [
+                    {
                         "name": "Front",
                         "type": "parameter",
                         "value": 0,
@@ -66,7 +68,8 @@
             {
                 "name": "PID",
                 "type": "menuItemsList",
-                "menuItemsList": [{
+                "menuItemsList": [
+                    {
                         "name": "P",
                         "type": "parameter",
                         "value": 1,

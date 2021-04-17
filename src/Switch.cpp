@@ -34,4 +34,5 @@ void Switch::display() {
     } else {
         printw("[OFF]    ON    +%s\n", " | editing");
     }
+    #endif
 }

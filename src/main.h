@@ -1,11 +1,10 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 #ifdef __linux__
-//#include <ncurses.h>
+    #include <ncurses.h>
 #endif
 
 #endif
