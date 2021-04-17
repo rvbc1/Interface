@@ -8,10 +8,12 @@
 
 class MenuItemsList; 
 class Parameter; 
+class Value; 
 
 class MenuItem {
   friend class MenuItemsList;
   friend class Parameter;
+  friend class Value;
 
    public:
     MenuItem(std::string name);
@@ -29,6 +31,7 @@ class MenuItem {
     enum Type { UNDEFINED,
                 SUBMENU,
                 PARAMTER,
+                VALUE,
                 BACK_EVENT_ITEM };
 
     MenuItem* parentMenuItem = nullptr;

@@ -5,31 +5,31 @@
         "menuItemsList": [
             {
                 "name": "U battery",
-                "type": "parameter",
+                "type": "value",
                 "value": 14,
                 "unit": "V"
             },
             {
                 "name": "Work time",
-                "type": "parameter",
+                "type": "value",
                 "value": 1,
                 "unit": "s"
             },
             {
                 "name": "Distance",
-                "type": "parameter",
+                "type": "value",
                 "value": 1,
                 "unit": "cm"
             },
             {
                 "name": "En consumed",
-                "type": "parameter",
+                "type": "value",
                 "value": 1,
                 "unit": "Wh"
             },
             {
                 "name": "Temperature",
-                "type": "parameter",
+                "type": "value",
                 "value": 1,
                 "unit": "*C"
             },

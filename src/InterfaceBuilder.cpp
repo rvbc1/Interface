@@ -26,10 +26,18 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
         if (v["type"].as<std::string>() == "parameter") {
             Parameter* parameter = new Parameter(v["name"].as<std::string>());
             parameter->setValue(v["value"].as<int>());
-            if(v.containsKey("unit")){
+            if (v.containsKey("unit")) {
                 parameter->setUnit(v["unit"].as<std::string>());
             }
             parent->addItemToList(parameter);
+
+        } else if (v["type"].as<std::string>() == "value") {
+            Value* value = new Value(v["name"].as<std::string>());
+            value->setValue(v["value"].as<int>());
+            if (v.containsKey("unit")) {
+                value->setUnit(v["unit"].as<std::string>());
+            }
+            parent->addItemToList(value);
 
         } else if (v["type"].as<std::string>() == "menuItemsList") {
             MenuItemsList* menuItemsList = new MenuItemsList(v["name"].as<std::string>());
