@@ -6,27 +6,32 @@
             {
                 "name": "U battery",
                 "type": "parameter",
-                "value": 14
+                "value": 14,
+                "unit": "V"
             },
             {
                 "name": "Work time",
                 "type": "parameter",
-                "value": 1
+                "value": 1,
+                "unit": "s"
             },
             {
                 "name": "Distance",
                 "type": "parameter",
-                "value": 1
+                "value": 1,
+                "unit": "cm"
             },
             {
                 "name": "En consumed",
                 "type": "parameter",
-                "value": 1
+                "value": 1,
+                "unit": "Wh"
             },
             {
                 "name": "Temperature",
                 "type": "parameter",
-                "value": 1
+                "value": 1,
+                "unit": "*C"
             },
             {
                 "name": "PID",
@@ -35,17 +40,20 @@
                     {
                         "name": "P",
                         "type": "parameter",
-                        "value": 1
+                        "value": 1,
+                        "unit": "kp"
                     },
                     {
                         "name": "I",
                         "type": "parameter",
-                        "value": 1
+                        "value": 1,
+                        "unit": "ki"
                     },
                     {
                         "name": "D",
                         "type": "parameter",
-                        "value": 1
+                        "value": 1,
+                        "unit": "kd"
                     }
                 ]
             }

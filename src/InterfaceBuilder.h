@@ -6,6 +6,8 @@
 #include "Parameter.h"
 #include "ArduinoJson-v6.17.3.h"
 
+#define JSON_DOCUMENT_SIZE 2000
+
 class InterfaceBuilder {
 public:
     static MenuItemsList* loadInterFaceFromJsonFile(std::string  filepath);

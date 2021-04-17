@@ -28,8 +28,12 @@ void Parameter::setValue(int value){
     this->value = value;
 }
 
+void Parameter::setUnit(std::string unit){
+    this->unit = unit;
+}
+
 void Parameter::display() {
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
-    printw("-   %d   +%s\n", value, " | editing");
+    printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
 }

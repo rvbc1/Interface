@@ -1,7 +1,7 @@
 #include "InterfaceBuilder.h"
 
 MenuItemsList* InterfaceBuilder::loadInterFaceFromJsonFile(std::string filepath) {
-    StaticJsonDocument<2000> doc;
+    StaticJsonDocument<JSON_DOCUMENT_SIZE> doc;
     std::ifstream interfaceJsonFile(filepath);
 
     DeserializationError error = deserializeJson(doc, interfaceJsonFile);
@@ -26,6 +26,9 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
         if (v["type"].as<std::string>() == "parameter") {
             Parameter* parameter = new Parameter(v["name"].as<std::string>());
             parameter->setValue(v["value"].as<int>());
+            if(v.containsKey("unit")){
+                parameter->setUnit(v["unit"].as<std::string>());
+            }
             parent->addItemToList(parameter);
 
         } else if (v["type"].as<std::string>() == "menuItemsList") {
