@@ -87,6 +87,10 @@
                         "unit": "kd"
                     }
                 ]
+            },
+            {
+                "name": "Save",
+                "type": "action"
             }
         ]
     }
