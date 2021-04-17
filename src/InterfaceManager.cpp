@@ -1,6 +1,7 @@
 #include "InterfaceManager.h"
 #ifdef __linux__
     #include <unistd.h>
+    #include <ncurses.h>
 
 void prepareNcurses();
 int kbhit(void);
@@ -29,35 +30,31 @@ InterfaceManager::InterfaceManager() {
 #endif
     interface = new Interface;
 
-    // auto start = std::chrono::system_clock::now();
-    // std::chrono::duration<double> elapsed_seconds;
-    // double time;
-    // display();
+    display();
       while (true) {
-    //     if (kbhit()) {  //Check if button was pressed
+         if (kbhit()) {  //Check if button was pressed
               if (getch() == SPECIAL_BUTTON) {
                   interface->setInputEvent(readKey());  //Check if button was pressed
               }
-            //  display();
             
-    //     } else {
-    //         usleep(100000);
-    //         display();
-    //     }
+        } else {
+            usleep(100000);
+            display();
+        }
      }
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
-    // switch (getch()) {
-    //     case BUTTON_1:
-    //         return InterfaceInput::LEFT_BUTTON;
-    //     case BUTTON_2:
-    //         return InterfaceInput::RIGHT_BUTTON;
-    //     case BUTTON_3:
-    //         return InterfaceInput::ENTER_BUTTON;
-    //         break;
-    // }
-    // return InterfaceInput::OTHER_BUTTON;
+    switch (getch()) {
+        case BUTTON_1:
+            return InterfaceInput::LEFT_BUTTON;
+        case BUTTON_2:
+            return InterfaceInput::RIGHT_BUTTON;
+        case BUTTON_3:
+            return InterfaceInput::ENTER_BUTTON;
+            break;
+    }
+    return InterfaceInput::OTHER_BUTTON;
 }
 void InterfaceManager::display() {
 #ifdef __linux__
