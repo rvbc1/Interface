@@ -9,11 +9,13 @@
 class MenuItemsList; 
 class Parameter; 
 class Value; 
+class Switch;
 
 class MenuItem {
   friend class MenuItemsList;
   friend class Parameter;
   friend class Value;
+  friend class Switch;
 
    public:
     MenuItem(std::string name);
@@ -32,6 +34,7 @@ class MenuItem {
                 SUBMENU,
                 PARAMTER,
                 VALUE,
+                SWITCH,
                 BACK_EVENT_ITEM };
 
     MenuItem* parentMenuItem = nullptr;

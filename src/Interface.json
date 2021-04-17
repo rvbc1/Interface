@@ -34,6 +34,11 @@
                 "unit": "*C"
             },
             {
+                "name": "Lights",
+                "type": "switch",
+                "value": true
+            },
+            {
                 "name": "PID",
                 "type": "menuItemsList",
                 "menuItemsList": [

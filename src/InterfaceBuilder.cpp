@@ -39,6 +39,11 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
             }
             parent->addItemToList(value);
 
+        } else if (v["type"].as<std::string>() == "switch") {
+            Switch* switchM = new Switch(v["name"].as<std::string>());
+            switchM->setValue(v["value"].as<uint8_t>());
+            parent->addItemToList(switchM);
+
         } else if (v["type"].as<std::string>() == "menuItemsList") {
             MenuItemsList* menuItemsList = new MenuItemsList(v["name"].as<std::string>());
             loadMenuItemsListFromJsonArray(menuItemsList, v["menuItemsList"].as<JsonArray>());

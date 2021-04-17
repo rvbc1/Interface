@@ -30,6 +30,7 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
                 case PARAMTER:
                 case SUBMENU:
                 case VALUE:
+                case SWITCH:
                     getSelectedMenuItem()->setAsActiveItem();
                     break;
                 case BACK_EVENT_ITEM:
