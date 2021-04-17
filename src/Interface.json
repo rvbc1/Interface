@@ -2,8 +2,7 @@
     "mainMenu": {
         "name": "Main Menu",
         "type": "menuItemsList",
-        "menuItemsList": [
-            {
+        "menuItemsList": [{
                 "name": "U battery",
                 "type": "value",
                 "value": 14,
@@ -39,13 +38,40 @@
                 "value": true
             },
             {
+                "name": "Servos",
+                "type": "menuItemsList",
+                "menuItemsList": [{
+                        "name": "Front",
+                        "type": "parameter",
+                        "value": 0,
+                        "min": -45,
+                        "max": 45,
+                        "unit": "*"
+                    },
+                    {
+                        "name": "Rear",
+                        "type": "parameter",
+                        "value": 0,
+                        "min": -45,
+                        "max": 45,
+                        "unit": "*"
+                    },
+                    {
+                        "name": "Supply",
+                        "type": "switch",
+                        "value": true
+                    }
+                ]
+            },
+            {
                 "name": "PID",
                 "type": "menuItemsList",
-                "menuItemsList": [
-                    {
+                "menuItemsList": [{
                         "name": "P",
                         "type": "parameter",
                         "value": 1,
+                        "min": 0,
+                        "max": 100,
                         "unit": "kp"
                     },
                     {
@@ -61,6 +87,10 @@
                         "unit": "kd"
                     }
                 ]
+            },
+            {
+                "name": "Save",
+                "type": "action"
             }
         ]
     }

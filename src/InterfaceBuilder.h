@@ -5,10 +5,12 @@
 #include "MenuItemsList.h"
 #include "Parameter.h"
 #include "Value.h"
+#include "Action.h"
 #include "Switch.h"
 #include "ArduinoJson-v6.17.3.h"
+#include "InterfaceJsonKeys.h"
 
-#define JSON_DOCUMENT_SIZE 2000
+#define JSON_DOCUMENT_SIZE 6000
 
 class InterfaceBuilder {
 public:

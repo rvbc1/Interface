@@ -17,7 +17,7 @@ class MenuItemsList : public MenuItem {
     MenuItem* getCurrentMenuItem();
     void display();
 
-   private:
+   //private:
     std::vector<MenuItem*> subMenuItems;
 
     void moveLeft();
