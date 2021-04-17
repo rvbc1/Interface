@@ -1,7 +1,5 @@
 #include "Switch.h"
 
-#include <ncurses.h>
-
 Switch::Switch(std::string name) : MenuItem(name) {
     type = MenuItem::SWITCH;
 }
@@ -30,10 +28,9 @@ void Switch::setValue(uint8_t value) {
 
 void Switch::display() {
     printw("%s\n", name.c_str());
-    //printw("%d %s\n", value, name.c_str());
-    std::string valueString = "OFF";
     if (value) {
-        valueString = "ON";
+        printw(" OFF    [ON]   +%s\n", " | editing");
+    } else {
+        printw("[OFF]    ON    +%s\n", " | editing");
     }
-    printw("-   %s   +%s\n", valueString.c_str(), " | editing");
 }

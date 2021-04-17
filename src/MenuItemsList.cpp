@@ -1,7 +1,5 @@
 #include "MenuItemsList.h"
 
-#include <ncurses.h>
-
 MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
     this->type = SUBMENU;
 

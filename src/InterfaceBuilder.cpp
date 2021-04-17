@@ -10,11 +10,11 @@ MenuItemsList* InterfaceBuilder::loadInterFaceFromJsonFile(std::string filepath)
         std::cout << " Json deserialize failed: ";
         std::cout << error << std::endl;
     } else {
-        if ((doc.containsKey("mainMenu")) && (doc["mainMenu"].is<JsonObject>())) {
-            JsonObject mainMenuJsonObject = doc["mainMenu"].as<JsonObject>();
+        if ((doc.containsKey(MAIN_MENU_OBJECT_NAME)) && (doc[MAIN_MENU_OBJECT_NAME].is<JsonObject>())) {
+            JsonObject mainMenuJsonObject = doc[MAIN_MENU_OBJECT_NAME].as<JsonObject>();
             MenuItemsList* mainMenu = new MenuItemsList(mainMenuJsonObject["name"].as<std::string>());
 
-            loadMenuItemsListFromJsonArray(mainMenu, mainMenuJsonObject["menuItemsList"].as<JsonArray>());
+            loadMenuItemsListFromJsonArray(mainMenu, mainMenuJsonObject[MENU_ITEMS_LIST_KEY].as<JsonArray>());
             return mainMenu;
         }
     }
@@ -23,30 +23,36 @@ MenuItemsList* InterfaceBuilder::loadInterFaceFromJsonFile(std::string filepath)
 
 void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, JsonArray array) {
     for (JsonVariant v : array) {
-        if (v["type"].as<std::string>() == "parameter") {
-            Parameter* parameter = new Parameter(v["name"].as<std::string>());
-            parameter->setValue(v["value"].as<int>());
-            if (v.containsKey("unit")) {
-                parameter->setUnit(v["unit"].as<std::string>());
+        if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_PARAMETER) {
+            Parameter* parameter = new Parameter(v[MENU_ITEM_NAME_KEY].as<std::string>());
+            parameter->setValue(v[VALUE_KEY].as<int>());
+            if (v.containsKey(MIN_VALUE_KEY)) {
+                parameter->setMinValue(v[MIN_VALUE_KEY].as<PARAMETER_VALUE_TYPE>());
+            }
+            if (v.containsKey(MAX_VALUE_KEY)) {
+                parameter->setMaxValue(v[MAX_VALUE_KEY].as<PARAMETER_VALUE_TYPE>());
+            }
+            if (v.containsKey(VALUE_UNIT_KEY)) {
+                parameter->setUnit(v[VALUE_UNIT_KEY].as<std::string>());
             }
             parent->addItemToList(parameter);
 
-        } else if (v["type"].as<std::string>() == "value") {
-            Value* value = new Value(v["name"].as<std::string>());
-            value->setValue(v["value"].as<int>());
-            if (v.containsKey("unit")) {
-                value->setUnit(v["unit"].as<std::string>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_VALUE) {
+            Value* value = new Value(v[MENU_ITEM_NAME_KEY].as<std::string>());
+            value->setValue(v[VALUE_KEY].as<int>());
+            if (v.containsKey(VALUE_UNIT_KEY)) {
+                value->setUnit(v[VALUE_UNIT_KEY].as<std::string>());
             }
             parent->addItemToList(value);
 
-        } else if (v["type"].as<std::string>() == "switch") {
-            Switch* switchM = new Switch(v["name"].as<std::string>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_SWITCH) {
+            Switch* switchM = new Switch(v[MENU_ITEM_NAME_KEY].as<std::string>());
             switchM->setValue(v["value"].as<uint8_t>());
             parent->addItemToList(switchM);
 
-        } else if (v["type"].as<std::string>() == "menuItemsList") {
-            MenuItemsList* menuItemsList = new MenuItemsList(v["name"].as<std::string>());
-            loadMenuItemsListFromJsonArray(menuItemsList, v["menuItemsList"].as<JsonArray>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_MENU_ITEMS_LIST) {
+            MenuItemsList* menuItemsList = new MenuItemsList(v[MENU_ITEM_NAME_KEY].as<std::string>());
+            loadMenuItemsListFromJsonArray(menuItemsList, v[MENU_ITEMS_LIST_KEY].as<JsonArray>());
             parent->addItemToList(menuItemsList);
         }
     }

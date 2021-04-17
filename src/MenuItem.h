@@ -10,12 +10,14 @@ class MenuItemsList;
 class Parameter; 
 class Value; 
 class Switch;
+class Action;
 
 class MenuItem {
   friend class MenuItemsList;
   friend class Parameter;
   friend class Value;
   friend class Switch;
+  friend class Action;
 
    public:
     MenuItem(std::string name);

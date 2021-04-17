@@ -1,7 +1,5 @@
 #include "MenuItem.h"
 
-#include <ncurses.h>
-
 MenuItem::MenuItem(std::string name) {
     this->name = name;
 }

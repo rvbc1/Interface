@@ -1,7 +1,5 @@
 #include "Parameter.h"
 
-#include <ncurses.h>
-
 Parameter::Parameter(std::string name) : MenuItem(name) {
     type = MenuItem::PARAMTER;
 }
@@ -9,10 +7,10 @@ Parameter::Parameter(std::string name) : MenuItem(name) {
 void Parameter::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            value--;
+            decrementValue();
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            value++;
+            incrementValue();
             break;
         case InterfaceInput::ENTER_BUTTON:
             if (parentMenuItem != nullptr) {
@@ -24,11 +22,31 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
-void Parameter::setValue(int value){
+void Parameter::decrementValue(){
+    if(value > minValue){
+        value--;
+    }
+}
+
+void Parameter::incrementValue(){
+    if(value < maxValue){
+        value++;
+    }
+}
+
+void Parameter::setValue(PARAMETER_VALUE_TYPE value) {
     this->value = value;
 }
 
-void Parameter::setUnit(std::string unit){
+void Parameter::setMinValue(PARAMETER_VALUE_TYPE minValue) {
+    this->minValue = minValue;
+}
+
+void Parameter::setMaxValue(PARAMETER_VALUE_TYPE maxValue) {
+    this->maxValue = maxValue;
+}
+
+void Parameter::setUnit(std::string unit) {
     this->unit = unit;
 }
 

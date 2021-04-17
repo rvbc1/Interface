@@ -1,7 +1,5 @@
 #include "Value.h"
 
-#include <ncurses.h>
-
 Value::Value(std::string name) : MenuItem(name) {
     type = MenuItem::VALUE;
 }
