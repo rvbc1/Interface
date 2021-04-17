@@ -24,6 +24,10 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
+void Parameter::setValue(int value){
+    this->value = value;
+}
+
 void Parameter::display() {
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());

@@ -1,43 +1,51 @@
 {
-    "mainMenu" : {
-        "name" : "Main Menu",
-        "type" : "menuItemsList",
-        "menuItemsList":[
+    "mainMenu": {
+        "name": "Main Menu",
+        "type": "menuItemsList",
+        "menuItemsList": [
             {
-                "name" : "U battery",
-                "type" : "parameter"
+                "name": "U battery",
+                "type": "parameter",
+                "value": 14
             },
             {
-                "name" : "Work time",
-                "type" : "parameter"
+                "name": "Work time",
+                "type": "parameter",
+                "value": 1
             },
             {
-                "name" : "Distance",
-                "type" : "parameter"
+                "name": "Distance",
+                "type": "parameter",
+                "value": 1
             },
             {
-                "name" : "En consumed",
-                "type" : "parameter"
+                "name": "En consumed",
+                "type": "parameter",
+                "value": 1
             },
             {
-                "name" : "Temperature",
-                "type" : "parameter"
+                "name": "Temperature",
+                "type": "parameter",
+                "value": 1
             },
             {
-                "name" : "PID",
-                "type" : "menuItemsList",
-                "menuItemsList":[
+                "name": "PID",
+                "type": "menuItemsList",
+                "menuItemsList": [
                     {
-                        "name" : "P",
-                        "type" : "parameter"
+                        "name": "P",
+                        "type": "parameter",
+                        "value": 1
                     },
                     {
-                        "name" : "I",
-                        "type" : "parameter"
+                        "name": "I",
+                        "type": "parameter",
+                        "value": 1
                     },
                     {
-                        "name" : "D",
-                        "type" : "parameter"
+                        "name": "D",
+                        "type": "parameter",
+                        "value": 1
                     }
                 ]
             }

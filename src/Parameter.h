@@ -11,6 +11,8 @@ class Parameter : public MenuItem {
     Parameter(std::string name);
     void setInputEvent(InterfaceInput::Button event);
 
+    void setValue(int value);
+
     void display();
 
     private:

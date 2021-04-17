@@ -24,7 +24,10 @@ MenuItemsList* InterfaceBuilder::loadInterFaceFromJsonFile(std::string filepath)
 void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, JsonArray array) {
     for (JsonVariant v : array) {
         if (v["type"].as<std::string>() == "parameter") {
-            parent->addItemToList(new Parameter(v["name"].as<std::string>()));
+            Parameter* parameter = new Parameter(v["name"].as<std::string>());
+            parameter->setValue(v["value"].as<int>());
+            parent->addItemToList(parameter);
+
         } else if (v["type"].as<std::string>() == "menuItemsList") {
             MenuItemsList* menuItemsList = new MenuItemsList(v["name"].as<std::string>());
             loadMenuItemsListFromJsonArray(menuItemsList, v["menuItemsList"].as<JsonArray>());
