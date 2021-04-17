@@ -1,18 +1,16 @@
-#include "Parameter.h"
+#include "Value.h"
 
 #include <ncurses.h>
 
-Parameter::Parameter(std::string name) : MenuItem(name) {
-    type = MenuItem::PARAMTER;
+Value::Value(std::string name) : MenuItem(name) {
+    type = MenuItem::VALUE;
 }
 
-void Parameter::setInputEvent(InterfaceInput::Button event) {
+void Value::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            value--;
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            value++;
             break;
         case InterfaceInput::ENTER_BUTTON:
             if (parentMenuItem != nullptr) {
@@ -24,16 +22,16 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
-void Parameter::setValue(int value){
+void Value::setValue(int value){
     this->value = value;
 }
 
-void Parameter::setUnit(std::string unit){
+void Value::setUnit(std::string unit){
     this->unit = unit;
 }
 
-void Parameter::display() {
+void Value::display() {
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
-    printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
+    printw("   %d %s   %s\n", value, unit.c_str(), " | not editable");
 }

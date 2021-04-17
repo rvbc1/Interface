@@ -1,40 +1,13 @@
 #include "Interface.h"
 
-#include "Parameter.h"
-
 #include <ncurses.h>
+
+#include "Parameter.h"
 Interface::Interface() {
-    mainMenu = new MenuItemsList("Main Menu");
-
-    // MenuItemsList* submenu = new MenuItemsList("Submenu 1");
-    // submenu->addItemToList(new Parameter("SM1"));
-    // MenuItemsList* submenu2 = new MenuItemsList("Submenu 2");
-    // submenu->addItemToList(submenu2);
-    // submenu->addItemToList(new MenuItem("SM3"));
-    // submenu->addItemToList(new MenuItem("SM4"));
-
-    // submenu2->addItemToList(new MenuItem("RX1"));
-    // submenu2->addItemToList(new MenuItem("RX2"));
-    
-    // mainMenu->addItemToList(submenu);
-    
-    // mainMenu->addItemToList(new MenuItem("Test2"));
-    // mainMenu->addItemToList(new MenuItem("Test3"));
-    // mainMenu->addItemToList(new MenuItem("Test4"));
-    // mainMenu->addItemToList(new MenuItem("Test5"));
-
-    mainMenu->addItemToList(new Parameter("U battery"));
-    mainMenu->addItemToList(new Parameter("Work time"));
-    mainMenu->addItemToList(new Parameter("Distance"));
-    mainMenu->addItemToList(new Parameter("En consumed"));
-    mainMenu->addItemToList(new Parameter("Temperature"));
-
-    MenuItemsList *pid = new MenuItemsList("pid");
-    pid->addItemToList(new Parameter("P"));
-    pid->addItemToList(new Parameter("I"));
-    pid->addItemToList(new Parameter("D"));
-
-    mainMenu->addItemToList(pid);
+    mainMenu = InterfaceBuilder::loadInterFaceFromJsonFile(INTERFACE_FILE);
+    if(mainMenu == nullptr){
+        mainMenu = InterfaceBuilder::loadDefaultInterFace();
+    }
 
     // list_of_elements = new List();
 
@@ -58,4 +31,3 @@ void Interface::setInputEvent(InterfaceInput::Button event) {
 MenuItem* Interface::getCurrentMenuItem() {
     return mainMenu->getCurrentMenuItem();
 }
-

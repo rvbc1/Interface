@@ -6,6 +6,11 @@
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 #include "MenuItemsList.h"
+#include "InterfaceBuilder.h"
+
+#include "ArduinoJson-v6.17.3.h"
+
+#define INTERFACE_FILE "src/Interface.json"
 
 class Interface {
    public:
@@ -16,6 +21,7 @@ class Interface {
 
    private:
     MenuItemsList *mainMenu = nullptr;
+
 };
 
 #endif /* INTERFACE_H_ */

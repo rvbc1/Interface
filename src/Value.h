@@ -1,14 +1,12 @@
-#ifndef PARAMETER_H_
-#define PARAMETER_H_
-
-
+#ifndef VALUE_H_
+#define VALUE_H_
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 #include "main.h"
 
-class Parameter : public MenuItem {
+class Value : public MenuItem {
    public:
-    Parameter(std::string name);
+    Value(std::string name);
     void setInputEvent(InterfaceInput::Button event);
 
     void setValue(int value);

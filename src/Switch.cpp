@@ -1,18 +1,18 @@
-#include "Parameter.h"
+#include "Switch.h"
 
 #include <ncurses.h>
 
-Parameter::Parameter(std::string name) : MenuItem(name) {
-    type = MenuItem::PARAMTER;
+Switch::Switch(std::string name) : MenuItem(name) {
+    type = MenuItem::SWITCH;
 }
 
-void Parameter::setInputEvent(InterfaceInput::Button event) {
+void Switch::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            value--;
+            value = false;
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            value++;
+            value = true;
             break;
         case InterfaceInput::ENTER_BUTTON:
             if (parentMenuItem != nullptr) {
@@ -24,16 +24,16 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
-void Parameter::setValue(int value){
+void Switch::setValue(uint8_t value) {
     this->value = value;
 }
 
-void Parameter::setUnit(std::string unit){
-    this->unit = unit;
-}
-
-void Parameter::display() {
+void Switch::display() {
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
-    printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
+    std::string valueString = "OFF";
+    if (value) {
+        valueString = "ON";
+    }
+    printw("-   %s   +%s\n", valueString.c_str(), " | editing");
 }

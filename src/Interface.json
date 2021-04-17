@@ -1,0 +1,67 @@
+{
+    "mainMenu": {
+        "name": "Main Menu",
+        "type": "menuItemsList",
+        "menuItemsList": [
+            {
+                "name": "U battery",
+                "type": "value",
+                "value": 14,
+                "unit": "V"
+            },
+            {
+                "name": "Work time",
+                "type": "value",
+                "value": 1,
+                "unit": "s"
+            },
+            {
+                "name": "Distance",
+                "type": "value",
+                "value": 1,
+                "unit": "cm"
+            },
+            {
+                "name": "En consumed",
+                "type": "value",
+                "value": 1,
+                "unit": "Wh"
+            },
+            {
+                "name": "Temperature",
+                "type": "value",
+                "value": 1,
+                "unit": "*C"
+            },
+            {
+                "name": "Lights",
+                "type": "switch",
+                "value": true
+            },
+            {
+                "name": "PID",
+                "type": "menuItemsList",
+                "menuItemsList": [
+                    {
+                        "name": "P",
+                        "type": "parameter",
+                        "value": 1,
+                        "unit": "kp"
+                    },
+                    {
+                        "name": "I",
+                        "type": "parameter",
+                        "value": 1,
+                        "unit": "ki"
+                    },
+                    {
+                        "name": "D",
+                        "type": "parameter",
+                        "value": 1,
+                        "unit": "kd"
+                    }
+                ]
+            }
+        ]
+    }
+}

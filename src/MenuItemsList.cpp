@@ -29,6 +29,8 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
             switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM IN LIST
                 case PARAMTER:
                 case SUBMENU:
+                case VALUE:
+                case SWITCH:
                     getSelectedMenuItem()->setAsActiveItem();
                     break;
                 case BACK_EVENT_ITEM:
@@ -78,8 +80,8 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
 }
 
 void MenuItemsList::display() {
-    printw("%s\n", subMenuItems[currentMainMenuItem]->getName().c_str());
-    if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
-        printw("BACK ITEM\n");
-    }
+    printw("%s\n  > %s\n", getName().c_str(), subMenuItems[currentMainMenuItem]->getName().c_str());
+    // if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
+    //     printw("BACK ITEM\n");
+    // }
 }
