@@ -5,6 +5,7 @@
 #define MENU_ITEM_TYPE_KEY "type"
 
 #define MENU_ITEM_TYPE_VALUE "value"
+#define MENU_ITEM_TYPE_ACTION "action"
 #define MENU_ITEM_TYPE_SWITCH "switch"
 #define MENU_ITEM_TYPE_PARAMETER "parameter"
 #define MENU_ITEM_TYPE_MENU_ITEMS_LIST "menuItemsList"

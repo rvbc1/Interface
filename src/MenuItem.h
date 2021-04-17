@@ -37,6 +37,7 @@ class MenuItem {
                 PARAMTER,
                 VALUE,
                 SWITCH,
+                ACTION,
                 BACK_EVENT_ITEM };
 
     MenuItem* parentMenuItem = nullptr;

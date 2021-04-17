@@ -5,9 +5,11 @@
 #include "Parameter.h"
 Interface::Interface() {
     mainMenu = InterfaceBuilder::loadInterFaceFromJsonFile(INTERFACE_FILE);
-    if(mainMenu == nullptr){
+    if (mainMenu == nullptr) {
         mainMenu = InterfaceBuilder::loadDefaultInterFace();
     }
+
+    
 
     // list_of_elements = new List();
 
@@ -30,4 +32,13 @@ void Interface::setInputEvent(InterfaceInput::Button event) {
 
 MenuItem* Interface::getCurrentMenuItem() {
     return mainMenu->getCurrentMenuItem();
+}
+
+MenuItem* Interface::getMenuItemByName(std::string name) {
+    for (MenuItem* item : mainMenu->subMenuItems) {
+        if(item->getName() == name){
+            return item;
+        }
+    }
+    return nullptr;
 }

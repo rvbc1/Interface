@@ -36,6 +36,7 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
                         parentMenuItem->setAsActiveItem();
                     }
                     break;
+                case ACTION:
                 case UNDEFINED:
                     break;
             }

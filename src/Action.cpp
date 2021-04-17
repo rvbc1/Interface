@@ -1,7 +1,7 @@
 #include "Action.h"
 
 Action::Action(std::string name) : MenuItem(name) {
-    type = MenuItem::PARAMTER;
+    type = MenuItem::ACTION;
 }
 
 void Action::setInputEvent(InterfaceInput::Button event) {
