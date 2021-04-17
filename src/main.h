@@ -4,5 +4,8 @@
 
 #include <iostream>
 #include <cstdint>
+#ifdef __linux__
+//#include <ncurses.h>
+#endif
 
 #endif

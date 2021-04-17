@@ -1,2 +1,2 @@
 compile: 
-	g++ -o interface -Wall src/*.cpp -lncurses
+	g++ -o interface -Wall src/*.cpp

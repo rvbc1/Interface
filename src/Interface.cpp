@@ -1,8 +1,5 @@
 #include "Interface.h"
 
-#include <ncurses.h>
-
-#include "Parameter.h"
 Interface::Interface() {
     mainMenu = InterfaceBuilder::loadInterFaceFromJsonFile(INTERFACE_FILE);
     if(mainMenu == nullptr){

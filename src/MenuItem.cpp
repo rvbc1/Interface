@@ -1,7 +1,5 @@
 #include "MenuItem.h"
 
-#include <ncurses.h>
-
 MenuItem::MenuItem(std::string name) {
     this->name = name;
 }
@@ -39,5 +37,7 @@ void MenuItem::setAsActiveItem() {
 }
 
 void MenuItem::display(){
+    #ifdef __linux__
     printw("displaing MenuItem %s\n", name.c_str());
+    #endif
 }

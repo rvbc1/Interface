@@ -1,7 +1,5 @@
 #include "Parameter.h"
 
-#include <ncurses.h>
-
 Parameter::Parameter(std::string name) : MenuItem(name) {
     type = MenuItem::PARAMTER;
 }
@@ -33,7 +31,9 @@ void Parameter::setUnit(std::string unit){
 }
 
 void Parameter::display() {
+    #ifdef __linux__
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
     printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
+    #endif
 }
