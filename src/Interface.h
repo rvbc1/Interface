@@ -8,6 +8,7 @@
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 #include "MenuItemsList.h"
+#include "InterfaceJsonKeys.h"
 
 #define INTERFACE_FILE "src/Interface.json"
 
@@ -19,6 +20,8 @@ class Interface {
     MenuItem *getCurrentMenuItem();
 
     Action *getActionByName(std::string name);
+
+    void save(std::string filepath);
 
    private:
     MenuItemsList *mainMenu = nullptr;

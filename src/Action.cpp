@@ -15,6 +15,7 @@ void Action::setInputEvent(InterfaceInput::Button event) {
         case InterfaceInput::ENTER_BUTTON:
             if ((value) && (function != nullptr)) {
                 function();
+                value = false;
             }
             if (parentMenuItem != nullptr) {
                 parentMenuItem->setAsActiveItem();

@@ -28,9 +28,7 @@ int kbhit(void);
 #define INTERVAL 0.1
 
 void InterfaceManager::saveInterface() {
-    std::ofstream ofs("savedInterface.json", std::ofstream::out);
-    ofs << "Test";
-    ofs.close();
+    interface->save("savedInterface.json");
 }
 
 InterfaceManager::InterfaceManager() {
