@@ -7,10 +7,15 @@ Action::Action(std::string name) : MenuItem(name) {
 void Action::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
+            value = false;
             break;
         case InterfaceInput::RIGHT_BUTTON:
+            value = true;
             break;
         case InterfaceInput::ENTER_BUTTON:
+            if ((value) && (function != nullptr)) {
+                function();
+            }
             if (parentMenuItem != nullptr) {
                 parentMenuItem->setAsActiveItem();
             }
@@ -20,9 +25,17 @@ void Action::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
+void Action::setFunction(void (*function)()) {
+    this->function = function;
+}
 
 void Action::display() {
-    // printw("%s\n", name.c_str());
-    // //printw("%d %s\n", value, name.c_str());
-    // printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
+#ifdef __linux__
+    printw("%s\n", name.c_str());
+    if (value) {
+        printw(" NO    [YES]   +%s\n", " | editing");
+    } else {
+        printw("[NO]    YES    +%s\n", " | editing");
+    }
+#endif
 }

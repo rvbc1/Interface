@@ -18,6 +18,8 @@ class Interface {
 
     MenuItem *getCurrentMenuItem();
 
+    Action *getActionByName(std::string name);
+
    private:
     MenuItemsList *mainMenu = nullptr;
 

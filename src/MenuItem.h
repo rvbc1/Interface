@@ -6,18 +6,18 @@
 #include "InterfaceInput.h"
 #include "main.h"
 
-class MenuItemsList; 
-class Parameter; 
-class Value; 
+class MenuItemsList;
+class Parameter;
+class Value;
 class Switch;
 class Action;
 
 class MenuItem {
-  friend class MenuItemsList;
-  friend class Parameter;
-  friend class Value;
-  friend class Switch;
-  friend class Action;
+    friend class MenuItemsList;
+    friend class Parameter;
+    friend class Value;
+    friend class Switch;
+    friend class Action;
 
    public:
     MenuItem(std::string name);
@@ -30,8 +30,6 @@ class MenuItem {
                   ACTIVE_IS_SUBLIST_ITEM };
     Status status = THIS_IS_ACTIVE_ITEM;
 
-    virtual void display();
-   protected:
     enum Type { UNDEFINED,
                 SUBMENU,
                 PARAMTER,
@@ -40,9 +38,14 @@ class MenuItem {
                 ACTION,
                 BACK_EVENT_ITEM };
 
+    Type getType();
+
+    virtual void display();
+    std::string name = "";
+   protected:
     MenuItem* parentMenuItem = nullptr;
 
-    std::string name = "";
+    // std::string name = "";
 
     Type type = UNDEFINED;
 

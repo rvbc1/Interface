@@ -29,6 +29,10 @@ void MenuItem::setType(MenuItem::Type type) {
     this->type = type;
 }
 
+MenuItem::Type MenuItem::getType(){
+    return type;
+}
+
 void MenuItem::setAsActiveItem() {
     if (parentMenuItem != nullptr) {
         parentMenuItem->status = ACTIVE_IS_SUBLIST_ITEM;

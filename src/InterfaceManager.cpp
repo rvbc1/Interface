@@ -1,7 +1,10 @@
 #include "InterfaceManager.h"
+
+Interface* InterfaceManager::interface = nullptr;
+
 #ifdef __linux__
-    #include <unistd.h>
     #include <ncurses.h>
+    #include <unistd.h>
 
 void prepareNcurses();
 int kbhit(void);
@@ -24,24 +27,36 @@ int kbhit(void);
 
 #define INTERVAL 0.1
 
+void InterfaceManager::saveInterface() {
+    std::ofstream ofs("savedInterface.json", std::ofstream::out);
+    ofs << "Test";
+    ofs.close();
+}
+
 InterfaceManager::InterfaceManager() {
 #ifdef __linux__
     prepareNcurses();  //PREPARE LIB FOR READ LINUX KEYBOARD EVENTS
 #endif
     interface = new Interface;
 
+    Action* saveAction = interface->getActionByName("Save");
+    if (saveAction != nullptr) {
+        saveAction->name = "SAVE";
+        saveAction->setFunction(&(this->saveInterface));
+    }
+
     display();
-      while (true) {
-         if (kbhit()) {  //Check if button was pressed
-              if (getch() == SPECIAL_BUTTON) {
-                  interface->setInputEvent(readKey());  //Check if button was pressed
-              }
-            
+    while (true) {
+        if (kbhit()) {  //Check if button was pressed
+            if (getch() == SPECIAL_BUTTON) {
+                interface->setInputEvent(readKey());  //Check if button was pressed
+            }
+
         } else {
             usleep(100000);
             display();
         }
-     }
+    }
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
@@ -63,7 +78,7 @@ void InterfaceManager::display() {
 #else
     //system("cls");
 #endif
-    MenuItem *currentItem = interface->getCurrentMenuItem();
+    MenuItem* currentItem = interface->getCurrentMenuItem();
     currentItem->display();
     // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
     // if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
@@ -94,7 +109,7 @@ void InterfaceManager::display() {
     // cout << endl;
 #ifdef __linux__
     refresh();
-    #endif
+#endif
 }
 
 #ifdef __linux__

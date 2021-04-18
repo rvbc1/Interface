@@ -9,9 +9,10 @@
 class InterfaceManager {
    public:
     InterfaceManager();
+        static void saveInterface();
 
    private:
-    Interface *interface = nullptr;
+    static Interface *interface;
     InterfaceInput::Button readKey();
     void display();
 };
