@@ -4,7 +4,6 @@
 
 #include "InterfaceInput.h"
 #include "MenuItem.h"
-#include "main.h"
 
 class Switch : public MenuItem {
    public:

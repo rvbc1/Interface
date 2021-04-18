@@ -5,7 +5,6 @@
 
 #include "InterfaceInput.h"
 #include "MenuItem.h"
-#include "main.h"
 
 class MenuItemsList : public MenuItem {
    public:
