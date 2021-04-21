@@ -1,4 +1,8 @@
 #include "InterfaceManager.h"
+#ifdef _windows_
+#include <Windows.h>
+#include <conio.h>
+#endif
 #ifdef __linux__
     #include <unistd.h>
     #include <ncurses.h>
@@ -28,13 +32,18 @@ InterfaceManager::InterfaceManager() {
 #ifdef __linux__
     prepareNcurses();  //PREPARE LIB FOR READ LINUX KEYBOARD EVENTS
 #endif
-    interface = new Interface;
+    interfaceLocal = new Interface;
 
     display();
       while (true) {
-         if (kbhit()) {  //Check if button was pressed
+#ifdef _windows_
+        if (_kbhit()) {  //Check if button was pressed
+            if (_getch() == SPECIAL_BUTTON) {
+#else
+        if (kbhit()) {  //Check if button was pressed
               if (getch() == SPECIAL_BUTTON) {
-                  interface->setInputEvent(readKey());  //Check if button was pressed
+#endif
+                  interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
               }
             
         } else {
@@ -45,7 +54,11 @@ InterfaceManager::InterfaceManager() {
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
+#ifdef _windows_
+    switch (_getch()) {
+#else
     switch (getch()) {
+#endif
         case BUTTON_1:
             return InterfaceInput::LEFT_BUTTON;
         case BUTTON_2:
@@ -63,7 +76,7 @@ void InterfaceManager::display() {
 #else
     //system("cls");
 #endif
-    MenuItem *currentItem = interface->getCurrentMenuItem();
+    MenuItem *currentItem = interfaceLocal->getCurrentMenuItem();
     currentItem->display();
     // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
     // if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
@@ -119,4 +132,19 @@ void prepareNcurses() {
     scrollok(stdscr, TRUE);
 }
 
+#endif
+
+#ifdef _windows_
+void InterfaceManager::usleep(__int64 usec)
+{
+    HANDLE timer;
+    LARGE_INTEGER ft;
+
+    ft.QuadPart = -(10 * usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+}
 #endif

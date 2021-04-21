@@ -3,7 +3,6 @@
 
 #include "InterfaceInput.h"
 #include "MenuItem.h"
-#include "main.h"
 
 #define PARAMETER_VALUE_TYPE int16_t
 #define INT16_T_MIN -32768

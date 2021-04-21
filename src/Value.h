@@ -2,7 +2,6 @@
 #define VALUE_H_
 #include "InterfaceInput.h"
 #include "MenuItem.h"
-#include "main.h"
 
 class Value : public MenuItem {
    public:
