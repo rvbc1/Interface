@@ -6,9 +6,6 @@ Interface::Interface() {
         mainMenu = InterfaceBuilder::loadDefaultInterFace();
     }
 
-
-    
-
     // list_of_elements = new List();
 
     // list_of_elements->addParameter(new Parameter("U battery" , 7.4 , "V", 0 )) ;
@@ -34,23 +31,23 @@ MenuItem* Interface::getCurrentMenuItem() {
 
 MenuItem* Interface::getMenuItemByName(std::string name) {
     for (MenuItem* item : mainMenu->subMenuItems) {
-        if(item->getName() == name){
+        if (item->getName() == name) {
             return item;
         }
     }
     return nullptr;
 }
 
-Action *Interface::getActionByName(std::string name){
+Action* Interface::getActionByName(std::string name) {
     for (MenuItem* item : mainMenu->subMenuItems) {
-        if((item->getName() == name) && (item->getType() == MenuItem::ACTION)){
+        if ((item->getName() == name) && (item->getType() == MenuItem::ACTION)) {
             return (Action*)item;
         }
     }
     return nullptr;
 }
 
-void Interface::save(std::string filepath){
+void Interface::save(std::string filepath) {
     StaticJsonDocument<JSON_DOCUMENT_SIZE> doc;
     JsonArray array = doc.createNestedArray();
     for (MenuItem* item : mainMenu->subMenuItems) {

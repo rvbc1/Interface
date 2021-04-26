@@ -22,14 +22,14 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
-void Parameter::decrementValue(){
-    if(value > minValue){
+void Parameter::decrementValue() {
+    if (value > minValue) {
         value--;
     }
 }
 
-void Parameter::incrementValue(){
-    if(value < maxValue){
+void Parameter::incrementValue() {
+    if (value < maxValue) {
         value++;
     }
 }
@@ -51,11 +51,12 @@ void Parameter::setUnit(std::string unit) {
 }
 
 void Parameter::display() {
-    #ifdef __linux__
+#ifdef __linux__
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
     printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
-#elif defined (_WIN32) || defined (_WIN64 )
-    std::cout << name << std::endl << "   " << value << "   " << unit << "| editing" << std::endl;
+#elif defined(_WIN32) || defined(_WIN64)
+    std::cout << name << std::endl
+              << "   " << value << "   " << unit << "| editing" << std::endl;
 #endif
 }

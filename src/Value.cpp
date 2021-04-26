@@ -20,20 +20,21 @@ void Value::setInputEvent(InterfaceInput::Button event) {
     }
 }
 
-void Value::setValue(int value){
+void Value::setValue(int value) {
     this->value = value;
 }
 
-void Value::setUnit(std::string unit){
+void Value::setUnit(std::string unit) {
     this->unit = unit;
 }
 
 void Value::display() {
-    #ifdef __linux__
+#ifdef __linux__
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
     printw("   %d %s   %s\n", value, unit.c_str(), " | not editable");
-#elif defined (_WIN32) || defined (_WIN64 )
-    std::cout << name << std::endl << "   " << value << "   " << unit <<  "| not editable" << std::endl;
-    #endif
+#elif defined(_WIN32) || defined(_WIN64)
+    std::cout << name << std::endl
+              << "   " << value << "   " << unit << "| not editable" << std::endl;
+#endif
 }

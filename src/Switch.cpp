@@ -27,20 +27,19 @@ void Switch::setValue(uint8_t value) {
 }
 
 void Switch::display() {
-    #ifdef __linux__
+#ifdef __linux__
     printw("%s\n", name.c_str());
     if (value) {
         printw(" OFF    [ON]   +%s\n", " | editing");
     } else {
         printw("[OFF]    ON    +%s\n", " | editing");
     }
-#elif defined (_WIN32) || defined (_WIN64 )
+#elif defined(_WIN32) || defined(_WIN64)
     std::cout << name << std::endl;
     if (value) {
         std::cout << " OFF    [ON]   + | editing" << std::endl;
-    }
-    else {
+    } else {
         std::cout << "[OFF]    ON    + | editing" << std::endl;
     }
-    #endif
+#endif
 }

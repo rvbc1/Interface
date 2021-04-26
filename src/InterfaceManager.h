@@ -8,14 +8,14 @@
 class InterfaceManager {
    public:
     InterfaceManager();
-        static void saveInterface();
+    static void saveInterface();
 
    private:
     static Interface *interfaceLocal;
-  
+
     InterfaceInput::Button readKey();
     void display();
-#if defined (_WIN32) || defined (_WIN64 )
+#if defined(_WIN32) || defined(_WIN64)
     void usleep(__int64 usec);
 #endif
 };
