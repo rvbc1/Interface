@@ -5,6 +5,7 @@
 
 #include "InterfaceInput.h"
 #include "iostream"
+#include "main.h"
 
 class MenuItemsList;
 class Parameter;

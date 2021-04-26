@@ -1,10 +1,10 @@
 #include "InterfaceManager.h"
 
-Interface* InterfaceManager::interface = nullptr;
+Interface* InterfaceManager::interfaceLocal = nullptr;
 
-#if defined (_WIN32) || defined (_WIN64 )
-#include <Windows.h>
-#include <conio.h>
+#if defined(_WIN32) || defined(_WIN64)
+    #include <Windows.h>
+    #include <conio.h>
 #endif
 
 #ifdef __linux__
@@ -33,7 +33,7 @@ int kbhit(void);
 #define INTERVAL 0.1
 
 void InterfaceManager::saveInterface() {
-    interface->save("savedInterface.json");
+    interfaceLocal->save("savedInterface.json");
 }
 
 InterfaceManager::InterfaceManager() {
@@ -42,25 +42,25 @@ InterfaceManager::InterfaceManager() {
 #endif
     interfaceLocal = new Interface;
 
-    Action* saveAction = interface->getActionByName("Save");
+    Action* saveAction = interfaceLocal->getActionByName("Save");
     if (saveAction != nullptr) {
         saveAction->name = "SAVE";
         saveAction->setFunction(&(this->saveInterface));
     }
 
     display();
-      while (true) {
+    while (true) {
 #ifdef __linux__
-          if (kbhit()) {  //Check if button was pressed
-              if (getch() == SPECIAL_BUTTON) {
-#elif defined (_WIN32) || defined (_WIN64 )
+        if (kbhit()) {  //Check if button was pressed
+            if (getch() == SPECIAL_BUTTON) {
+#elif defined(_WIN32) || defined(_WIN64)
         if (_kbhit()) {  //Check if button was pressed
             if (_getch() == SPECIAL_BUTTON) {
 
 #endif
-                  interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
-              }
-            
+                interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
+            }
+
         } else {
             usleep(100000);
             display();
@@ -71,7 +71,7 @@ InterfaceManager::InterfaceManager() {
 InterfaceInput::Button InterfaceManager::readKey() {
 #ifdef __linux__
     switch (getch()) {
-#elif defined (_WIN32) || defined (_WIN64 )
+#elif defined(_WIN32) || defined(_WIN64)
     switch (_getch()) {
 #endif
         case BUTTON_1:
@@ -86,41 +86,13 @@ InterfaceInput::Button InterfaceManager::readKey() {
 }
 void InterfaceManager::display() {
 #ifdef __linux__
-    //system("clear");
     clear();
 #else
     system("cls");
 #endif
 
-    MenuItem *currentItem = interfaceLocal->getCurrentMenuItem();
+    MenuItem* currentItem = interfaceLocal->getCurrentMenuItem();
     currentItem->display();
-    // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
-    // if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
-    //     printw("BACK ITEM\n");
-    // }
-
-    // if (Ssd_1306->isNoChangeableErrorCounting()) {
-    //     cout << "No change" << endl;
-    //     cout << "possible";
-    // } else if (Ssd_1306->isSaveParameterValueMode()) {
-    //     cout << "SAVE" << endl;
-    //     cout << "to flash" << endl;
-    // } else {
-    //     cout << Ssd_1306->getParameterHeadline() << endl;
-    //     if (!(Ssd_1306->hasSubList())) {
-    //         if (Ssd_1306->isVisibleValue())
-    //             cout << Ssd_1306->getParameterValue() << " "
-    //                  << Ssd_1306->getParameterUnit();
-
-    //         else {
-    //             for (uint16_t i = (Ssd_1306->getParameterValue()) * 10; i > 0;
-    //                  i /= 10)
-    //                 cout << " ";
-    //             cout << Ssd_1306->getParameterUnit();
-    //         }
-    //     }
-    // }
-    // cout << endl;
 #ifdef __linux__
     refresh();
 #endif
@@ -150,13 +122,12 @@ void prepareNcurses() {
 
 #endif
 
-#if defined (_WIN32) || defined (_WIN64 )
-void InterfaceManager::usleep(__int64 usec)
-{
+#if defined(_WIN32) || defined(_WIN64)
+void InterfaceManager::usleep(__int64 usec) {
     HANDLE timer;
     LARGE_INTEGER ft;
 
-    ft.QuadPart = -(10 * usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+    ft.QuadPart = -(10 * usec);  // Convert to 100 nanosecond interval, negative value indicates relative time
 
     timer = CreateWaitableTimer(NULL, TRUE, NULL);
     SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
