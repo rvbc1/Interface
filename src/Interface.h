@@ -10,7 +10,7 @@
 #include "MenuItemsList.h"
 #include "InterfaceJsonKeys.h"
 
-#define INTERFACE_FILE "src/Interface.json"
+#define INTERFACE_FILE "Interface.json"
 
 class Interface {
    public:

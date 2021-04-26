@@ -38,5 +38,7 @@ void Action::display() {
     } else {
         printw("[NO]    YES    +%s\n", " | editing");
     }
+#elif defined (_WIN32) || defined (_WIN64 )
+
 #endif
 }

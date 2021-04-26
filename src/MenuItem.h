@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "InterfaceInput.h"
-#include "main.h"
+#include "iostream"
 
 class MenuItemsList;
 class Parameter;

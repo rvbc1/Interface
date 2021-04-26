@@ -33,5 +33,7 @@ void Value::display() {
     printw("%s\n", name.c_str());
     //printw("%d %s\n", value, name.c_str());
     printw("   %d %s   %s\n", value, unit.c_str(), " | not editable");
+#elif defined (_WIN32) || defined (_WIN64 )
+    std::cout << name << std::endl << "   " << value << "   " << unit <<  "| not editable" << std::endl;
     #endif
 }

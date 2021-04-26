@@ -2,6 +2,11 @@
 
 Interface* InterfaceManager::interface = nullptr;
 
+#if defined (_WIN32) || defined (_WIN64 )
+#include <Windows.h>
+#include <conio.h>
+#endif
+
 #ifdef __linux__
     #include <ncurses.h>
     #include <unistd.h>
@@ -35,7 +40,7 @@ InterfaceManager::InterfaceManager() {
 #ifdef __linux__
     prepareNcurses();  //PREPARE LIB FOR READ LINUX KEYBOARD EVENTS
 #endif
-    interface = new Interface;
+    interfaceLocal = new Interface;
 
     Action* saveAction = interface->getActionByName("Save");
     if (saveAction != nullptr) {
@@ -44,12 +49,18 @@ InterfaceManager::InterfaceManager() {
     }
 
     display();
-    while (true) {
-        if (kbhit()) {  //Check if button was pressed
-            if (getch() == SPECIAL_BUTTON) {
-                interface->setInputEvent(readKey());  //Check if button was pressed
-            }
+      while (true) {
+#ifdef __linux__
+          if (kbhit()) {  //Check if button was pressed
+              if (getch() == SPECIAL_BUTTON) {
+#elif defined (_WIN32) || defined (_WIN64 )
+        if (_kbhit()) {  //Check if button was pressed
+            if (_getch() == SPECIAL_BUTTON) {
 
+#endif
+                  interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
+              }
+            
         } else {
             usleep(100000);
             display();
@@ -58,7 +69,11 @@ InterfaceManager::InterfaceManager() {
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
+#ifdef __linux__
     switch (getch()) {
+#elif defined (_WIN32) || defined (_WIN64 )
+    switch (_getch()) {
+#endif
         case BUTTON_1:
             return InterfaceInput::LEFT_BUTTON;
         case BUTTON_2:
@@ -74,9 +89,10 @@ void InterfaceManager::display() {
     //system("clear");
     clear();
 #else
-    //system("cls");
+    system("cls");
 #endif
-    MenuItem* currentItem = interface->getCurrentMenuItem();
+
+    MenuItem *currentItem = interfaceLocal->getCurrentMenuItem();
     currentItem->display();
     // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
     // if (interface->getCurrentMenuItem()->type == MenuItem::BACK_EVENT_ITEM) {
@@ -132,4 +148,19 @@ void prepareNcurses() {
     scrollok(stdscr, TRUE);
 }
 
+#endif
+
+#if defined (_WIN32) || defined (_WIN64 )
+void InterfaceManager::usleep(__int64 usec)
+{
+    HANDLE timer;
+    LARGE_INTEGER ft;
+
+    ft.QuadPart = -(10 * usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+}
 #endif
