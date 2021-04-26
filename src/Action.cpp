@@ -22,7 +22,10 @@ void Action::setInputEvent(InterfaceInput::Button event) {
 
 
 void Action::display() {
+#ifdef __linux__
     // printw("%s\n", name.c_str());
     // //printw("%d %s\n", value, name.c_str());
     // printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
+#elif defined (_WIN32) || defined (_WIN64 )
+#endif
 }

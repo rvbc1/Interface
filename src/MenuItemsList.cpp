@@ -84,5 +84,7 @@ void MenuItemsList::display() {
     // if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
     //     printw("BACK ITEM\n");
     // }
+#elif defined (_WIN32) || defined (_WIN64 )
+    std::cout << getName() << std::endl << subMenuItems[currentMainMenuItem]->getName().c_str();
     #endif
 }
