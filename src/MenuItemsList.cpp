@@ -1,4 +1,5 @@
 #include "MenuItemsList.h"
+#include "InterfaceDisplayManager.h"
 
 MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
     this->type = SUBMENU;
@@ -80,13 +81,5 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
 }
 
 void MenuItemsList::display() {
-#ifdef __linux__
-    printw("%s\n  > %s\n", getName().c_str(), subMenuItems[currentMainMenuItem]->getName().c_str());
-
-    // if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
-    //     printw("BACK ITEM\n");
-    // }
-#elif defined (_WIN32) || defined (_WIN64 )
-    std::cout << getName() << std::endl << subMenuItems[currentMainMenuItem]->getName().c_str();
-    #endif
+    InterfaceDisplayManager::displayMenuItemList(this);
 }

@@ -21,7 +21,7 @@ class Parameter : public MenuItem {
 
     void display();
 
-    private:
+    //private:
     PARAMETER_VALUE_TYPE value = 0;
     PARAMETER_VALUE_TYPE minValue = INT16_T_MIN;
     PARAMETER_VALUE_TYPE maxValue = INT16_T_MAX;

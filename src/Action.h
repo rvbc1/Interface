@@ -12,7 +12,7 @@ class Action : public MenuItem {
     void setFunction(void (*function)());
     void display();
 
-   private:
+   //private:
     void (*function)() = nullptr;
     uint8_t value = 0;
 };

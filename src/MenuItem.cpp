@@ -41,9 +41,9 @@ void MenuItem::setAsActiveItem() {
 }
 
 void MenuItem::display() {
-#ifdef __linux__
-    printw("displaing MenuItem %s\n", name.c_str());
-#elif defined(_WIN32) || defined(_WIN64)
-    std::cout << "displaing MenuItem";
-#endif
+// #ifdef __linux__
+//     printw("displaing MenuItem %s\n", name.c_str());
+// #elif defined(_WIN32) || defined(_WIN64)
+//     std::cout << "displaing MenuItem";
+// #endif
 }

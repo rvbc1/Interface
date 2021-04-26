@@ -13,7 +13,7 @@ class Value : public MenuItem {
 
     void display();
 
-    private:
+    //private:
     int value = 0;
     std::string unit = "";
 };
