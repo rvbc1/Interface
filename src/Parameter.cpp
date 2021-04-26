@@ -1,5 +1,7 @@
 #include "Parameter.h"
 
+#include "InterfaceDisplayManager.h"
+
 Parameter::Parameter(std::string name) : MenuItem(name) {
     type = MenuItem::PARAMTER;
 }
@@ -51,12 +53,5 @@ void Parameter::setUnit(std::string unit) {
 }
 
 void Parameter::display() {
-#ifdef __linux__
-    printw("%s\n", name.c_str());
-    //printw("%d %s\n", value, name.c_str());
-    printw("-   %d %s   +%s\n", value, unit.c_str(), " | editing");
-#elif defined(_WIN32) || defined(_WIN64)
-    std::cout << name << std::endl
-              << "   " << value << "   " << unit << "| editing" << std::endl;
-#endif
+    InterfaceDisplayManager::displayParameter(this);
 }

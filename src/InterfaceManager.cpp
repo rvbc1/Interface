@@ -22,7 +22,7 @@ int kbhit(void);
     #define BUTTON_3       66  // down
     #define SPECIAL_BUTTON 91
 
-#else
+#elif defined(_WIN32) || defined(_WIN64)
     #define BUTTON_1       75  // left
     #define BUTTON_2       77  // right
     #define BUTTON_3       80  // down
@@ -38,7 +38,7 @@ void InterfaceManager::saveInterface() {
 
 InterfaceManager::InterfaceManager() {
 #ifdef __linux__
-    prepareNcurses();  //PREPARE LIB FOR READ LINUX KEYBOARD EVENTS
+    prepareNcurses();
 #endif
     interfaceLocal = new Interface;
 
@@ -51,14 +51,13 @@ InterfaceManager::InterfaceManager() {
     display();
     while (true) {
 #ifdef __linux__
-        if (kbhit()) {  //Check if button was pressed
+        if (kbhit()) {
             if (getch() == SPECIAL_BUTTON) {
 #elif defined(_WIN32) || defined(_WIN64)
-        if (_kbhit()) {  //Check if button was pressed
+        if (_kbhit()) {
             if (_getch() == SPECIAL_BUTTON) {
-
 #endif
-                interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
+                interfaceLocal->setInputEvent(readKey());
             }
 
         } else {
@@ -87,7 +86,7 @@ InterfaceInput::Button InterfaceManager::readKey() {
 void InterfaceManager::display() {
 #ifdef __linux__
     clear();
-#else
+#elif defined(_WIN32) || defined(_WIN64)
     system("cls");
 #endif
 

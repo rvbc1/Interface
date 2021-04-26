@@ -1,5 +1,7 @@
 #include "Action.h"
 
+#include "InterfaceDisplayManager.h"
+
 Action::Action(std::string name) : MenuItem(name) {
     type = MenuItem::ACTION;
 }
@@ -31,14 +33,5 @@ void Action::setFunction(void (*function)()) {
 }
 
 void Action::display() {
-#ifdef __linux__
-    printw("%s\n", name.c_str());
-    if (value) {
-        printw(" NO    [YES]   +%s\n", " | editing");
-    } else {
-        printw("[NO]    YES    +%s\n", " | editing");
-    }
-#elif defined(_WIN32) || defined(_WIN64)
-
-#endif
+    InterfaceDisplayManager::displayAction(this);
 }
