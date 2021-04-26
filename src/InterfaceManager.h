@@ -1,6 +1,5 @@
 #ifndef INTERFACE_MANAGER_H_
 #define INTERFACE_MANAGER_H_
-#define _windows_
 #include <iostream>
 
 #include "Interface.h"
@@ -14,7 +13,7 @@ class InterfaceManager {
     Interface *interfaceLocal = nullptr;
     InterfaceInput::Button readKey();
     void display();
-#ifdef _windows_
+#if defined (_WIN32) || defined (_WIN64 )
     void usleep(__int64 usec);
 #endif
 };

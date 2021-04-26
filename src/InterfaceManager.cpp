@@ -1,8 +1,9 @@
 #include "InterfaceManager.h"
-#ifdef _windows_
+#if defined (_WIN32) || defined (_WIN64 )
 #include <Windows.h>
 #include <conio.h>
 #endif
+
 #ifdef __linux__
     #include <unistd.h>
     #include <ncurses.h>
@@ -36,12 +37,13 @@ InterfaceManager::InterfaceManager() {
 
     display();
       while (true) {
-#ifdef _windows_
+#ifdef __linux__
+          if (kbhit()) {  //Check if button was pressed
+              if (getch() == SPECIAL_BUTTON) {
+#elif defined (_WIN32) || defined (_WIN64 )
         if (_kbhit()) {  //Check if button was pressed
             if (_getch() == SPECIAL_BUTTON) {
-#else
-        if (kbhit()) {  //Check if button was pressed
-              if (getch() == SPECIAL_BUTTON) {
+
 #endif
                   interfaceLocal->setInputEvent(readKey());  //Check if button was pressed
               }
@@ -54,10 +56,10 @@ InterfaceManager::InterfaceManager() {
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
-#ifdef _windows_
-    switch (_getch()) {
-#else
+#ifdef __linux__
     switch (getch()) {
+#elif defined (_WIN32) || defined (_WIN64 )
+    switch (_getch()) {
 #endif
         case BUTTON_1:
             return InterfaceInput::LEFT_BUTTON;
@@ -74,7 +76,7 @@ void InterfaceManager::display() {
     //system("clear");
     clear();
 #else
-    //system("cls");
+    system("cls");
 #endif
     MenuItem *currentItem = interfaceLocal->getCurrentMenuItem();
     currentItem->display();
@@ -134,7 +136,7 @@ void prepareNcurses() {
 
 #endif
 
-#ifdef _windows_
+#if defined (_WIN32) || defined (_WIN64 )
 void InterfaceManager::usleep(__int64 usec)
 {
     HANDLE timer;

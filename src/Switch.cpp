@@ -34,5 +34,13 @@ void Switch::display() {
     } else {
         printw("[OFF]    ON    +%s\n", " | editing");
     }
+#elif defined (_WIN32) || defined (_WIN64 )
+    std::cout << name << std::endl;
+    if (value) {
+        std::cout << " OFF    [ON]   + | editing" << std::endl;
+    }
+    else {
+        std::cout << "[OFF]    ON    + | editing" << std::endl;
+    }
     #endif
 }
