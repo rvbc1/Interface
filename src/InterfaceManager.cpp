@@ -1,12 +1,15 @@
 #include "InterfaceManager.h"
+
+Interface* InterfaceManager::interface = nullptr;
+
 #if defined (_WIN32) || defined (_WIN64 )
 #include <Windows.h>
 #include <conio.h>
 #endif
 
 #ifdef __linux__
-    #include <unistd.h>
     #include <ncurses.h>
+    #include <unistd.h>
 
 void prepareNcurses();
 int kbhit(void);
@@ -29,11 +32,21 @@ int kbhit(void);
 
 #define INTERVAL 0.1
 
+void InterfaceManager::saveInterface() {
+    interface->save("savedInterface.json");
+}
+
 InterfaceManager::InterfaceManager() {
 #ifdef __linux__
     prepareNcurses();  //PREPARE LIB FOR READ LINUX KEYBOARD EVENTS
 #endif
     interfaceLocal = new Interface;
+
+    Action* saveAction = interface->getActionByName("Save");
+    if (saveAction != nullptr) {
+        saveAction->name = "SAVE";
+        saveAction->setFunction(&(this->saveInterface));
+    }
 
     display();
       while (true) {
@@ -52,7 +65,7 @@ InterfaceManager::InterfaceManager() {
             usleep(100000);
             display();
         }
-     }
+    }
 }
 
 InterfaceInput::Button InterfaceManager::readKey() {
@@ -78,6 +91,7 @@ void InterfaceManager::display() {
 #else
     system("cls");
 #endif
+
     MenuItem *currentItem = interfaceLocal->getCurrentMenuItem();
     currentItem->display();
     // printw("%s\n", currentItem->subMenuItems[currentItem->currentMainMenuItem]->getName().c_str());
@@ -109,7 +123,7 @@ void InterfaceManager::display() {
     // cout << endl;
 #ifdef __linux__
     refresh();
-    #endif
+#endif
 }
 
 #ifdef __linux__

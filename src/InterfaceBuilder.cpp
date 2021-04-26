@@ -47,11 +47,13 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
 
         } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_SWITCH) {
             Switch* switchM = new Switch(v[MENU_ITEM_NAME_KEY].as<std::string>());
-            switchM->setValue(v["value"].as<uint8_t>());
+            switchM->setValue(v[VALUE_KEY].as<uint8_t>());
             parent->addItemToList(switchM);
 
         } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_ACTION) {
-            parent->addItemToList(new Action(v[MENU_ITEM_NAME_KEY].as<std::string>()));
+            Action* action = new Action(v[MENU_ITEM_NAME_KEY].as<std::string>());
+        //    action->setFunction(&InterfaceBuilder::saveInterface);
+            parent->addItemToList(action);
 
         } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_MENU_ITEMS_LIST) {
             MenuItemsList* menuItemsList = new MenuItemsList(v[MENU_ITEM_NAME_KEY].as<std::string>());

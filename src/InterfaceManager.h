@@ -8,9 +8,11 @@
 class InterfaceManager {
    public:
     InterfaceManager();
+        static void saveInterface();
 
    private:
-    Interface *interfaceLocal = nullptr;
+    static Interface *interfaceLocal;
+  
     InterfaceInput::Button readKey();
     void display();
 #if defined (_WIN32) || defined (_WIN64 )
