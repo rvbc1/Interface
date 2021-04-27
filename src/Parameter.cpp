@@ -55,3 +55,10 @@ void Parameter::setUnit(std::string unit) {
 void Parameter::display() {
     InterfaceDisplayManager::displayParameter(this);
 }
+
+PARAMETER_VALUE_TYPE Parameter::getValue() {
+    return value;
+}
+std::string Parameter::getUnit() {
+    return unit;
+}

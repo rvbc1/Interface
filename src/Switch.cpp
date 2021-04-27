@@ -1,4 +1,5 @@
 #include "Switch.h"
+
 #include "InterfaceDisplayManager.h"
 
 Switch::Switch(std::string name) : MenuItem(name) {
@@ -28,5 +29,9 @@ void Switch::setValue(uint8_t value) {
 }
 
 void Switch::display() {
-InterfaceDisplayManager::displaySwitch(this);
+    InterfaceDisplayManager::displaySwitch(this);
+}
+
+uint8_t Switch::getValue(){
+    return value;
 }
