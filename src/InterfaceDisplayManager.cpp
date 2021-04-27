@@ -2,7 +2,7 @@
 
 void InterfaceDisplayManager::displayMenuItemList(MenuItemsList* item) {
 #ifdef __linux__
-    printw("%s\n  > %s\n", item->getName().c_str(), item->subMenuItems[item->currentMainMenuItem]->getName().c_str());
+    printw("%s\n  > %s\n", item->getName().c_str(), item->getSelectedMenuItem()->getName().c_str());
 
     // if (subMenuItems[currentMainMenuItem]->type == MenuItem::BACK_EVENT_ITEM) {
     //     printw("BACK ITEM\n");
@@ -17,7 +17,7 @@ void InterfaceDisplayManager::displayParameter(Parameter* item) {
 #ifdef __linux__
     printw("%s\n", item->getName().c_str());
     //printw("%d %s\n", value, name.c_str());
-    printw("-   %d %s   +%s\n", item->value, item->unit.c_str(), " | editing");
+    printw("-   %d %s   +%s\n", item->getValue(), item->getUnit().c_str(), " | editing");
 #elif defined(_WIN32) || defined(_WIN64)
     std::cout << name << std::endl
               << "   " << value << "   " << unit << "| editing" << std::endl;
@@ -27,7 +27,7 @@ void InterfaceDisplayManager::displayParameter(Parameter* item) {
 void InterfaceDisplayManager::displayAction(Action* item) {
 #ifdef __linux__
     printw("%s\n", item->getName().c_str());
-    if (item->value) {
+    if (item->getValue()) {
         printw(" NO    [YES]   +%s\n", " | editing");
     } else {
         printw("[NO]    YES    +%s\n", " | editing");
@@ -40,7 +40,7 @@ void InterfaceDisplayManager::displayAction(Action* item) {
 void InterfaceDisplayManager::displaySwitch(Switch* item) {
 #ifdef __linux__
     printw("%s\n", item->getName().c_str());
-    if (item->value) {
+    if (item->getValue()) {
         printw(" OFF    [ON]   +%s\n", " | editing");
     } else {
         printw("[OFF]    ON    +%s\n", " | editing");

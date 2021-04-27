@@ -14,7 +14,9 @@ class Switch : public MenuItem {
 
     void display();
 
-   // private:
+    uint8_t getValue(); 
+
+    protected:
     uint8_t value = 0;
 };
 

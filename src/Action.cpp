@@ -2,7 +2,7 @@
 
 #include "InterfaceDisplayManager.h"
 
-Action::Action(std::string name) : MenuItem(name) {
+Action::Action(std::string name) : Switch(name) {
     type = MenuItem::ACTION;
 }
 

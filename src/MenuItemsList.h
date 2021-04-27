@@ -6,7 +6,11 @@
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 
+class Interface;
+
 class MenuItemsList : public MenuItem {
+    friend class Interface;
+
    public:
     MenuItemsList(std::string name);
 
@@ -14,15 +18,16 @@ class MenuItemsList : public MenuItem {
     void setInputEvent(InterfaceInput::Button event);
 
     MenuItem* getCurrentMenuItem();
+    MenuItem* getSelectedMenuItem();
     void display();
 
-   //private:
+   private:
     std::vector<MenuItem*> subMenuItems;
 
     void moveLeft();
     void moveRight();
 
-    MenuItem* getSelectedMenuItem();
+    
 
     uint16_t currentMainMenuItem = 0;
 };
