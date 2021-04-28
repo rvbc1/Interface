@@ -33,18 +33,17 @@ int kbhit(void);
 #define INTERVAL 0.1
 
 void InterfaceManager::saveInterface() {
-    interfaceLocal->save("savedInterface.json");
+    interfaceLocal->save();
 }
 
 InterfaceManager::InterfaceManager() {
 #ifdef __linux__
     prepareNcurses();
 #endif
-    interfaceLocal = new Interface;
+    interfaceLocal = new Interface("InterfaceFile.json");
 
     Action* saveAction = interfaceLocal->getActionByName("Save");
     if (saveAction != nullptr) {
-        saveAction->name = "SAVE";
         saveAction->setFunction(&(this->saveInterface));
     }
 

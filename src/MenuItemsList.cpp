@@ -1,8 +1,9 @@
 #include "MenuItemsList.h"
+
 #include "InterfaceDisplayManager.h"
 
 MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
-    this->type = SUBMENU;
+    this->type = MENU_ITEMS_LIST;
 
     MenuItem* backItem = new MenuItem("Back");
     backItem->setType(BACK_EVENT_ITEM);
@@ -14,6 +15,9 @@ MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
 void MenuItemsList::addItemToList(MenuItem* menuItem) {
     menuItem->parentMenuItem = this;
     subMenuItems.push_back(menuItem);
+    if (currentMainMenuItem == 0) {
+        currentMainMenuItem = 1;
+    }
 }
 
 void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
@@ -27,7 +31,7 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
         case InterfaceInput::ENTER_BUTTON:
             switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM IN LIST
                 case PARAMTER:
-                case SUBMENU:
+                case MENU_ITEMS_LIST:
                 case VALUE:
                 case SWITCH:
                 case ACTION:
@@ -50,8 +54,13 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
 }
 
 void MenuItemsList::moveLeft() {
+    uint16_t minimalElementIndex = 0;
+    if (parentMenuItem == nullptr) {
+        minimalElementIndex = 1;  //Dont show back element when item dont has parent
+    }
+
     if (subMenuItems.size() > 0) {
-        if (currentMainMenuItem > 0) {
+        if (currentMainMenuItem > minimalElementIndex) {
             currentMainMenuItem--;
         } else {
             currentMainMenuItem = subMenuItems.size() - 1;
@@ -60,11 +69,16 @@ void MenuItemsList::moveLeft() {
 }
 
 void MenuItemsList::moveRight() {
+    uint16_t minimalElementIndex = 0;
+    if (parentMenuItem == nullptr) {
+        minimalElementIndex = 1;  //Dont show back element when item dont has parent
+    }
+
     if (subMenuItems.size() > 0) {
         if (currentMainMenuItem < (subMenuItems.size() - 1)) {
             currentMainMenuItem++;
         } else {
-            currentMainMenuItem = 0;
+            currentMainMenuItem = minimalElementIndex;
         }
     }
 }
@@ -80,6 +94,31 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
     return subMenuItems[currentMainMenuItem];
 }
 
+MenuItem* MenuItemsList::getMenuItemByName(std::string name, Type type) {
+    if ((name == this->name) && ((type == UNDEFINED) || (type == this->type))) {
+        return this;
+    } else {
+        for (MenuItem* item : subMenuItems) {
+            MenuItem* foundItem = item->getMenuItemByName(name);
+            if (foundItem != nullptr) {
+                return foundItem;
+            }
+        }
+    }
+    return nullptr;
+}
+
 void MenuItemsList::display() {
     InterfaceDisplayManager::displayMenuItemList(this);
+}
+
+void MenuItemsList::prepareJsonObject(JsonObject jsonObject) {
+    jsonObject[MENU_ITEM_NAME_KEY] = name;
+    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
+    JsonArray jsonArray = jsonObject.createNestedArray("menuItemsList");
+    for (MenuItem* item : subMenuItems) {
+        if (item->getType() != BACK_EVENT_ITEM) {
+            item->prepareJsonObject(jsonArray.createNestedObject());
+        }
+    }
 }
