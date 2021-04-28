@@ -25,6 +25,13 @@ MenuItem* MenuItem::getCurrentMenuItem() {
     return this;
 }
 
+MenuItem* MenuItem::getMenuItemByName(std::string name, Type type) {
+    if ((name == this->name) && ((type == UNDEFINED) || (type == this->type))) {
+        return this;
+    }
+    return nullptr;
+}
+
 void MenuItem::setType(MenuItem::Type type) {
     this->type = type;
 }

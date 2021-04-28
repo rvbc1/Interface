@@ -19,6 +19,8 @@ class MenuItemsList : public MenuItem {
 
     MenuItem* getCurrentMenuItem();
     MenuItem* getSelectedMenuItem();
+
+    MenuItem* getMenuItemByName(std::string name, Type type = UNDEFINED);
     void display();
 
     void prepareJsonObject(JsonObject jsonObject);

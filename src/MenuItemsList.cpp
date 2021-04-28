@@ -81,6 +81,20 @@ MenuItem* MenuItemsList::getSelectedMenuItem() {
     return subMenuItems[currentMainMenuItem];
 }
 
+MenuItem* MenuItemsList::getMenuItemByName(std::string name, Type type) {
+    if ((name == this->name) && ((type == UNDEFINED) || (type == this->type))) {
+        return this;
+    } else {
+        for (MenuItem* item : subMenuItems) {
+            MenuItem* foundItem = item->getMenuItemByName(name);
+            if(foundItem != nullptr){
+                return foundItem;
+            }
+        }
+    }
+    return nullptr;
+}
+
 void MenuItemsList::display() {
     InterfaceDisplayManager::displayMenuItemList(this);
 }

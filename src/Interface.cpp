@@ -16,21 +16,11 @@ MenuItem* Interface::getCurrentMenuItem() {
 }
 
 MenuItem* Interface::getMenuItemByName(std::string name) {
-    // for (MenuItem* item : mainMenu->subMenuItems) {
-    //     if (item->getName() == name) {
-    //         return item;
-    //     }
-    // }
-    return nullptr;
+    return mainMenuItem->getMenuItemByName(name);
 }
 
 Action* Interface::getActionByName(std::string name) {
-    // for (MenuItem* item : mainMenu->subMenuItems) {
-    //     if ((item->getName() == name) && (item->getType() == MenuItem::ACTION)) {
-    //         return (Action*)item;
-    //     }
-    // }
-    return nullptr;
+    return (Action*)mainMenuItem->getMenuItemByName(name, MenuItem::ACTION);
 }
 
 void Interface::save(std::string filepath) {
