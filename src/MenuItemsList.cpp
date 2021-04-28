@@ -15,7 +15,7 @@ MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
 void MenuItemsList::addItemToList(MenuItem* menuItem) {
     menuItem->parentMenuItem = this;
     subMenuItems.push_back(menuItem);
-    if(currentMainMenuItem == 0){
+    if (currentMainMenuItem == 0) {
         currentMainMenuItem = 1;
     }
 }
@@ -54,8 +54,13 @@ void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
 }
 
 void MenuItemsList::moveLeft() {
+    uint16_t minimalElementIndex = 0;
+    if (parentMenuItem == nullptr) {
+        minimalElementIndex = 1;  //Dont show back element when item dont has parent
+    }
+
     if (subMenuItems.size() > 0) {
-        if (currentMainMenuItem > 0) {
+        if (currentMainMenuItem > minimalElementIndex) {
             currentMainMenuItem--;
         } else {
             currentMainMenuItem = subMenuItems.size() - 1;
@@ -64,11 +69,16 @@ void MenuItemsList::moveLeft() {
 }
 
 void MenuItemsList::moveRight() {
+    uint16_t minimalElementIndex = 0;
+    if (parentMenuItem == nullptr) {
+        minimalElementIndex = 1;  //Dont show back element when item dont has parent
+    }
+
     if (subMenuItems.size() > 0) {
         if (currentMainMenuItem < (subMenuItems.size() - 1)) {
             currentMainMenuItem++;
         } else {
-            currentMainMenuItem = 0;
+            currentMainMenuItem = minimalElementIndex;
         }
     }
 }
@@ -90,7 +100,7 @@ MenuItem* MenuItemsList::getMenuItemByName(std::string name, Type type) {
     } else {
         for (MenuItem* item : subMenuItems) {
             MenuItem* foundItem = item->getMenuItemByName(name);
-            if(foundItem != nullptr){
+            if (foundItem != nullptr) {
                 return foundItem;
             }
         }
