@@ -3,7 +3,9 @@
 
 #include <vector>
 
+#include "ArduinoJson-v6.17.3.h"
 #include "InterfaceInput.h"
+#include "InterfaceJsonKeys.h"
 #include "iostream"
 
 class MenuItemsList;
@@ -31,7 +33,7 @@ class MenuItem {
     Status status = THIS_IS_ACTIVE_ITEM;
 
     enum Type { UNDEFINED,
-                SUBMENU,
+                MENU_ITEMS_LIST,
                 PARAMTER,
                 VALUE,
                 SWITCH,
@@ -41,17 +43,21 @@ class MenuItem {
     Type getType();
 
     virtual void display();
-    std::string name = "";
+    virtual void prepareJsonObject(JsonObject jsonObject);
+
    protected:
     MenuItem* parentMenuItem = nullptr;
 
-    // std::string name = "";
+    std::string name = "";
 
     Type type = UNDEFINED;
 
     void setType(Type type);
 
     void setAsActiveItem();
+
+   private:
+    std::string getTypeString();
 };
 
 #endif

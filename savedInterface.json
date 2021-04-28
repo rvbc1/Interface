@@ -1,1 +1,100 @@
-[[{"name":"Back"},{"name":"U battery"},{"name":"Work time"},{"name":"Distance"},{"name":"En consumed"},{"name":"Temperature"},{"name":"Lights"},{"name":"Servos"},{"name":"PID"},{"name":"SAVE"}]]
+{
+  "name": "Main Menu",
+  "type": "menuItemsList",
+  "menuItemsList": [
+    {
+      "name": "U battery",
+      "type": "value",
+      "value": 14,
+      "unit": "V"
+    },
+    {
+      "name": "Work time",
+      "type": "value",
+      "value": 1,
+      "unit": "s"
+    },
+    {
+      "name": "Distance",
+      "type": "value",
+      "value": 1,
+      "unit": "cm"
+    },
+    {
+      "name": "En consumed",
+      "type": "value",
+      "value": 1,
+      "unit": "Wh"
+    },
+    {
+      "name": "Temperature",
+      "type": "value",
+      "value": 1,
+      "unit": "*C"
+    },
+    {
+      "name": "Lights",
+      "type": "switch"
+    },
+    {
+      "name": "Servos",
+      "type": "menuItemsList",
+      "menuItemsList": [
+        {
+          "name": "Front",
+          "type": "parameter",
+          "value": 0,
+          "min": -45,
+          "max": 45,
+          "unit": "*"
+        },
+        {
+          "name": "Rear",
+          "type": "parameter",
+          "value": 0,
+          "min": -45,
+          "max": 45,
+          "unit": "*"
+        },
+        {
+          "name": "Supply",
+          "type": "switch"
+        }
+      ]
+    },
+    {
+      "name": "PID",
+      "type": "menuItemsList",
+      "menuItemsList": [
+        {
+          "name": "P",
+          "type": "parameter",
+          "value": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "kp"
+        },
+        {
+          "name": "I",
+          "type": "parameter",
+          "value": 1,
+          "min": -32768,
+          "max": 32767,
+          "unit": "ki"
+        },
+        {
+          "name": "D",
+          "type": "parameter",
+          "value": 1,
+          "min": -32768,
+          "max": 32767,
+          "unit": "kd"
+        }
+      ]
+    },
+    {
+      "name": "Save",
+      "type": "action"
+    }
+  ]
+}

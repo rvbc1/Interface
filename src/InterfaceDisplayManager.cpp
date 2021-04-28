@@ -58,7 +58,7 @@ void InterfaceDisplayManager::displayValue(Value* item) {
 #ifdef __linux__
     printw("%s\n", item->getName().c_str());
     //printw("%d %s\n", value, name.c_str());
-    printw("   %d %s   %s\n", item->value, item->unit.c_str(), " | not editable");
+    printw("   %d %s   %s\n", item->getValue(), item->getUnit().c_str(), " | not editable");
 #elif defined(_WIN32) || defined(_WIN64)
     std::cout << name << std::endl
               << "   " << value << "   " << unit << "| not editable" << std::endl;

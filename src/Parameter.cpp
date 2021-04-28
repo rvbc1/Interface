@@ -2,7 +2,7 @@
 
 #include "InterfaceDisplayManager.h"
 
-Parameter::Parameter(std::string name) : MenuItem(name) {
+Parameter::Parameter(std::string name) : Value(name) {
     type = MenuItem::PARAMTER;
 }
 
@@ -36,29 +36,26 @@ void Parameter::incrementValue() {
     }
 }
 
-void Parameter::setValue(PARAMETER_VALUE_TYPE value) {
-    this->value = value;
-}
 
-void Parameter::setMinValue(PARAMETER_VALUE_TYPE minValue) {
+void Parameter::setMinValue(VALUE_TYPE minValue) {
     this->minValue = minValue;
 }
 
-void Parameter::setMaxValue(PARAMETER_VALUE_TYPE maxValue) {
+void Parameter::setMaxValue(VALUE_TYPE maxValue) {
     this->maxValue = maxValue;
 }
 
-void Parameter::setUnit(std::string unit) {
-    this->unit = unit;
-}
 
 void Parameter::display() {
     InterfaceDisplayManager::displayParameter(this);
 }
 
-PARAMETER_VALUE_TYPE Parameter::getValue() {
-    return value;
-}
-std::string Parameter::getUnit() {
-    return unit;
+
+void Parameter::prepareJsonObject(JsonObject jsonObject) {
+    jsonObject[MENU_ITEM_NAME_KEY] = name;
+    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
+    jsonObject[VALUE_KEY] = value;
+    jsonObject[MIN_VALUE_KEY] = minValue;
+    jsonObject[MAX_VALUE_KEY] = maxValue;
+    jsonObject[VALUE_UNIT_KEY] = unit;
 }

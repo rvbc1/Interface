@@ -44,11 +44,10 @@ InterfaceManager::InterfaceManager() {
 
     Action* saveAction = interfaceLocal->getActionByName("Save");
     if (saveAction != nullptr) {
-        saveAction->name = "SAVE";
         saveAction->setFunction(&(this->saveInterface));
     }
 
-    display();
+    //display();
     while (true) {
 #ifdef __linux__
         if (kbhit()) {

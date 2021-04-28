@@ -21,6 +21,8 @@ class MenuItemsList : public MenuItem {
     MenuItem* getSelectedMenuItem();
     void display();
 
+    void prepareJsonObject(JsonObject jsonObject);
+
    private:
     std::vector<MenuItem*> subMenuItems;
 

@@ -24,7 +24,7 @@ class Interface {
     void save(std::string filepath);
 
    private:
-    MenuItemsList *mainMenu = nullptr;
+    MenuItem *mainMenuItem = nullptr;
 
     MenuItem *getMenuItemByName(std::string name);
 };

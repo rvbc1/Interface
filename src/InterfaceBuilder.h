@@ -14,9 +14,11 @@
 
 class InterfaceBuilder {
 public:
-    static MenuItemsList* loadInterFaceFromJsonFile(std::string  filepath);
-    static MenuItemsList* loadDefaultInterFace();
+    static MenuItem* loadInterFaceFromJsonFile(std::string  filepath);
+    static MenuItem* loadDefaultInterFace();
     static void loadMenuItemsListFromJsonArray(MenuItemsList* parent, JsonArray array);
+    static MenuItem* loadMenuItem(JsonVariant v);
+    static void saveInterfaceToFile(MenuItem *item, std::string filepath);
 };
 
 #endif 
