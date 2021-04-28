@@ -32,6 +32,16 @@ void Switch::display() {
     InterfaceDisplayManager::displaySwitch(this);
 }
 
-uint8_t Switch::getValue(){
+uint8_t Switch::getValue() {
     return value;
+}
+
+void Switch::prepareJsonObject(JsonObject jsonObject) {
+    jsonObject[MENU_ITEM_NAME_KEY] = name;
+    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
+    if (value) {
+        jsonObject[VALUE_KEY] = true;
+    } else {
+        jsonObject[VALUE_KEY] = false;
+    }
 }

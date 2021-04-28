@@ -16,6 +16,8 @@ class Switch : public MenuItem {
 
     uint8_t getValue(); 
 
+    void prepareJsonObject(JsonObject jsonObject);
+
     protected:
     uint8_t value = 0;
 };

@@ -15,6 +15,9 @@ MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
 void MenuItemsList::addItemToList(MenuItem* menuItem) {
     menuItem->parentMenuItem = this;
     subMenuItems.push_back(menuItem);
+    if(currentMainMenuItem == 0){
+        currentMainMenuItem = 1;
+    }
 }
 
 void MenuItemsList::setInputEvent(InterfaceInput::Button event) {

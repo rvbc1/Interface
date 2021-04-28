@@ -10,23 +10,29 @@
 #include "MenuItemsList.h"
 #include "InterfaceJsonKeys.h"
 
-#define INTERFACE_FILE "Interface.json"
+#define DEFAULT_INTERFACE_FILE "Interface.json"
 
 class Interface {
    public:
     Interface();
+    Interface(std::string interfaceFilepath);
     void setInputEvent(InterfaceInput::Button event);
 
     MenuItem *getCurrentMenuItem();
 
     Action *getActionByName(std::string name);
+    void setInterfaceFilepath(std::string filepath);
+    std::string getInterfaceFilepath();
 
-    void save(std::string filepath);
+    void save();
 
    private:
+    std::string interfaceFilepath = DEFAULT_INTERFACE_FILE;
     MenuItem *mainMenuItem = nullptr;
 
     MenuItem *getMenuItemByName(std::string name);
+
+    void loadInterface();
 };
 
 #endif /* INTERFACE_H_ */

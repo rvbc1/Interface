@@ -34,7 +34,8 @@
     },
     {
       "name": "Lights",
-      "type": "switch"
+      "type": "switch",
+      "value": true
     },
     {
       "name": "Servos",
@@ -43,7 +44,7 @@
         {
           "name": "Front",
           "type": "parameter",
-          "value": 0,
+          "value": 18,
           "min": -45,
           "max": 45,
           "unit": "*"
@@ -58,7 +59,8 @@
         },
         {
           "name": "Supply",
-          "type": "switch"
+          "type": "switch",
+          "value": false
         }
       ]
     },
@@ -89,12 +91,13 @@
           "min": -32768,
           "max": 32767,
           "unit": "kd"
-        },
-        {
-          "name": "Save",
-          "type": "action"
         }
       ]
+    },
+    {
+      "name": "Save",
+      "type": "action",
+      "value": false
     }
   ]
 }
