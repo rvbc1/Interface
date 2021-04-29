@@ -6,7 +6,7 @@ Value::Value(std::string name) : MenuItem(name) {
     type = MenuItem::VALUE;
 }
 
-Value::Value(JsonObject jsonObject) : MenuItem(DEFAULT_VALUE_NAME){
+Value::Value(JsonObject jsonObject) : MenuItem(jsonObject) {
     type = MenuItem::VALUE;
     parseValueFromJsonObject(jsonObject);
 }
@@ -67,15 +67,15 @@ void Value::prepareJsonObject(JsonObject jsonObject) {
 }
 
 void Value::parseValueFromJsonObject(JsonObject jsonObject) {
-    parseMenuItemFromJsonObject(jsonObject);
+    if ((jsonObject.containsKey(VALUE_KEY)) && (jsonObject[VALUE_KEY].is<VALUE_TYPE>())) {
+        setValue(jsonObject[VALUE_KEY].as<VALUE_TYPE>());
+    }
 
-    setValue(jsonObject[VALUE_KEY].as<VALUE_TYPE>());
-
-    if (jsonObject.containsKey(VALUE_UNIT_KEY)) {
+    if ((jsonObject.containsKey(VALUE_UNIT_KEY)) && (jsonObject[VALUE_UNIT_KEY].is<std::string>())) {
         setUnit(jsonObject[VALUE_UNIT_KEY].as<std::string>());
     }
 
-    if (jsonObject.containsKey(VALUE_DIGITS_KEY)) {
+    if ((jsonObject.containsKey(VALUE_DIGITS_KEY)) && (jsonObject[VALUE_DIGITS_KEY].is<uint8_t>())) {
         setAmountOfDigits(jsonObject[VALUE_DIGITS_KEY].as<uint8_t>());
     }
 }

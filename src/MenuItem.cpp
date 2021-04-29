@@ -4,6 +4,10 @@ MenuItem::MenuItem(std::string name) {
     this->name = name;
 }
 
+MenuItem::MenuItem(JsonObject jsonObject) {
+    parseMenuItemFromJsonObject(jsonObject);
+}
+
 std::string MenuItem::getName() {
     return name;
 }
@@ -75,7 +79,7 @@ std::string MenuItem::getTypeString() {
     return "";
 }
 
-void MenuItem::prepareMenuItemJsonObject(JsonObject jsonObject){
+void MenuItem::prepareMenuItemJsonObject(JsonObject jsonObject) {
     jsonObject[MENU_ITEM_NAME_KEY] = name;
     jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
 }
@@ -84,6 +88,8 @@ void MenuItem::prepareJsonObject(JsonObject jsonObject) {
     prepareMenuItemJsonObject(jsonObject);
 }
 
-void MenuItem::parseMenuItemFromJsonObject(JsonObject jsonObject){
-    name = (jsonObject[MENU_ITEM_NAME_KEY].as<std::string>());
+void MenuItem::parseMenuItemFromJsonObject(JsonObject jsonObject) {
+    if ((jsonObject.containsKey(MENU_ITEM_NAME_KEY)) && (jsonObject[MENU_ITEM_NAME_KEY].is<std::string>())) {
+        name = (jsonObject[MENU_ITEM_NAME_KEY].as<std::string>());
+    }
 }

@@ -25,20 +25,20 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
 }
 
 MenuItem* InterfaceBuilder::loadMenuItem(JsonVariant v) {
-    if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_PARAMETER) {
-        return new Parameter(v.as<JsonObject>());
-    } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_VALUE) {
-        return new Value(v.as<JsonObject>());
-    } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_SWITCH) {
-        return new Switch(v.as<JsonObject>());
-    } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_ACTION) {
-        Action* action = new Action(v[MENU_ITEM_NAME_KEY].as<std::string>());
-        return action;
-
-    } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_MENU_ITEMS_LIST) {
-        MenuItemsList* menuItemsList = new MenuItemsList(v[MENU_ITEM_NAME_KEY].as<std::string>());
-        loadMenuItemsListFromJsonArray(menuItemsList, v[MENU_ITEMS_LIST_KEY].as<JsonArray>());
-        return menuItemsList;
+    if (v.containsKey(MENU_ITEM_TYPE_KEY)) {
+        if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_VALUE) {
+            return new Value(v.as<JsonObject>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_PARAMETER) {
+            return new Parameter(v.as<JsonObject>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_SWITCH) {
+            return new Switch(v.as<JsonObject>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_ACTION) {
+            return new Action(v.as<JsonObject>());
+        } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_MENU_ITEMS_LIST) {
+            MenuItemsList* menuItemsList = new MenuItemsList(v.as<JsonObject>());
+            loadMenuItemsListFromJsonArray(menuItemsList, v[MENU_ITEMS_LIST_KEY].as<JsonArray>());
+            return menuItemsList;
+        }
     }
     return nullptr;
 }

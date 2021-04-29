@@ -6,7 +6,7 @@ Parameter::Parameter(std::string name) : Value(name) {
     type = MenuItem::PARAMTER;
 }
 
-Parameter::Parameter(JsonObject jsonObject) : Value(DEFAULT_PARAMETER_NAME){
+Parameter::Parameter(JsonObject jsonObject) : Value(jsonObject) {
     type = MenuItem::PARAMTER;
     parseParameterFromJsonObject(jsonObject);
 }
@@ -67,16 +67,15 @@ void Parameter::prepareJsonObject(JsonObject jsonObject) {
 }
 
 void Parameter::parseParameterFromJsonObject(JsonObject jsonObject) {
-    parseValueFromJsonObject(jsonObject);
-
-    if (jsonObject.containsKey(MIN_VALUE_KEY)) {
+    if ((jsonObject.containsKey(MIN_VALUE_KEY)) && (jsonObject[MIN_VALUE_KEY].is<VALUE_TYPE>())) {
         setMinValue(jsonObject[MIN_VALUE_KEY].as<VALUE_TYPE>());
     }
-    if (jsonObject.containsKey(MAX_VALUE_KEY)) {
+    
+    if ((jsonObject.containsKey(MAX_VALUE_KEY)) && (jsonObject[MAX_VALUE_KEY].is<VALUE_TYPE>())) {
         setMaxValue(jsonObject[MAX_VALUE_KEY].as<VALUE_TYPE>());
     }
 
-    if (jsonObject.containsKey(VALUE_CHANGE_KEY)) {
+    if ((jsonObject.containsKey(VALUE_CHANGE_KEY)) && (jsonObject[VALUE_CHANGE_KEY].is<VALUE_TYPE>())) {
         setValueChange(jsonObject[VALUE_CHANGE_KEY].as<VALUE_TYPE>());
     }
 }

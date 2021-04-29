@@ -6,7 +6,7 @@ Switch::Switch(std::string name) : MenuItem(name) {
     type = MenuItem::SWITCH;
 }
 
-Switch::Switch(JsonObject jsonObject) : MenuItem(DEFAULT_SWITCH_NAME) {
+Switch::Switch(JsonObject jsonObject) : MenuItem(jsonObject) {
     type = MenuItem::SWITCH;
     parseSwitchFromJsonObject(jsonObject);
 }
@@ -51,7 +51,7 @@ void Switch::prepareJsonObject(JsonObject jsonObject) {
 }
 
 void Switch::parseSwitchFromJsonObject(JsonObject jsonObject) {
-    parseMenuItemFromJsonObject(jsonObject);
-
-    setValue(jsonObject[VALUE_KEY].as<uint8_t>());
+    if ((jsonObject.containsKey(VALUE_KEY)) && (jsonObject[VALUE_KEY].is<uint8_t>())) {
+        setValue(jsonObject[VALUE_KEY].as<uint8_t>());
+    }
 }

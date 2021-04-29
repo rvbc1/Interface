@@ -25,6 +25,7 @@ class MenuItem {
 
    public:
     MenuItem(std::string name = DEFAULT_MENU_ITEM_NAME);
+    MenuItem(JsonObject jsonObject);
 
     virtual void setInputEvent(InterfaceInput::Button event);
 
@@ -51,7 +52,7 @@ class MenuItem {
    protected:
     MenuItem* parentMenuItem = nullptr;
 
-    std::string name = "";
+    std::string name = DEFAULT_MENU_ITEM_NAME;
 
     Type type = UNDEFINED;
 
@@ -60,9 +61,10 @@ class MenuItem {
     void setAsActiveItem();
 
     void prepareMenuItemJsonObject(JsonObject jsonObject);
-    void parseMenuItemFromJsonObject(JsonObject jsonObject);
+
    private:
     std::string getTypeString();
+    void parseMenuItemFromJsonObject(JsonObject jsonObject);
 };
 
 #endif

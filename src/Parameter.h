@@ -19,9 +19,6 @@ class Parameter : public Value {
     void display();
     void prepareJsonObject(JsonObject jsonObject);
 
-   protected:
-    void parseParameterFromJsonObject(JsonObject jsonObject);
-
    private:
     VALUE_TYPE minValue = INT16_T_MIN;
     VALUE_TYPE maxValue = INT16_T_MAX;
@@ -30,6 +27,7 @@ class Parameter : public Value {
 
     void decrementValue();
     void incrementValue();
+    void parseParameterFromJsonObject(JsonObject jsonObject);
 };
 
 #endif

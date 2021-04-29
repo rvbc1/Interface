@@ -28,8 +28,6 @@ class Value : public MenuItem {
     void prepareJsonObject(JsonObject jsonObject);
 
    protected:
-    void parseValueFromJsonObject(JsonObject jsonObject);
-
     VALUE_TYPE value = 0;
     uint8_t amountOfDigits = 0;
     std::string unit = "";
@@ -37,6 +35,7 @@ class Value : public MenuItem {
     void prepareValueJsonObject(JsonObject jsonObject);
 
    private:
+    void parseValueFromJsonObject(JsonObject jsonObject);
 };
 
 #endif

@@ -21,9 +21,10 @@ class Switch : public MenuItem {
     void prepareJsonObject(JsonObject jsonObject);
 
    protected:
-    void parseSwitchFromJsonObject(JsonObject jsonObject);
-
     uint8_t value = 0;
+
+   private:
+    void parseSwitchFromJsonObject(JsonObject jsonObject);
 };
 
 #endif

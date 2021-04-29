@@ -6,9 +6,8 @@ Action::Action(std::string name) : Switch(name) {
     type = MenuItem::ACTION;
 }
 
-Action::Action(JsonObject jsonObject) : Switch(name){
+Action::Action(JsonObject jsonObject) : Switch(jsonObject){
     type = MenuItem::ACTION;
-    parseSwitchFromJsonObject(jsonObject);
 }
 
 void Action::setInputEvent(InterfaceInput::Button event) {

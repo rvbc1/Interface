@@ -12,6 +12,16 @@ MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
     subMenuItems.push_back(backItem);
 }
 
+MenuItemsList::MenuItemsList(JsonObject jsonObject) : MenuItem(jsonObject) {
+    this->type = MENU_ITEMS_LIST;
+
+    MenuItem* backItem = new MenuItem("Back");
+    backItem->setType(BACK_EVENT_ITEM);
+    backItem->parentMenuItem = this;
+    backItem->parentMenuItem = this;
+    subMenuItems.push_back(backItem);
+}
+
 void MenuItemsList::addItemToList(MenuItem* menuItem) {
     menuItem->parentMenuItem = this;
     subMenuItems.push_back(menuItem);
