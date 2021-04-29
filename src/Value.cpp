@@ -6,6 +6,11 @@ Value::Value(std::string name) : MenuItem(name) {
     type = MenuItem::VALUE;
 }
 
+Value::Value(JsonObject jsonObject) : MenuItem(DEFAULT_VALUE_NAME){
+    type = MenuItem::VALUE;
+    parseValueFromJsonObject(jsonObject);
+}
+
 void Value::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
@@ -26,7 +31,7 @@ void Value::setValue(VALUE_TYPE value) {
     this->value = value;
 }
 
-VALUE_TYPE Value::getValue(){
+VALUE_TYPE Value::getValue() {
     return value;
 }
 
@@ -38,13 +43,39 @@ std::string Value::getUnit() {
     return unit;
 }
 
+void Value::setAmountOfDigits(uint8_t digits) {
+    amountOfDigits = digits;
+}
+
+uint8_t Value::getAmountOfDigits() {
+    return amountOfDigits;
+}
+
 void Value::display() {
     InterfaceDisplayManager::displayValue(this);
 }
 
-void Value::prepareJsonObject(JsonObject jsonObject) {
-    jsonObject[MENU_ITEM_NAME_KEY] = name;
-    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
+void Value::prepareValueJsonObject(JsonObject jsonObject) {
+    prepareMenuItemJsonObject(jsonObject);
     jsonObject[VALUE_KEY] = value;
+    jsonObject[VALUE_DIGITS_KEY] = amountOfDigits;
     jsonObject[VALUE_UNIT_KEY] = unit;
+}
+
+void Value::prepareJsonObject(JsonObject jsonObject) {
+    prepareValueJsonObject(jsonObject);
+}
+
+void Value::parseValueFromJsonObject(JsonObject jsonObject) {
+    parseMenuItemFromJsonObject(jsonObject);
+
+    setValue(jsonObject[VALUE_KEY].as<VALUE_TYPE>());
+
+    if (jsonObject.containsKey(VALUE_UNIT_KEY)) {
+        setUnit(jsonObject[VALUE_UNIT_KEY].as<std::string>());
+    }
+
+    if (jsonObject.containsKey(VALUE_DIGITS_KEY)) {
+        setAmountOfDigits(jsonObject[VALUE_DIGITS_KEY].as<uint8_t>());
+    }
 }

@@ -6,6 +6,11 @@ Switch::Switch(std::string name) : MenuItem(name) {
     type = MenuItem::SWITCH;
 }
 
+Switch::Switch(JsonObject jsonObject) : MenuItem(DEFAULT_SWITCH_NAME) {
+    type = MenuItem::SWITCH;
+    parseSwitchFromJsonObject(jsonObject);
+}
+
 void Switch::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
@@ -37,11 +42,16 @@ uint8_t Switch::getValue() {
 }
 
 void Switch::prepareJsonObject(JsonObject jsonObject) {
-    jsonObject[MENU_ITEM_NAME_KEY] = name;
-    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
+    prepareMenuItemJsonObject(jsonObject);
     if (value) {
         jsonObject[VALUE_KEY] = true;
     } else {
         jsonObject[VALUE_KEY] = false;
     }
+}
+
+void Switch::parseSwitchFromJsonObject(JsonObject jsonObject) {
+    parseMenuItemFromJsonObject(jsonObject);
+
+    setValue(jsonObject[VALUE_KEY].as<uint8_t>());
 }

@@ -26,32 +26,11 @@ void InterfaceBuilder::loadMenuItemsListFromJsonArray(MenuItemsList* parent, Jso
 
 MenuItem* InterfaceBuilder::loadMenuItem(JsonVariant v) {
     if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_PARAMETER) {
-        Parameter* parameter = new Parameter(v[MENU_ITEM_NAME_KEY].as<std::string>());
-        parameter->setValue(v[VALUE_KEY].as<int>());
-        if (v.containsKey(MIN_VALUE_KEY)) {
-            parameter->setMinValue(v[MIN_VALUE_KEY].as<VALUE_TYPE>());
-        }
-        if (v.containsKey(MAX_VALUE_KEY)) {
-            parameter->setMaxValue(v[MAX_VALUE_KEY].as<VALUE_TYPE>());
-        }
-        if (v.containsKey(VALUE_UNIT_KEY)) {
-            parameter->setUnit(v[VALUE_UNIT_KEY].as<std::string>());
-        }
-        return parameter;
-
+        return new Parameter(v.as<JsonObject>());
     } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_VALUE) {
-        Value* value = new Value(v[MENU_ITEM_NAME_KEY].as<std::string>());
-        value->setValue(v[VALUE_KEY].as<int>());
-        if (v.containsKey(VALUE_UNIT_KEY)) {
-            value->setUnit(v[VALUE_UNIT_KEY].as<std::string>());
-        }
-        return value;
-
+        return new Value(v.as<JsonObject>());
     } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_SWITCH) {
-        Switch* menuItemSwich = new Switch(v[MENU_ITEM_NAME_KEY].as<std::string>());
-        menuItemSwich->setValue(v[VALUE_KEY].as<uint8_t>());
-        return menuItemSwich;
-
+        return new Switch(v.as<JsonObject>());
     } else if (v[MENU_ITEM_TYPE_KEY].as<std::string>() == MENU_ITEM_TYPE_ACTION) {
         Action* action = new Action(v[MENU_ITEM_NAME_KEY].as<std::string>());
         return action;

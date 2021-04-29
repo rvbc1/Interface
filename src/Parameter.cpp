@@ -6,6 +6,11 @@ Parameter::Parameter(std::string name) : Value(name) {
     type = MenuItem::PARAMTER;
 }
 
+Parameter::Parameter(JsonObject jsonObject) : Value(DEFAULT_PARAMETER_NAME){
+    type = MenuItem::PARAMTER;
+    parseParameterFromJsonObject(jsonObject);
+}
+
 void Parameter::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
@@ -25,17 +30,18 @@ void Parameter::setInputEvent(InterfaceInput::Button event) {
 }
 
 void Parameter::decrementValue() {
-    if (value > minValue) {
-        value--;
+    value -= valueChange;
+    if (value < minValue) {
+        value = minValue;
     }
 }
 
 void Parameter::incrementValue() {
-    if (value < maxValue) {
-        value++;
+    value += valueChange;
+    if (value > maxValue) {
+        value = maxValue;
     }
 }
-
 
 void Parameter::setMinValue(VALUE_TYPE minValue) {
     this->minValue = minValue;
@@ -45,17 +51,32 @@ void Parameter::setMaxValue(VALUE_TYPE maxValue) {
     this->maxValue = maxValue;
 }
 
+void Parameter::setValueChange(VALUE_TYPE change) {
+    valueChange = change;
+}
 
 void Parameter::display() {
     InterfaceDisplayManager::displayParameter(this);
 }
 
-
 void Parameter::prepareJsonObject(JsonObject jsonObject) {
-    jsonObject[MENU_ITEM_NAME_KEY] = name;
-    jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
-    jsonObject[VALUE_KEY] = value;
+    prepareValueJsonObject(jsonObject);
     jsonObject[MIN_VALUE_KEY] = minValue;
     jsonObject[MAX_VALUE_KEY] = maxValue;
-    jsonObject[VALUE_UNIT_KEY] = unit;
+    jsonObject[VALUE_CHANGE_KEY] = valueChange;
+}
+
+void Parameter::parseParameterFromJsonObject(JsonObject jsonObject) {
+    parseValueFromJsonObject(jsonObject);
+
+    if (jsonObject.containsKey(MIN_VALUE_KEY)) {
+        setMinValue(jsonObject[MIN_VALUE_KEY].as<VALUE_TYPE>());
+    }
+    if (jsonObject.containsKey(MAX_VALUE_KEY)) {
+        setMaxValue(jsonObject[MAX_VALUE_KEY].as<VALUE_TYPE>());
+    }
+
+    if (jsonObject.containsKey(VALUE_CHANGE_KEY)) {
+        setValueChange(jsonObject[VALUE_CHANGE_KEY].as<VALUE_TYPE>());
+    }
 }
