@@ -33,30 +33,17 @@ void MenuItemsList::addItemToList(MenuItem* menuItem) {
 void MenuItemsList::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:
-            moveLeft();  //AS LIST
+            moveLeft();
             break;
         case InterfaceInput::RIGHT_BUTTON:
-            moveRight();  //AS LIST
+            moveRight();
             break;
         case InterfaceInput::ENTER_BUTTON:
-            switch (getSelectedMenuItem()->type) {  //ALWAYS SET AS ACTIVE SELECTED ITEM IN LIST
-                case PARAMTER:
-                case MENU_ITEMS_LIST:
-                case VALUE:
-                case SWITCH:
-                case ACTION:
-                    getSelectedMenuItem()->setAsActiveItem();
-                    break;
-                case BACK_EVENT_ITEM:
-                    if (parentMenuItem != nullptr) {
-                        parentMenuItem->setAsActiveItem();
-                    }
-                    break;
-
-                case UNDEFINED:
-                    break;
+            if ((getSelectedMenuItem()->type == BACK_EVENT_ITEM) && (parentMenuItem != nullptr)) {
+                parentMenuItem->setAsActiveItem();
+            } else if (getSelectedMenuItem()->type != UNDEFINED) {
+                getSelectedMenuItem()->setAsActiveItem();
             }
-
             break;
         case InterfaceInput::OTHER_BUTTON:
             break;
@@ -125,7 +112,7 @@ void MenuItemsList::display() {
 void MenuItemsList::prepareJsonObject(JsonObject jsonObject) {
     jsonObject[MENU_ITEM_NAME_KEY] = name;
     jsonObject[MENU_ITEM_TYPE_KEY] = getTypeString();
-    JsonArray jsonArray = jsonObject.createNestedArray("menuItemsList");
+    JsonArray jsonArray = jsonObject.createNestedArray(MENU_ITEMS_LIST_KEY);
     for (MenuItem* item : subMenuItems) {
         if (item->getType() != BACK_EVENT_ITEM) {
             item->prepareJsonObject(jsonArray.createNestedObject());

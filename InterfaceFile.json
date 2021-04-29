@@ -59,7 +59,7 @@
         {
           "name": "Rear",
           "type": "parameter",
-          "value": 13,
+          "value": 10,
           "digits": 0,
           "unit": "*",
           "min": -45,
@@ -69,7 +69,7 @@
         {
           "name": "Supply",
           "type": "switch",
-          "value": false
+          "value": true
         }
       ]
     },
@@ -80,7 +80,7 @@
         {
           "name": "P",
           "type": "parameter",
-          "value": 3.5,
+          "value": 4.25,
           "digits": 2,
           "unit": "kp",
           "min": 0,
@@ -90,7 +90,7 @@
         {
           "name": "I",
           "type": "parameter",
-          "value": 5,
+          "value": 10,
           "digits": 0,
           "unit": "ki",
           "min": -32768,
@@ -100,7 +100,7 @@
         {
           "name": "D",
           "type": "parameter",
-          "value": 0.599999905,
+          "value": 0.799999952,
           "digits": 1,
           "unit": "kd",
           "min": -32768,
