@@ -11,8 +11,10 @@
 #define MENU_ITEM_TYPE_MENU_ITEMS_LIST "menuItemsList"
 
 #define VALUE_KEY "value"
+#define VALUE_DIGITS_KEY "digits"
 #define MIN_VALUE_KEY "min"
 #define MAX_VALUE_KEY "max"
+#define VALUE_CHANGE_KEY "change"
 #define VALUE_UNIT_KEY "unit"
 
 

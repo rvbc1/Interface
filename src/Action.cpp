@@ -6,6 +6,10 @@ Action::Action(std::string name) : Switch(name) {
     type = MenuItem::ACTION;
 }
 
+Action::Action(JsonObject jsonObject) : Switch(jsonObject){
+    type = MenuItem::ACTION;
+}
+
 void Action::setInputEvent(InterfaceInput::Button event) {
     switch (event) {
         case InterfaceInput::LEFT_BUTTON:

@@ -6,13 +6,13 @@
 #include "InterfaceInput.h"
 #include "MenuItem.h"
 
-class Interface;
+#define DEFAULT_MENU_ITEMS_LIST_NAME "MenuItemsList"
 
 class MenuItemsList : public MenuItem {
-    friend class Interface;
 
    public:
-    MenuItemsList(std::string name);
+    MenuItemsList(std::string name = DEFAULT_MENU_ITEMS_LIST_NAME);
+    MenuItemsList(JsonObject jsonObject);
 
     void addItemToList(MenuItem* menuItem);
     void setInputEvent(InterfaceInput::Button event);

@@ -8,6 +8,8 @@
 #include "InterfaceJsonKeys.h"
 #include "iostream"
 
+#define DEFAULT_MENU_ITEM_NAME "MenuItem"
+
 class MenuItemsList;
 class Parameter;
 class Value;
@@ -22,7 +24,8 @@ class MenuItem {
     friend class Action;
 
    public:
-    MenuItem(std::string name);
+    MenuItem(std::string name = DEFAULT_MENU_ITEM_NAME);
+    MenuItem(JsonObject jsonObject);
 
     virtual void setInputEvent(InterfaceInput::Button event);
 
@@ -49,7 +52,7 @@ class MenuItem {
    protected:
     MenuItem* parentMenuItem = nullptr;
 
-    std::string name = "";
+    std::string name = DEFAULT_MENU_ITEM_NAME;
 
     Type type = UNDEFINED;
 
@@ -57,8 +60,11 @@ class MenuItem {
 
     void setAsActiveItem();
 
+    void prepareMenuItemJsonObject(JsonObject jsonObject);
+
    private:
     std::string getTypeString();
+    void parseMenuItemFromJsonObject(JsonObject jsonObject);
 };
 
 #endif

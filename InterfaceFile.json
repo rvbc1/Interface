@@ -6,30 +6,35 @@
       "name": "U battery",
       "type": "value",
       "value": 14,
+      "digits": 0,
       "unit": "V"
     },
     {
       "name": "Work time",
       "type": "value",
       "value": 1,
+      "digits": 0,
       "unit": "s"
     },
     {
       "name": "Distance",
       "type": "value",
       "value": 1,
+      "digits": 0,
       "unit": "cm"
     },
     {
       "name": "En consumed",
       "type": "value",
       "value": 1,
+      "digits": 2,
       "unit": "Wh"
     },
     {
       "name": "Temperature",
       "type": "value",
       "value": 1,
+      "digits": 0,
       "unit": "*C"
     },
     {
@@ -45,17 +50,21 @@
           "name": "Front",
           "type": "parameter",
           "value": 18,
+          "digits": 0,
+          "unit": "*",
           "min": -45,
           "max": 45,
-          "unit": "*"
+          "change": 1
         },
         {
           "name": "Rear",
           "type": "parameter",
-          "value": 0,
+          "value": 13,
+          "digits": 0,
+          "unit": "*",
           "min": -45,
           "max": 45,
-          "unit": "*"
+          "change": 1
         },
         {
           "name": "Supply",
@@ -71,26 +80,32 @@
         {
           "name": "P",
           "type": "parameter",
-          "value": 1,
+          "value": 3.5,
+          "digits": 2,
+          "unit": "kp",
           "min": 0,
           "max": 100,
-          "unit": "kp"
+          "change": 0.25
         },
         {
           "name": "I",
           "type": "parameter",
-          "value": 1,
+          "value": 5,
+          "digits": 0,
+          "unit": "ki",
           "min": -32768,
           "max": 32767,
-          "unit": "ki"
+          "change": 1
         },
         {
           "name": "D",
           "type": "parameter",
-          "value": 1,
+          "value": 0.599999905,
+          "digits": 1,
+          "unit": "kd",
           "min": -32768,
           "max": 32767,
-          "unit": "kd"
+          "change": 0.100000001
         }
       ]
     },
