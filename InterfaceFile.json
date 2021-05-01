@@ -40,7 +40,7 @@
     {
       "name": "Lights",
       "type": "switch",
-      "value": true
+      "value": false
     },
     {
       "name": "Servos",
@@ -49,7 +49,7 @@
         {
           "name": "Front",
           "type": "parameter",
-          "value": 18,
+          "value": 15,
           "digits": 0,
           "unit": "*",
           "min": -45,
@@ -69,7 +69,7 @@
         {
           "name": "Supply",
           "type": "switch",
-          "value": true
+          "value": false
         }
       ]
     },
