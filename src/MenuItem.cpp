@@ -51,14 +51,6 @@ void MenuItem::setAsActiveItem() {
     status = THIS_IS_ACTIVE_ITEM;
 }
 
-void MenuItem::display() {
-    // #ifdef __linux__
-    //     printw("displaing MenuItem %s\n", name.c_str());
-    // #elif defined(_WIN32) || defined(_WIN64)
-    //     std::cout << "displaing MenuItem";
-    // #endif
-}
-
 std::string MenuItem::getTypeString() {
     switch (type) {
         case PARAMTER:

@@ -24,7 +24,6 @@ class Value : public MenuItem {
     void setAmountOfDigits(uint8_t digits);
     uint8_t getAmountOfDigits();
 
-    void display();
     void prepareJsonObject(JsonObject jsonObject);
 
    protected:

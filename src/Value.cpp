@@ -1,7 +1,5 @@
 #include "Value.h"
 
-#include "InterfaceDisplayManager.h"
-
 Value::Value(std::string name) : MenuItem(name) {
     type = MenuItem::VALUE;
 }
@@ -49,10 +47,6 @@ void Value::setAmountOfDigits(uint8_t digits) {
 
 uint8_t Value::getAmountOfDigits() {
     return amountOfDigits;
-}
-
-void Value::display() {
-    InterfaceDisplayManager::displayValue(this);
 }
 
 void Value::prepareValueJsonObject(JsonObject jsonObject) {
