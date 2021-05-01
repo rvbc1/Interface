@@ -1,5 +1,28 @@
 #include "InterfaceDisplayManager.h"
 
+void InterfaceDisplayManager::displayManuItem(MenuItem* item) {
+    switch (item->getType()) {
+        case MenuItem::MENU_ITEMS_LIST:
+            displayMenuItemList((MenuItemsList*)item);
+            break;
+        case MenuItem::PARAMTER:
+            displayParameter((Parameter*)item);
+            break;
+        case MenuItem::VALUE:
+            displayValue((Value*)item);
+            break;
+        case MenuItem::SWITCH:
+            displaySwitch((Switch*)item);
+            break;
+        case MenuItem::ACTION:
+            displayAction((Action*)item);
+            break;
+        case MenuItem::UNDEFINED:
+        case MenuItem::BACK_EVENT_ITEM:
+            break;
+    }
+}
+
 void InterfaceDisplayManager::showItem(std::string itemText) {
 #ifdef __linux__
     printw("%s", itemText.c_str());

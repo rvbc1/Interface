@@ -1,7 +1,5 @@
 #include "Switch.h"
 
-#include "InterfaceDisplayManager.h"
-
 Switch::Switch(std::string name) : MenuItem(name) {
     type = MenuItem::SWITCH;
 }
@@ -31,10 +29,6 @@ void Switch::setInputEvent(InterfaceInput::Button event) {
 
 void Switch::setValue(uint8_t value) {
     this->value = value;
-}
-
-void Switch::display() {
-    InterfaceDisplayManager::displaySwitch(this);
 }
 
 uint8_t Switch::getValue() {

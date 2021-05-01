@@ -1,7 +1,6 @@
 #ifndef PARAMETER_H_
 #define PARAMETER_H_
 
-#include "InterfaceInput.h"
 #include "Value.h"
 
 #define DEFAULT_PARAMETER_NAME "Parameter"
@@ -16,7 +15,6 @@ class Parameter : public Value {
     void setMaxValue(VALUE_TYPE maxValue);
     void setValueChange(VALUE_TYPE change);
 
-    void display();
     void prepareJsonObject(JsonObject jsonObject);
 
    private:

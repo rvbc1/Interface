@@ -90,7 +90,7 @@ void InterfaceManager::display() {
 #endif
 
     MenuItem* currentItem = interfaceLocal->getCurrentMenuItem();
-    currentItem->display();
+    InterfaceDisplayManager::displayManuItem(currentItem);
 #ifdef __linux__
     refresh();
 #endif

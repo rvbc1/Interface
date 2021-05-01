@@ -9,6 +9,8 @@
 
 class InterfaceDisplayManager {
    public:
+    static void displayManuItem(MenuItem *item);
+   private:
     static void displayMenuItemList(MenuItemsList* item);
     static void displayParameter(Parameter* item);
     static void displayAction(Action* item);

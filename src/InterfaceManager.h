@@ -4,6 +4,7 @@
 
 #include "Interface.h"
 #include "InterfaceInput.h"
+#include "InterfaceDisplayManager.h"
 
 class InterfaceManager {
    public:
