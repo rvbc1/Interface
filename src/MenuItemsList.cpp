@@ -1,7 +1,5 @@
 #include "MenuItemsList.h"
 
-#include "InterfaceDisplayManager.h"
-
 MenuItemsList::MenuItemsList(std::string name) : MenuItem(name) {
     this->type = MENU_ITEMS_LIST;
 
@@ -103,10 +101,6 @@ MenuItem* MenuItemsList::getMenuItemByName(std::string name, Type type) {
         }
     }
     return nullptr;
-}
-
-void MenuItemsList::display() {
-    InterfaceDisplayManager::displayMenuItemList(this);
 }
 
 void MenuItemsList::prepareJsonObject(JsonObject jsonObject) {

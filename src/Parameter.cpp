@@ -1,7 +1,5 @@
 #include "Parameter.h"
 
-#include "InterfaceDisplayManager.h"
-
 Parameter::Parameter(std::string name) : Value(name) {
     type = MenuItem::PARAMTER;
 }
@@ -53,10 +51,6 @@ void Parameter::setMaxValue(VALUE_TYPE maxValue) {
 
 void Parameter::setValueChange(VALUE_TYPE change) {
     valueChange = change;
-}
-
-void Parameter::display() {
-    InterfaceDisplayManager::displayParameter(this);
 }
 
 void Parameter::prepareJsonObject(JsonObject jsonObject) {

@@ -59,7 +59,7 @@
         {
           "name": "Rear",
           "type": "parameter",
-          "value": 10,
+          "value": 13,
           "digits": 0,
           "unit": "*",
           "min": -45,
@@ -80,7 +80,7 @@
         {
           "name": "P",
           "type": "parameter",
-          "value": 4.25,
+          "value": 5.25,
           "digits": 2,
           "unit": "kp",
           "min": 0,
@@ -90,7 +90,7 @@
         {
           "name": "I",
           "type": "parameter",
-          "value": 10,
+          "value": 6,
           "digits": 0,
           "unit": "ki",
           "min": -32768,
@@ -100,7 +100,7 @@
         {
           "name": "D",
           "type": "parameter",
-          "value": 0.799999952,
+          "value": 1.300000072,
           "digits": 1,
           "unit": "kd",
           "min": -32768,

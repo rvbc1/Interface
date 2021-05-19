@@ -45,7 +45,6 @@ class MenuItem {
 
     Type getType();
 
-    virtual void display();
     virtual void prepareJsonObject(JsonObject jsonObject);
     virtual MenuItem* getMenuItemByName(std::string name, Type type = UNDEFINED);
 

@@ -1,7 +1,5 @@
 #include "Action.h"
 
-#include "InterfaceDisplayManager.h"
-
 Action::Action(std::string name) : Switch(name) {
     type = MenuItem::ACTION;
 }
@@ -34,8 +32,4 @@ void Action::setInputEvent(InterfaceInput::Button event) {
 
 void Action::setFunction(void (*function)()) {
     this->function = function;
-}
-
-void Action::display() {
-    InterfaceDisplayManager::displayAction(this);
 }

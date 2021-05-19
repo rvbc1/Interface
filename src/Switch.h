@@ -14,8 +14,6 @@ class Switch : public MenuItem {
 
     void setValue(uint8_t value);
 
-    void display();
-
     uint8_t getValue();
 
     void prepareJsonObject(JsonObject jsonObject);

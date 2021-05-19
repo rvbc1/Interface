@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "InterfaceInput.h"
 #include "MenuItem.h"
 
 #define DEFAULT_MENU_ITEMS_LIST_NAME "MenuItemsList"
@@ -21,7 +20,6 @@ class MenuItemsList : public MenuItem {
     MenuItem* getSelectedMenuItem();
 
     MenuItem* getMenuItemByName(std::string name, Type type = UNDEFINED);
-    void display();
 
     void prepareJsonObject(JsonObject jsonObject);
 
