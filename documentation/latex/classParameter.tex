@@ -1,0 +1,175 @@
+\hypertarget{classParameter}{}\doxysection{Parameter Class Reference}
+\label{classParameter}\index{Parameter@{Parameter}}
+
+
+{\ttfamily \#include $<$Parameter.\+h$>$}
+
+
+
+Inheritance diagram for Parameter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{classParameter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Parameter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{classParameter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParameter_ad0fb4534e37a01556e054ff1fcc4a81f}{Parameter}} (std\+::string \mbox{\hyperlink{classMenuItem_a0e46de23f339da33aebb4b14ada546a7}{name}}=\mbox{\hyperlink{Parameter_8h_a5fc902e1e61e0fb424d78020dd45c2ec}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+N\+A\+ME}})
+\item 
+\mbox{\hyperlink{classParameter_a6d9a522e204611d8fa01474fbf3161a5}{Parameter}} (Json\+Object json\+Object)
+\item 
+void \mbox{\hyperlink{classParameter_aa67bd0d321967fc3fd04f180138e2407}{set\+Input\+Event}} (\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}} event)
+\item 
+void \mbox{\hyperlink{classParameter_ae45cba2529079c2d559fe6513231e2e2}{set\+Min\+Value}} (\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classParameter_aca1ca1c399b2bc89206b512830fd6621}{min\+Value}})
+\item 
+void \mbox{\hyperlink{classParameter_ac9888512d266f4fbcbd5147fb7e9d723}{set\+Max\+Value}} (\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classParameter_a76194fe5b16b7543cc493f23bccf9e87}{max\+Value}})
+\item 
+void \mbox{\hyperlink{classParameter_a1d69baec62a18918994e3294356ce1ad}{set\+Value\+Change}} (\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} change)
+\item 
+void \mbox{\hyperlink{classParameter_aa63a9087e940c49b80ab245901ff58b4}{display}} ()
+\item 
+void \mbox{\hyperlink{classParameter_ac4e4115e083ad523a1f71c3a3de88af6}{prepare\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classParameter_a32cb0f2af477d3453d9f49a2bb9fa1f0}{decrement\+Value}} ()
+\item 
+void \mbox{\hyperlink{classParameter_a6ba16d99719398ded560e4cd9e864447}{increment\+Value}} ()
+\item 
+void \mbox{\hyperlink{classParameter_a41dea3ecb3d0efbdb708d030ab0f1c8b}{parse\+Parameter\+From\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classParameter_aca1ca1c399b2bc89206b512830fd6621}{min\+Value}} = \mbox{\hyperlink{Value_8h_aa8cc2815a2cc7e8a6bacdbc127428d1e}{I\+N\+T16\+\_\+\+T\+\_\+\+M\+IN}}
+\item 
+\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classParameter_a76194fe5b16b7543cc493f23bccf9e87}{max\+Value}} = \mbox{\hyperlink{Value_8h_a76d5b67082385e755461da6d4f2b4df9}{I\+N\+T16\+\_\+\+T\+\_\+\+M\+AX}}
+\item 
+\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classParameter_a9c4668a311aedf1d5313b92cd40567a5}{value\+Change}} = 1
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classParameter_ad0fb4534e37a01556e054ff1fcc4a81f}\label{classParameter_ad0fb4534e37a01556e054ff1fcc4a81f}} 
+\index{Parameter@{Parameter}!Parameter@{Parameter}}
+\index{Parameter@{Parameter}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{Parameter()}{Parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Parameter\+::\+Parameter (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \mbox{\hyperlink{Parameter_8h_a5fc902e1e61e0fb424d78020dd45c2ec}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+N\+A\+ME}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classParameter_a6d9a522e204611d8fa01474fbf3161a5}\label{classParameter_a6d9a522e204611d8fa01474fbf3161a5}} 
+\index{Parameter@{Parameter}!Parameter@{Parameter}}
+\index{Parameter@{Parameter}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{Parameter()}{Parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Parameter\+::\+Parameter (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParameter_a32cb0f2af477d3453d9f49a2bb9fa1f0}\label{classParameter_a32cb0f2af477d3453d9f49a2bb9fa1f0}} 
+\index{Parameter@{Parameter}!decrementValue@{decrementValue}}
+\index{decrementValue@{decrementValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{decrementValue()}{decrementValue()}}
+{\footnotesize\ttfamily void Parameter\+::decrement\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classParameter_aa63a9087e940c49b80ab245901ff58b4}\label{classParameter_aa63a9087e940c49b80ab245901ff58b4}} 
+\index{Parameter@{Parameter}!display@{display}}
+\index{display@{display}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Parameter\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_a24bad51fd3f315a5a22cde590ec612fc}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classParameter_a6ba16d99719398ded560e4cd9e864447}\label{classParameter_a6ba16d99719398ded560e4cd9e864447}} 
+\index{Parameter@{Parameter}!incrementValue@{incrementValue}}
+\index{incrementValue@{incrementValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{incrementValue()}{incrementValue()}}
+{\footnotesize\ttfamily void Parameter\+::increment\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classParameter_a41dea3ecb3d0efbdb708d030ab0f1c8b}\label{classParameter_a41dea3ecb3d0efbdb708d030ab0f1c8b}} 
+\index{Parameter@{Parameter}!parseParameterFromJsonObject@{parseParameterFromJsonObject}}
+\index{parseParameterFromJsonObject@{parseParameterFromJsonObject}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{parseParameterFromJsonObject()}{parseParameterFromJsonObject()}}
+{\footnotesize\ttfamily void Parameter\+::parse\+Parameter\+From\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classParameter_ac4e4115e083ad523a1f71c3a3de88af6}\label{classParameter_ac4e4115e083ad523a1f71c3a3de88af6}} 
+\index{Parameter@{Parameter}!prepareJsonObject@{prepareJsonObject}}
+\index{prepareJsonObject@{prepareJsonObject}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{prepareJsonObject()}{prepareJsonObject()}}
+{\footnotesize\ttfamily void Parameter\+::prepare\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ac3f4f4f8db37a1a94273a3b36dd1c1f3}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classParameter_aa67bd0d321967fc3fd04f180138e2407}\label{classParameter_aa67bd0d321967fc3fd04f180138e2407}} 
+\index{Parameter@{Parameter}!setInputEvent@{setInputEvent}}
+\index{setInputEvent@{setInputEvent}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{setInputEvent()}{setInputEvent()}}
+{\footnotesize\ttfamily void Parameter\+::set\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ad954e99abef448262ea8996c1d02c043}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classParameter_ac9888512d266f4fbcbd5147fb7e9d723}\label{classParameter_ac9888512d266f4fbcbd5147fb7e9d723}} 
+\index{Parameter@{Parameter}!setMaxValue@{setMaxValue}}
+\index{setMaxValue@{setMaxValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{setMaxValue()}{setMaxValue()}}
+{\footnotesize\ttfamily void Parameter\+::set\+Max\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}}}]{max\+Value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classParameter_ae45cba2529079c2d559fe6513231e2e2}\label{classParameter_ae45cba2529079c2d559fe6513231e2e2}} 
+\index{Parameter@{Parameter}!setMinValue@{setMinValue}}
+\index{setMinValue@{setMinValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{setMinValue()}{setMinValue()}}
+{\footnotesize\ttfamily void Parameter\+::set\+Min\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}}}]{min\+Value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classParameter_a1d69baec62a18918994e3294356ce1ad}\label{classParameter_a1d69baec62a18918994e3294356ce1ad}} 
+\index{Parameter@{Parameter}!setValueChange@{setValueChange}}
+\index{setValueChange@{setValueChange}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{setValueChange()}{setValueChange()}}
+{\footnotesize\ttfamily void Parameter\+::set\+Value\+Change (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}}}]{change }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classParameter_a76194fe5b16b7543cc493f23bccf9e87}\label{classParameter_a76194fe5b16b7543cc493f23bccf9e87}} 
+\index{Parameter@{Parameter}!maxValue@{maxValue}}
+\index{maxValue@{maxValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{maxValue}{maxValue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} Parameter\+::max\+Value = \mbox{\hyperlink{Value_8h_a76d5b67082385e755461da6d4f2b4df9}{I\+N\+T16\+\_\+\+T\+\_\+\+M\+AX}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classParameter_aca1ca1c399b2bc89206b512830fd6621}\label{classParameter_aca1ca1c399b2bc89206b512830fd6621}} 
+\index{Parameter@{Parameter}!minValue@{minValue}}
+\index{minValue@{minValue}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{minValue}{minValue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} Parameter\+::min\+Value = \mbox{\hyperlink{Value_8h_aa8cc2815a2cc7e8a6bacdbc127428d1e}{I\+N\+T16\+\_\+\+T\+\_\+\+M\+IN}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classParameter_a9c4668a311aedf1d5313b92cd40567a5}\label{classParameter_a9c4668a311aedf1d5313b92cd40567a5}} 
+\index{Parameter@{Parameter}!valueChange@{valueChange}}
+\index{valueChange@{valueChange}!Parameter@{Parameter}}
+\doxysubsubsection{\texorpdfstring{valueChange}{valueChange}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} Parameter\+::value\+Change = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Parameter_8h}{Parameter.\+h}}\item 
+src/\mbox{\hyperlink{Parameter_8cpp}{Parameter.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+<map id="MenuItem" name="MenuItem">
+<area shape="rect" id="node1" title=" " alt="" coords="137,5,225,32"/>
+<area shape="rect" id="node2" href="$classMenuItemsList.html" title=" " alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$classSwitch.html" title=" " alt="" coords="148,80,213,107"/>
+<area shape="rect" id="node5" href="$classValue.html" title=" " alt="" coords="245,80,303,107"/>
+<area shape="rect" id="node4" href="$classAction.html" title=" " alt="" coords="145,155,208,181"/>
+<area shape="rect" id="node6" href="$classParameter.html" title=" " alt="" coords="232,155,321,181"/>
+</map>

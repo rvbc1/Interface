@@ -49,7 +49,7 @@
         {
           "name": "Front",
           "type": "parameter",
-          "value": 18,
+          "value": 25,
           "digits": 0,
           "unit": "*",
           "min": -45,
@@ -69,7 +69,7 @@
         {
           "name": "Supply",
           "type": "switch",
-          "value": true
+          "value": false
         }
       ]
     },

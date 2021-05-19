@@ -1,0 +1,135 @@
+\hypertarget{classSwitch}{}\doxysection{Switch Class Reference}
+\label{classSwitch}\index{Switch@{Switch}}
+
+
+{\ttfamily \#include $<$Switch.\+h$>$}
+
+
+
+Inheritance diagram for Switch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classSwitch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Switch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{classSwitch__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwitch_ad71b52a204290eb3fe4884c8432a1158}{Switch}} (std\+::string \mbox{\hyperlink{classMenuItem_a0e46de23f339da33aebb4b14ada546a7}{name}}=\mbox{\hyperlink{Switch_8h_ab2c838a7e4844563dcf861a127f71f72}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+W\+I\+T\+C\+H\+\_\+\+N\+A\+ME}})
+\item 
+\mbox{\hyperlink{classSwitch_ae5dbb7887077be76815631b14c0e498b}{Switch}} (Json\+Object json\+Object)
+\item 
+void \mbox{\hyperlink{classSwitch_a070e271281a7d3290d47826a54e29814}{set\+Input\+Event}} (\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}} event)
+\item 
+void \mbox{\hyperlink{classSwitch_a17f86d9ba12f5a2bcb7dfa7dd1373c17}{set\+Value}} (uint8\+\_\+t \mbox{\hyperlink{classSwitch_a5cf587716061ba9ce379603a61c1781f}{value}})
+\item 
+void \mbox{\hyperlink{classSwitch_ac84b0acff4707e627b8a8eafe12c7e4f}{display}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classSwitch_acb26c6d12b9c5bacb5242331516b88f1}{get\+Value}} ()
+\item 
+void \mbox{\hyperlink{classSwitch_a1d3e70b608d0bb9e32b8fa225a3f2144}{prepare\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classSwitch_a5cf587716061ba9ce379603a61c1781f}{value}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSwitch_ad389cbb0f4913ff6af175098226cc432}{parse\+Switch\+From\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSwitch_ad71b52a204290eb3fe4884c8432a1158}\label{classSwitch_ad71b52a204290eb3fe4884c8432a1158}} 
+\index{Switch@{Switch}!Switch@{Switch}}
+\index{Switch@{Switch}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{Switch()}{Switch()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Switch\+::\+Switch (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \mbox{\hyperlink{Switch_8h_ab2c838a7e4844563dcf861a127f71f72}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+W\+I\+T\+C\+H\+\_\+\+N\+A\+ME}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSwitch_ae5dbb7887077be76815631b14c0e498b}\label{classSwitch_ae5dbb7887077be76815631b14c0e498b}} 
+\index{Switch@{Switch}!Switch@{Switch}}
+\index{Switch@{Switch}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{Switch()}{Switch()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Switch\+::\+Switch (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSwitch_ac84b0acff4707e627b8a8eafe12c7e4f}\label{classSwitch_ac84b0acff4707e627b8a8eafe12c7e4f}} 
+\index{Switch@{Switch}!display@{display}}
+\index{display@{display}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Switch\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_a24bad51fd3f315a5a22cde590ec612fc}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classSwitch_acb26c6d12b9c5bacb5242331516b88f1}\label{classSwitch_acb26c6d12b9c5bacb5242331516b88f1}} 
+\index{Switch@{Switch}!getValue@{getValue}}
+\index{getValue@{getValue}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily uint8\+\_\+t Switch\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSwitch_ad389cbb0f4913ff6af175098226cc432}\label{classSwitch_ad389cbb0f4913ff6af175098226cc432}} 
+\index{Switch@{Switch}!parseSwitchFromJsonObject@{parseSwitchFromJsonObject}}
+\index{parseSwitchFromJsonObject@{parseSwitchFromJsonObject}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{parseSwitchFromJsonObject()}{parseSwitchFromJsonObject()}}
+{\footnotesize\ttfamily void Switch\+::parse\+Switch\+From\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSwitch_a1d3e70b608d0bb9e32b8fa225a3f2144}\label{classSwitch_a1d3e70b608d0bb9e32b8fa225a3f2144}} 
+\index{Switch@{Switch}!prepareJsonObject@{prepareJsonObject}}
+\index{prepareJsonObject@{prepareJsonObject}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{prepareJsonObject()}{prepareJsonObject()}}
+{\footnotesize\ttfamily void Switch\+::prepare\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ac3f4f4f8db37a1a94273a3b36dd1c1f3}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classSwitch_a070e271281a7d3290d47826a54e29814}\label{classSwitch_a070e271281a7d3290d47826a54e29814}} 
+\index{Switch@{Switch}!setInputEvent@{setInputEvent}}
+\index{setInputEvent@{setInputEvent}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{setInputEvent()}{setInputEvent()}}
+{\footnotesize\ttfamily void Switch\+::set\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ad954e99abef448262ea8996c1d02c043}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classSwitch_a17f86d9ba12f5a2bcb7dfa7dd1373c17}\label{classSwitch_a17f86d9ba12f5a2bcb7dfa7dd1373c17}} 
+\index{Switch@{Switch}!setValue@{setValue}}
+\index{setValue@{setValue}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void Switch\+::set\+Value (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSwitch_a5cf587716061ba9ce379603a61c1781f}\label{classSwitch_a5cf587716061ba9ce379603a61c1781f}} 
+\index{Switch@{Switch}!value@{value}}
+\index{value@{value}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily uint8\+\_\+t Switch\+::value = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Switch_8h}{Switch.\+h}}\item 
+src/\mbox{\hyperlink{Switch_8cpp}{Switch.\+cpp}}\end{DoxyCompactItemize}

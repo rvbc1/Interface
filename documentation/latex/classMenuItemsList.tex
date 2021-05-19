@@ -1,0 +1,175 @@
+\hypertarget{classMenuItemsList}{}\doxysection{Menu\+Items\+List Class Reference}
+\label{classMenuItemsList}\index{MenuItemsList@{MenuItemsList}}
+
+
+{\ttfamily \#include $<$Menu\+Items\+List.\+h$>$}
+
+
+
+Inheritance diagram for Menu\+Items\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classMenuItemsList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+Items\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{classMenuItemsList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMenuItemsList_abed0e73cb62653ab22f73d2eabd6ddbf}{Menu\+Items\+List}} (std\+::string \mbox{\hyperlink{classMenuItem_a0e46de23f339da33aebb4b14ada546a7}{name}}=\mbox{\hyperlink{MenuItemsList_8h_a66afdac549fe5854461514b7e8c9d052}{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+N\+U\+\_\+\+I\+T\+E\+M\+S\+\_\+\+L\+I\+S\+T\+\_\+\+N\+A\+ME}})
+\item 
+\mbox{\hyperlink{classMenuItemsList_a13b19464fe3355cf242d8ea205a20431}{Menu\+Items\+List}} (Json\+Object json\+Object)
+\item 
+void \mbox{\hyperlink{classMenuItemsList_aff676a19b9a47c6fe43513a73898dc34}{add\+Item\+To\+List}} (\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$menu\+Item)
+\item 
+void \mbox{\hyperlink{classMenuItemsList_a5e54d34cfe52f677e4a207dea7bcf9b3}{set\+Input\+Event}} (\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}} event)
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classMenuItemsList_aecd7ed9b7245842dd776c88cb5549ada}{get\+Current\+Menu\+Item}} ()
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classMenuItemsList_a6f15fdec4cae221b95647fbf88c1abf2}{get\+Selected\+Menu\+Item}} ()
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classMenuItemsList_a5bb06c0ce9a0ca18db7d956fe5774055}{get\+Menu\+Item\+By\+Name}} (std\+::string \mbox{\hyperlink{classMenuItem_a0e46de23f339da33aebb4b14ada546a7}{name}}, \mbox{\hyperlink{classMenuItem_ace97b077c810165d141b9ba899782ce1}{Type}} \mbox{\hyperlink{classMenuItem_a08e3432c980f20e5b193af0638626cec}{type}}=\mbox{\hyperlink{classMenuItem_ace97b077c810165d141b9ba899782ce1a26c890b49f25a3bd840831b304d2ba53}{U\+N\+D\+E\+F\+I\+N\+ED}})
+\item 
+void \mbox{\hyperlink{classMenuItemsList_a70feb6123f16988692da0e29f61b9d53}{display}} ()
+\item 
+void \mbox{\hyperlink{classMenuItemsList_acf58d599a90b0c6c194b4f6bccbec928}{prepare\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMenuItemsList_af320873ca202001f679af08e478904b1}{move\+Left}} ()
+\item 
+void \mbox{\hyperlink{classMenuItemsList_a3884729b3a850a3e44e403e97e989df6}{move\+Right}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ $>$ \mbox{\hyperlink{classMenuItemsList_a0e306c11ceacfeb1d595d69427bc1866}{sub\+Menu\+Items}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{classMenuItemsList_a7c9ed1105a1ea7feb4a2c08bd302ea9f}{current\+Main\+Menu\+Item}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMenuItemsList_abed0e73cb62653ab22f73d2eabd6ddbf}\label{classMenuItemsList_abed0e73cb62653ab22f73d2eabd6ddbf}} 
+\index{MenuItemsList@{MenuItemsList}!MenuItemsList@{MenuItemsList}}
+\index{MenuItemsList@{MenuItemsList}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{MenuItemsList()}{MenuItemsList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Menu\+Items\+List\+::\+Menu\+Items\+List (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \mbox{\hyperlink{MenuItemsList_8h_a66afdac549fe5854461514b7e8c9d052}{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+N\+U\+\_\+\+I\+T\+E\+M\+S\+\_\+\+L\+I\+S\+T\+\_\+\+N\+A\+ME}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMenuItemsList_a13b19464fe3355cf242d8ea205a20431}\label{classMenuItemsList_a13b19464fe3355cf242d8ea205a20431}} 
+\index{MenuItemsList@{MenuItemsList}!MenuItemsList@{MenuItemsList}}
+\index{MenuItemsList@{MenuItemsList}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{MenuItemsList()}{MenuItemsList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Menu\+Items\+List\+::\+Menu\+Items\+List (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMenuItemsList_aff676a19b9a47c6fe43513a73898dc34}\label{classMenuItemsList_aff676a19b9a47c6fe43513a73898dc34}} 
+\index{MenuItemsList@{MenuItemsList}!addItemToList@{addItemToList}}
+\index{addItemToList@{addItemToList}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{addItemToList()}{addItemToList()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::add\+Item\+To\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$}]{menu\+Item }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMenuItemsList_a70feb6123f16988692da0e29f61b9d53}\label{classMenuItemsList_a70feb6123f16988692da0e29f61b9d53}} 
+\index{MenuItemsList@{MenuItemsList}!display@{display}}
+\index{display@{display}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_a24bad51fd3f315a5a22cde590ec612fc}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classMenuItemsList_aecd7ed9b7245842dd776c88cb5549ada}\label{classMenuItemsList_aecd7ed9b7245842dd776c88cb5549ada}} 
+\index{MenuItemsList@{MenuItemsList}!getCurrentMenuItem@{getCurrentMenuItem}}
+\index{getCurrentMenuItem@{getCurrentMenuItem}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{getCurrentMenuItem()}{getCurrentMenuItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ Menu\+Items\+List\+::get\+Current\+Menu\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_af44e394a56f25bafe71dbe3d13abcf24}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classMenuItemsList_a5bb06c0ce9a0ca18db7d956fe5774055}\label{classMenuItemsList_a5bb06c0ce9a0ca18db7d956fe5774055}} 
+\index{MenuItemsList@{MenuItemsList}!getMenuItemByName@{getMenuItemByName}}
+\index{getMenuItemByName@{getMenuItemByName}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{getMenuItemByName()}{getMenuItemByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ Menu\+Items\+List\+::get\+Menu\+Item\+By\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\mbox{\hyperlink{classMenuItem_ace97b077c810165d141b9ba899782ce1}{Type}}}]{type = {\ttfamily \mbox{\hyperlink{classMenuItem_ace97b077c810165d141b9ba899782ce1a26c890b49f25a3bd840831b304d2ba53}{U\+N\+D\+E\+F\+I\+N\+ED}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_aff37b8ac0d38e0069b0aaca9f1ec2f9f}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classMenuItemsList_a6f15fdec4cae221b95647fbf88c1abf2}\label{classMenuItemsList_a6f15fdec4cae221b95647fbf88c1abf2}} 
+\index{MenuItemsList@{MenuItemsList}!getSelectedMenuItem@{getSelectedMenuItem}}
+\index{getSelectedMenuItem@{getSelectedMenuItem}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{getSelectedMenuItem()}{getSelectedMenuItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ Menu\+Items\+List\+::get\+Selected\+Menu\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMenuItemsList_af320873ca202001f679af08e478904b1}\label{classMenuItemsList_af320873ca202001f679af08e478904b1}} 
+\index{MenuItemsList@{MenuItemsList}!moveLeft@{moveLeft}}
+\index{moveLeft@{moveLeft}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{moveLeft()}{moveLeft()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::move\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classMenuItemsList_a3884729b3a850a3e44e403e97e989df6}\label{classMenuItemsList_a3884729b3a850a3e44e403e97e989df6}} 
+\index{MenuItemsList@{MenuItemsList}!moveRight@{moveRight}}
+\index{moveRight@{moveRight}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{moveRight()}{moveRight()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::move\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classMenuItemsList_acf58d599a90b0c6c194b4f6bccbec928}\label{classMenuItemsList_acf58d599a90b0c6c194b4f6bccbec928}} 
+\index{MenuItemsList@{MenuItemsList}!prepareJsonObject@{prepareJsonObject}}
+\index{prepareJsonObject@{prepareJsonObject}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{prepareJsonObject()}{prepareJsonObject()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::prepare\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ac3f4f4f8db37a1a94273a3b36dd1c1f3}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classMenuItemsList_a5e54d34cfe52f677e4a207dea7bcf9b3}\label{classMenuItemsList_a5e54d34cfe52f677e4a207dea7bcf9b3}} 
+\index{MenuItemsList@{MenuItemsList}!setInputEvent@{setInputEvent}}
+\index{setInputEvent@{setInputEvent}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{setInputEvent()}{setInputEvent()}}
+{\footnotesize\ttfamily void Menu\+Items\+List\+::set\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ad954e99abef448262ea8996c1d02c043}{Menu\+Item}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMenuItemsList_a7c9ed1105a1ea7feb4a2c08bd302ea9f}\label{classMenuItemsList_a7c9ed1105a1ea7feb4a2c08bd302ea9f}} 
+\index{MenuItemsList@{MenuItemsList}!currentMainMenuItem@{currentMainMenuItem}}
+\index{currentMainMenuItem@{currentMainMenuItem}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{currentMainMenuItem}{currentMainMenuItem}}
+{\footnotesize\ttfamily uint16\+\_\+t Menu\+Items\+List\+::current\+Main\+Menu\+Item = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classMenuItemsList_a0e306c11ceacfeb1d595d69427bc1866}\label{classMenuItemsList_a0e306c11ceacfeb1d595d69427bc1866}} 
+\index{MenuItemsList@{MenuItemsList}!subMenuItems@{subMenuItems}}
+\index{subMenuItems@{subMenuItems}!MenuItemsList@{MenuItemsList}}
+\doxysubsubsection{\texorpdfstring{subMenuItems}{subMenuItems}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classMenuItem}{Menu\+Item}}$\ast$$>$ Menu\+Items\+List\+::sub\+Menu\+Items\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{MenuItemsList_8h}{Menu\+Items\+List.\+h}}\item 
+src/\mbox{\hyperlink{MenuItemsList_8cpp}{Menu\+Items\+List.\+cpp}}\end{DoxyCompactItemize}

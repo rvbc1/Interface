@@ -1,0 +1,136 @@
+\hypertarget{classInterface}{}\doxysection{Interface Class Reference}
+\label{classInterface}\index{Interface@{Interface}}
+
+
+{\ttfamily \#include $<$Interface.\+h$>$}
+
+
+
+Collaboration diagram for Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{classInterface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}} ()
+\item 
+\mbox{\hyperlink{classInterface_a37378d636d777e0d5bbb6cdccaeab47c}{Interface}} (std\+::string \mbox{\hyperlink{classInterface_a9ebebc596f2fdb155ecde7dddf3f6358}{interface\+Filepath}})
+\item 
+void \mbox{\hyperlink{classInterface_ac1fc55fd26de3c19fa75650219a5f201}{set\+Input\+Event}} (\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}} event)
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classInterface_aae087e78806a0704630d9357a0bec993}{get\+Current\+Menu\+Item}} ()
+\item 
+\mbox{\hyperlink{classAction}{Action}} $\ast$ \mbox{\hyperlink{classInterface_ab6485f19fd50c8aea37a59a982dfe39b}{get\+Action\+By\+Name}} (std\+::string name)
+\item 
+void \mbox{\hyperlink{classInterface_a2f198ecbc951da72f584fdf1ccc5380d}{set\+Interface\+Filepath}} (std\+::string filepath)
+\item 
+std\+::string \mbox{\hyperlink{classInterface_abef692d82195e5d591f815beb67e441b}{get\+Interface\+Filepath}} ()
+\item 
+void \mbox{\hyperlink{classInterface_a47ee475b40ed0f2a77a63175bf76e7ba}{save}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classInterface_a3bfda706c1d0e387326837a7e7278862}{get\+Menu\+Item\+By\+Name}} (std\+::string name)
+\item 
+void \mbox{\hyperlink{classInterface_ac0ac35724110658dcd5ce0ad0901b7da}{load\+Interface}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classInterface_a9ebebc596f2fdb155ecde7dddf3f6358}{interface\+Filepath}} = \mbox{\hyperlink{Interface_8h_af533d8bd7d6a1d9f9efba3b259280e32}{D\+E\+F\+A\+U\+L\+T\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+F\+I\+LE}}
+\item 
+\mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ \mbox{\hyperlink{classInterface_a92b4c58a19a02a55ba0589294140a112}{main\+Menu\+Item}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}\label{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}} 
+\index{Interface@{Interface}!Interface@{Interface}}
+\index{Interface@{Interface}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Interface()}{Interface()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Interface\+::\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_a37378d636d777e0d5bbb6cdccaeab47c}\label{classInterface_a37378d636d777e0d5bbb6cdccaeab47c}} 
+\index{Interface@{Interface}!Interface@{Interface}}
+\index{Interface@{Interface}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Interface()}{Interface()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Interface\+::\+Interface (\begin{DoxyParamCaption}\item[{std\+::string}]{interface\+Filepath }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInterface_ab6485f19fd50c8aea37a59a982dfe39b}\label{classInterface_ab6485f19fd50c8aea37a59a982dfe39b}} 
+\index{Interface@{Interface}!getActionByName@{getActionByName}}
+\index{getActionByName@{getActionByName}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getActionByName()}{getActionByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAction}{Action}} $\ast$ Interface\+::get\+Action\+By\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_aae087e78806a0704630d9357a0bec993}\label{classInterface_aae087e78806a0704630d9357a0bec993}} 
+\index{Interface@{Interface}!getCurrentMenuItem@{getCurrentMenuItem}}
+\index{getCurrentMenuItem@{getCurrentMenuItem}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getCurrentMenuItem()}{getCurrentMenuItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ Interface\+::get\+Current\+Menu\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_abef692d82195e5d591f815beb67e441b}\label{classInterface_abef692d82195e5d591f815beb67e441b}} 
+\index{Interface@{Interface}!getInterfaceFilepath@{getInterfaceFilepath}}
+\index{getInterfaceFilepath@{getInterfaceFilepath}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getInterfaceFilepath()}{getInterfaceFilepath()}}
+{\footnotesize\ttfamily std\+::string Interface\+::get\+Interface\+Filepath (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_a3bfda706c1d0e387326837a7e7278862}\label{classInterface_a3bfda706c1d0e387326837a7e7278862}} 
+\index{Interface@{Interface}!getMenuItemByName@{getMenuItemByName}}
+\index{getMenuItemByName@{getMenuItemByName}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getMenuItemByName()}{getMenuItemByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}} $\ast$ Interface\+::get\+Menu\+Item\+By\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classInterface_ac0ac35724110658dcd5ce0ad0901b7da}\label{classInterface_ac0ac35724110658dcd5ce0ad0901b7da}} 
+\index{Interface@{Interface}!loadInterface@{loadInterface}}
+\index{loadInterface@{loadInterface}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{loadInterface()}{loadInterface()}}
+{\footnotesize\ttfamily void Interface\+::load\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classInterface_a47ee475b40ed0f2a77a63175bf76e7ba}\label{classInterface_a47ee475b40ed0f2a77a63175bf76e7ba}} 
+\index{Interface@{Interface}!save@{save}}
+\index{save@{save}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Interface\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_ac1fc55fd26de3c19fa75650219a5f201}\label{classInterface_ac1fc55fd26de3c19fa75650219a5f201}} 
+\index{Interface@{Interface}!setInputEvent@{setInputEvent}}
+\index{setInputEvent@{setInputEvent}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{setInputEvent()}{setInputEvent()}}
+{\footnotesize\ttfamily void Interface\+::set\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}}}]{event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classInterface_a2f198ecbc951da72f584fdf1ccc5380d}\label{classInterface_a2f198ecbc951da72f584fdf1ccc5380d}} 
+\index{Interface@{Interface}!setInterfaceFilepath@{setInterfaceFilepath}}
+\index{setInterfaceFilepath@{setInterfaceFilepath}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{setInterfaceFilepath()}{setInterfaceFilepath()}}
+{\footnotesize\ttfamily void Interface\+::set\+Interface\+Filepath (\begin{DoxyParamCaption}\item[{std\+::string}]{filepath }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classInterface_a9ebebc596f2fdb155ecde7dddf3f6358}\label{classInterface_a9ebebc596f2fdb155ecde7dddf3f6358}} 
+\index{Interface@{Interface}!interfaceFilepath@{interfaceFilepath}}
+\index{interfaceFilepath@{interfaceFilepath}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{interfaceFilepath}{interfaceFilepath}}
+{\footnotesize\ttfamily std\+::string Interface\+::interface\+Filepath = \mbox{\hyperlink{Interface_8h_af533d8bd7d6a1d9f9efba3b259280e32}{D\+E\+F\+A\+U\+L\+T\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+F\+I\+LE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classInterface_a92b4c58a19a02a55ba0589294140a112}\label{classInterface_a92b4c58a19a02a55ba0589294140a112}} 
+\index{Interface@{Interface}!mainMenuItem@{mainMenuItem}}
+\index{mainMenuItem@{mainMenuItem}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{mainMenuItem}{mainMenuItem}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMenuItem}{Menu\+Item}}$\ast$ Interface\+::main\+Menu\+Item = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Interface_8h}{Interface.\+h}}\item 
+src/\mbox{\hyperlink{Interface_8cpp}{Interface.\+cpp}}\end{DoxyCompactItemize}

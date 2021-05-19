@@ -1,0 +1,194 @@
+\hypertarget{classValue}{}\doxysection{Value Class Reference}
+\label{classValue}\index{Value@{Value}}
+
+
+{\ttfamily \#include $<$Value.\+h$>$}
+
+
+
+Inheritance diagram for Value\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{classValue__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Value\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{classValue__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classValue_a44227debd88515fe1b08c8049dd17e7b}{Value}} (std\+::string \mbox{\hyperlink{classMenuItem_a0e46de23f339da33aebb4b14ada546a7}{name}}=\mbox{\hyperlink{Value_8h_a086c04999d183b586aea6e7cfac7df36}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+N\+A\+ME}})
+\item 
+\mbox{\hyperlink{classValue_ae840e555d0e395af55a0e763f9300560}{Value}} (Json\+Object json\+Object)
+\item 
+void \mbox{\hyperlink{classValue_ab8ee3d76ee08554641d2385beb9317ba}{set\+Input\+Event}} (\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}} event)
+\item 
+void \mbox{\hyperlink{classValue_a0cd66fdddee3bd0197b3e59cf323918f}{set\+Value}} (\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classValue_aaf331b9ab169424aec08ce976cdf3001}{value}})
+\item 
+\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classValue_abfcdec3d8fcc5b012457404a188cd5fb}{get\+Value}} ()
+\item 
+void \mbox{\hyperlink{classValue_a96415c309d14672ad118218e6d916724}{set\+Unit}} (std\+::string \mbox{\hyperlink{classValue_a1296ae338db931f5dbd7de2cad48e9a2}{unit}})
+\item 
+std\+::string \mbox{\hyperlink{classValue_a2f6ac07d4ef1fddb873d3826443ed9c9}{get\+Unit}} ()
+\item 
+void \mbox{\hyperlink{classValue_aecb13077748ea70e11b3d73463397ab2}{set\+Amount\+Of\+Digits}} (uint8\+\_\+t digits)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classValue_ac2dce3b62fdcbc7209ba9aecece5ef62}{get\+Amount\+Of\+Digits}} ()
+\item 
+void \mbox{\hyperlink{classValue_aa95ad350838a310dee5f2cc24d41443b}{display}} ()
+\item 
+void \mbox{\hyperlink{classValue_a576baaa199d7c2886283a733bd23541b}{prepare\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classValue_add1b439a7aa4c05a285edcf99b3414de}{prepare\+Value\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{classValue_aaf331b9ab169424aec08ce976cdf3001}{value}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classValue_a0cbd19035589b7b3ab4ede42393fa1df}{amount\+Of\+Digits}} = 0
+\item 
+std\+::string \mbox{\hyperlink{classValue_a1296ae338db931f5dbd7de2cad48e9a2}{unit}} = \char`\"{}\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classValue_ad9d0a2ffbe5d44b412a24db37d83b897}{parse\+Value\+From\+Json\+Object}} (Json\+Object json\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classValue_a44227debd88515fe1b08c8049dd17e7b}\label{classValue_a44227debd88515fe1b08c8049dd17e7b}} 
+\index{Value@{Value}!Value@{Value}}
+\index{Value@{Value}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Value\+::\+Value (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \mbox{\hyperlink{Value_8h_a086c04999d183b586aea6e7cfac7df36}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+N\+A\+ME}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_ae840e555d0e395af55a0e763f9300560}\label{classValue_ae840e555d0e395af55a0e763f9300560}} 
+\index{Value@{Value}!Value@{Value}}
+\index{Value@{Value}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Value\+::\+Value (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classValue_aa95ad350838a310dee5f2cc24d41443b}\label{classValue_aa95ad350838a310dee5f2cc24d41443b}} 
+\index{Value@{Value}!display@{display}}
+\index{display@{display}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Value\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_a24bad51fd3f315a5a22cde590ec612fc}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classValue_ac2dce3b62fdcbc7209ba9aecece5ef62}\label{classValue_ac2dce3b62fdcbc7209ba9aecece5ef62}} 
+\index{Value@{Value}!getAmountOfDigits@{getAmountOfDigits}}
+\index{getAmountOfDigits@{getAmountOfDigits}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{getAmountOfDigits()}{getAmountOfDigits()}}
+{\footnotesize\ttfamily uint8\+\_\+t Value\+::get\+Amount\+Of\+Digits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_a2f6ac07d4ef1fddb873d3826443ed9c9}\label{classValue_a2f6ac07d4ef1fddb873d3826443ed9c9}} 
+\index{Value@{Value}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}}
+{\footnotesize\ttfamily std\+::string Value\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_abfcdec3d8fcc5b012457404a188cd5fb}\label{classValue_abfcdec3d8fcc5b012457404a188cd5fb}} 
+\index{Value@{Value}!getValue@{getValue}}
+\index{getValue@{getValue}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} Value\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_ad9d0a2ffbe5d44b412a24db37d83b897}\label{classValue_ad9d0a2ffbe5d44b412a24db37d83b897}} 
+\index{Value@{Value}!parseValueFromJsonObject@{parseValueFromJsonObject}}
+\index{parseValueFromJsonObject@{parseValueFromJsonObject}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{parseValueFromJsonObject()}{parseValueFromJsonObject()}}
+{\footnotesize\ttfamily void Value\+::parse\+Value\+From\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classValue_a576baaa199d7c2886283a733bd23541b}\label{classValue_a576baaa199d7c2886283a733bd23541b}} 
+\index{Value@{Value}!prepareJsonObject@{prepareJsonObject}}
+\index{prepareJsonObject@{prepareJsonObject}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{prepareJsonObject()}{prepareJsonObject()}}
+{\footnotesize\ttfamily void Value\+::prepare\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ac3f4f4f8db37a1a94273a3b36dd1c1f3}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classValue_add1b439a7aa4c05a285edcf99b3414de}\label{classValue_add1b439a7aa4c05a285edcf99b3414de}} 
+\index{Value@{Value}!prepareValueJsonObject@{prepareValueJsonObject}}
+\index{prepareValueJsonObject@{prepareValueJsonObject}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{prepareValueJsonObject()}{prepareValueJsonObject()}}
+{\footnotesize\ttfamily void Value\+::prepare\+Value\+Json\+Object (\begin{DoxyParamCaption}\item[{Json\+Object}]{json\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classValue_aecb13077748ea70e11b3d73463397ab2}\label{classValue_aecb13077748ea70e11b3d73463397ab2}} 
+\index{Value@{Value}!setAmountOfDigits@{setAmountOfDigits}}
+\index{setAmountOfDigits@{setAmountOfDigits}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{setAmountOfDigits()}{setAmountOfDigits()}}
+{\footnotesize\ttfamily void Value\+::set\+Amount\+Of\+Digits (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{digits }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_ab8ee3d76ee08554641d2385beb9317ba}\label{classValue_ab8ee3d76ee08554641d2385beb9317ba}} 
+\index{Value@{Value}!setInputEvent@{setInputEvent}}
+\index{setInputEvent@{setInputEvent}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{setInputEvent()}{setInputEvent()}}
+{\footnotesize\ttfamily void Value\+::set\+Input\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInterfaceInput_a1a93eb0a585750e3eed5d02916e00aa3}{Interface\+Input\+::\+Button}}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMenuItem_ad954e99abef448262ea8996c1d02c043}{Menu\+Item}}.
+
+\mbox{\Hypertarget{classValue_a96415c309d14672ad118218e6d916724}\label{classValue_a96415c309d14672ad118218e6d916724}} 
+\index{Value@{Value}!setUnit@{setUnit}}
+\index{setUnit@{setUnit}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{setUnit()}{setUnit()}}
+{\footnotesize\ttfamily void Value\+::set\+Unit (\begin{DoxyParamCaption}\item[{std\+::string}]{unit }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classValue_a0cd66fdddee3bd0197b3e59cf323918f}\label{classValue_a0cd66fdddee3bd0197b3e59cf323918f}} 
+\index{Value@{Value}!setValue@{setValue}}
+\index{setValue@{setValue}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void Value\+::set\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}}}]{value }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classValue_a0cbd19035589b7b3ab4ede42393fa1df}\label{classValue_a0cbd19035589b7b3ab4ede42393fa1df}} 
+\index{Value@{Value}!amountOfDigits@{amountOfDigits}}
+\index{amountOfDigits@{amountOfDigits}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{amountOfDigits}{amountOfDigits}}
+{\footnotesize\ttfamily uint8\+\_\+t Value\+::amount\+Of\+Digits = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classValue_a1296ae338db931f5dbd7de2cad48e9a2}\label{classValue_a1296ae338db931f5dbd7de2cad48e9a2}} 
+\index{Value@{Value}!unit@{unit}}
+\index{unit@{unit}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{unit}{unit}}
+{\footnotesize\ttfamily std\+::string Value\+::unit = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classValue_aaf331b9ab169424aec08ce976cdf3001}\label{classValue_aaf331b9ab169424aec08ce976cdf3001}} 
+\index{Value@{Value}!value@{value}}
+\index{value@{value}!Value@{Value}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Value_8h_ae17cb099b4c9aee7835032339b5a9e0d}{V\+A\+L\+U\+E\+\_\+\+T\+Y\+PE}} Value\+::value = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Value_8h}{Value.\+h}}\item 
+src/\mbox{\hyperlink{Value_8cpp}{Value.\+cpp}}\end{DoxyCompactItemize}
